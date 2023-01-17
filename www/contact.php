@@ -18,7 +18,7 @@ require_once __DIR__ . '/../src/templates/partials/html_head.php';
    <div class="user-inputs">
       <form action="#" method="POST">
         Nom d'utilisateur : <input type="text" class="input_white" name="author" id="author">
-        Votre message : <input type="message" class="input_white" id="content" name="content">
+        Votre message : <textarea type="message" class="message" id="content" name="content"></textarea>
         <button type="submit" class="bouton_envoi">🔥 Envoyer !</button>
       </form>
     </div>

@@ -33,6 +33,14 @@ form{
     border: none;
     border-radius: 10px;
 }
+.message{
+    color: rgba(255, 255, 255, 0.8);
+    background-color: #9370DB;
+    border: none;
+    border-radius: 10px;
+    width: 10%;
+    height: 100%;
+}
 .bouton_envoi{
     color: rgba(255, 255, 255, 0.8);
     background-color: #9370DB;
@@ -95,4 +103,10 @@ video{
     color: white;
     border: none;
     font-size: large;
+}
+.user-input{
+    padding-bottom: 40%;
+}
+footer{
+    background-color: #151515;
 }
