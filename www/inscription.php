@@ -45,7 +45,7 @@ require_once __DIR__ . '/../src/templates/partials/html_head.php';
        
     </label>
     <input type="submit" class="bouton_envoi" class="buttonInscription" name="inscription">
-    <p class="message">Registered ? <a href="/connexion.php">Connect to your account</a></p>
+    <p class="redirect">Registered ? <a href="/connexion.php">Connect to your account</a></p>
 
 
 </form>

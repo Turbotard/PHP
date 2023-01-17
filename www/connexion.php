@@ -16,7 +16,7 @@ require_once __DIR__ . '/../src/templates/partials/html_head.php';
       Nom d'utilisateur : <input class="input_white" type="text" name="username"/>
       Mot de passe : <input class="input_white" type="password" name="password"/>
       <input class="bouton_envoi" type="submit" href="myaccount.php" value="login" name="submit">
-      <p class="message">Not registered? <a href="/inscription.php">Create an account</a></p>
+      <p class="redirect">Not registered? <a href="/inscription.php">Create an account</a></p>
     </form>
   </div>
 </div>
