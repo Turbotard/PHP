@@ -78,3 +78,8 @@ form{
 .pdp{
     border-radius: 25px;
 }
+video{
+    display: none;
+    height: auto;
+    width: auto;
+}

@@ -1,4 +1,3 @@
-var copyBtn = document.getElementById('copy');
 
 function getPassword(){
     var chars="0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ"
