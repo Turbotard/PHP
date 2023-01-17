@@ -1,4 +1,80 @@
 html{
     background-color: #2C2F33;
     color: rgba(255, 255, 255, 0.8);
+    font-family: 'Banque',Regular;
+}
+nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+a{
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: auto;
+}
+a:hover{
+    color: #9370DB;
+}
+h1{
+    font-size: 300%;
+    text-align: center;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.input_white{
+    color: rgba(255, 255, 255, 0.8);
+    background-color: #9370DB;
+    border: none;
+    border-radius: 10px;
+}
+.bouton_envoi{
+    color: rgba(255, 255, 255, 0.8);
+    background-color: #9370DB;
+    border: none;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.team{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.pp{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.Ethan{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 25px;
+    background-color: #030133;
+    width: 20%;
+}
+.Aya{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 25px;
+    color: rgba(0, 0, 0, 0.8);
+    background-color: white;
+    width: 20%;
+}
+.Benjamin{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 25px;
+    color: rgba(0, 0, 0, 0.8);
+    background-color: #DEB887 ;
+    width: 20%;
+}
+.pdp{
+    border-radius: 25px;
 }
