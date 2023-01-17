@@ -32,7 +32,7 @@ require_once __DIR__ . '/../src/config.php';
     <section class="inputBox">
     Mot de passe :
     <div class="passwordBox">
-        <input type="text" class="input_white" id="password" readonly>
+        <input type="text" class="input_white" id="password">
     </div>
         <div class="buttons">
             <button class="bouton_mdp" onclick="getPassword()">Générer</button>
@@ -110,6 +110,6 @@ if(isset($_POST["inscription"])){
 </section>
 <?php require_once __DIR__ . '/../src/templates/partials/bouton_scroll_haut.php'; ?>
 
-<?php require_once __DIR__ . '/../src/templates/partials/footer.php'; ?>
+<?php require_once __DIR__ . '/../src/templates/partials/footer.inc.php'; ?>
 </body>
 </html>

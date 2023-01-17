@@ -31,12 +31,14 @@
 
 
 <section class="box22">
-<h5 class="white">Power Of Memory</h5>
+<h5 class="white">BNPariHaut</h5>
 <div id="bullet">
     <ul class="bullet">
-        <li><a href="">Jouer !</a></li><br>
-        <li><a href="">Les scores</a></li><br>
-        <li><a href="">Aled</a></li>
+        <li><a href="/index.php">Accueil</a></li><br>
+        <li><a href="/connexion.php">Se connecter</a></li><br>
+        <li><a href="/inscription.php">S'inscrire</a></li>
+        <li><a href="/myaccount.php">Mon escpace client</a></li>
+        <li><a href="/contact.php">Nous contacter</a></li>
     </ul>
 </div>
 </section>
