@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:8889
--- Généré le : mar. 17 jan. 2023 à 09:40
+-- Généré le : mar. 17 jan. 2023 à 15:03
 -- Version du serveur :  5.7.34
 -- Version de PHP : 8.0.8
 
@@ -31,7 +31,7 @@ CREATE TABLE `bankaccounts` (
   `id` int(11) NOT NULL,
   `numerocompte` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
-  `solde` float NOT NULL,
+  `solde` float NOT NULL DEFAULT '0',
   `id_currencies` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -43,7 +43,8 @@ CREATE TABLE `bankaccounts` (
 
 CREATE TABLE `currencies` (
   `id` int(11) NOT NULL,
-  `nomoney` varchar(255) NOT NULL
+  `nomoney` varchar(255) NOT NULL,
+  `valeure` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -57,7 +58,7 @@ CREATE TABLE `deposits` (
   `id_account` int(11) NOT NULL,
   `somme` float NOT NULL,
   `id_currencie` int(11) NOT NULL,
-  `done` tinyint(1) NOT NULL
+  `done` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -68,7 +69,7 @@ CREATE TABLE `deposits` (
 
 CREATE TABLE `transactions` (
   `id` int(11) NOT NULL,
-  `id_compte` int(11) NOT NULL,
+  `id_account` int(11) NOT NULL,
   `somme` float NOT NULL,
   `id_currencie` int(11) NOT NULL,
   `taux_change` float NOT NULL
@@ -88,7 +89,8 @@ CREATE TABLE `users` (
   `mail` varchar(255) NOT NULL,
   `tel` varchar(255) NOT NULL,
   `naissance` date NOT NULL,
-  `grade` int(11) NOT NULL
+  `grade` int(11) NOT NULL DEFAULT '1',
+  `client_number` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -102,7 +104,7 @@ CREATE TABLE `withdrawals` (
   `id_account` int(11) NOT NULL,
   `somme` float NOT NULL,
   `id_currencie` int(11) NOT NULL,
-  `done` tinyint(1) NOT NULL
+  `done` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -113,7 +115,9 @@ CREATE TABLE `withdrawals` (
 -- Index pour la table `bankaccounts`
 --
 ALTER TABLE `bankaccounts`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_user` (`id_user`),
+  ADD KEY `id_currencies` (`id_currencies`);
 
 --
 -- Index pour la table `currencies`
@@ -125,13 +129,17 @@ ALTER TABLE `currencies`
 -- Index pour la table `deposits`
 --
 ALTER TABLE `deposits`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_account` (`id_account`),
+  ADD KEY `id_currencie` (`id_currencie`);
 
 --
 -- Index pour la table `transactions`
 --
 ALTER TABLE `transactions`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_compte` (`id_account`),
+  ADD KEY `id_currencie` (`id_currencie`);
 
 --
 -- Index pour la table `users`
@@ -143,7 +151,9 @@ ALTER TABLE `users`
 -- Index pour la table `withdrawals`
 --
 ALTER TABLE `withdrawals`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_account` (`id_account`),
+  ADD KEY `id_currencie` (`id_currencie`);
 
 --
 -- AUTO_INCREMENT pour les tables déchargées
@@ -184,6 +194,38 @@ ALTER TABLE `users`
 --
 ALTER TABLE `withdrawals`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Contraintes pour les tables déchargées
+--
+
+--
+-- Contraintes pour la table `bankaccounts`
+--
+ALTER TABLE `bankaccounts`
+  ADD CONSTRAINT `bankaccounts_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `bankaccounts_ibfk_2` FOREIGN KEY (`id_currencies`) REFERENCES `currencies` (`id`);
+
+--
+-- Contraintes pour la table `deposits`
+--
+ALTER TABLE `deposits`
+  ADD CONSTRAINT `deposits_ibfk_1` FOREIGN KEY (`id_account`) REFERENCES `bankaccounts` (`id`),
+  ADD CONSTRAINT `deposits_ibfk_2` FOREIGN KEY (`id_currencie`) REFERENCES `currencies` (`id`);
+
+--
+-- Contraintes pour la table `transactions`
+--
+ALTER TABLE `transactions`
+  ADD CONSTRAINT `transactions_ibfk_1` FOREIGN KEY (`id_account`) REFERENCES `bankaccounts` (`id`),
+  ADD CONSTRAINT `transactions_ibfk_2` FOREIGN KEY (`id_currencie`) REFERENCES `currencies` (`id`);
+
+--
+-- Contraintes pour la table `withdrawals`
+--
+ALTER TABLE `withdrawals`
+  ADD CONSTRAINT `withdrawals_ibfk_1` FOREIGN KEY (`id_account`) REFERENCES `bankaccounts` (`id`),
+  ADD CONSTRAINT `withdrawals_ibfk_2` FOREIGN KEY (`id_currencie`) REFERENCES `currencies` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
