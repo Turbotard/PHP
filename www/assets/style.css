@@ -48,6 +48,40 @@ form{
     border-radius: 10px;
     margin-top: 10px;
     margin-bottom: 10px;
+    -webkit-transition: all 0.1s;
+    -moz-transition: all 0.1s;
+    transition: all 0.1s;
+    -webkit-box-shadow: 0px 4px 0px #483D8B;
+    -moz-box-shadow: 0px 4px 0px #483D8B;
+    box-shadow: 0px 4px 0px #483D8B;
+}
+.bouton_envoi:active{
+    -webkit-box-shadow: 0px 3px 0px #483D8B;
+    -moz-box-shadow: 0px 3px 0px #483D8B;
+    box-shadow: 0px 3px 0px #483D8B;
+    position:relative;
+    top:1px;
+}
+.bouton_mdp{
+    color: rgba(255, 255, 255, 0.8);
+    background-color: #9370DB;
+    border: none;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    -webkit-transition: all 0.1s;
+    -moz-transition: all 0.1s;
+    transition: all 0.1s;
+    -webkit-box-shadow: 0px 3px 0px #483D8B;
+    -moz-box-shadow: 0px 3px 0px #483D8B;
+    box-shadow: 0px 3px 0px #483D8B;
+}
+.bouton_mdp:active{
+    -webkit-box-shadow: 0px 2px 0px #483D8B;
+    -moz-box-shadow: 0px 2px 0px #483D8B;
+    box-shadow: 0px 2px 0px #483D8B;
+    position:relative;
+    top:1px;
 }
 .team{
     display: flex;
@@ -105,8 +139,9 @@ video{
     font-size: large;
 }
 .user-input{
-    padding-bottom: 40%;
+    padding-bottom: 40px;
 }
+
 footer{
     background-color: #151515;
     position:absolute;

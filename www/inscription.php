@@ -33,10 +33,25 @@ require_once __DIR__ . '/../src/templates/partials/html_head.php';
         <input type="text" class="input_white" id="password" readonly>
     </div>
         <div class="buttons">
-            <button class="bouton_envoi" onclick="getPassword()">Générer</button>
+            <button class="bouton_mdp" onclick="getPassword()">Générer</button>
         </div>
     </section>
-    <script src="/actions/generateur.js"></script>
+    <script>
+        function getPassword(){
+        var chars="0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        var passwordLength= 16;
+        var password= "";
+
+        //générer le mot de passe
+        for(let i = 0; i < passwordLength ; i++){
+            let randomNumber = Math.floor(Math.random() * chars.length)
+
+            password += chars.substring(randomNumber , randomNumber + 1)
+        }
+            //afficher le mot de pass
+            document.getElementById('password').value = password;
+        }
+    </script>
 </div>
 
      Confirmer le mot de passe :<label for="password" >
@@ -50,32 +65,7 @@ require_once __DIR__ . '/../src/templates/partials/html_head.php';
 
 </form>
 
-
-<script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
-      <script type="text/javascript">
-      $(document).ready(function($) {
-        $('#password').passtrength({
-          minChars: 4,
-          passwordToggle: true,
-          tooltip: true
-        });
-      });
-      </script>
-      <script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-36251023-1']);
-  _gaq.push(['_setDomainName', 'jqueryscript.net']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-  youtu.be/JRHARtLZLk8
-
-</script>
+</div>
 
 <?php
 
