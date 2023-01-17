@@ -1,31 +1,36 @@
 <?php
-$page_title = 'Connexion';
-require_once __DIR__ . '/../src/templates/partials/html_head.php';
+
 require_once __DIR__ . '/../src/init.php';
 require_once __DIR__ . '/../src/config.php';
+$page_title = 'Connexion';
 
 if(isset($_POST['submit'])){
-    $clientNumber = $_POST['clientNumber'];
-    $password = $_POST['password'];
+    $client_number = $_POST['client_number'];
+    $mdp = $_POST['mdp'];
 
-    $sql = "SELECT * FROM clients WHERE clientNumber = ? AND password = ?";
-    $var = $db->prepare($sql);
-    $var->execute([$clientNumber, $password]);
-    $row = $var->fetch();
-    $count = $var->rowCount();
+  if ($client_number != '' && $mdp != '') {
 
-    if($count == 1){
-        $_SESSION['clientNumber'] = $row['clientNumber'];
-        $_SESSION['password'] = $row['password'];
-        header("location: myaccount.php");
-    }else{
-        echo "Your Login Name or Password is invalid";
+    $var = $db->prepare('SELECT * FROM users WHERE client_number = ? AND mdp = ?');
+    $var->execute([$client_number, $mdp]);
+    $donnees = $var->fetch();
+
+    if ($donnees != "") {
+      $_SESSION['user'] = $donnees;
+      $_SESSION['loggedin'] = true;
+      $_SESSION['client_number'] = $donnees['client_number'];
+      header('Location:/myaccount.php');
+    } else {
+      echo "Your Login Name or Password is invalid";
     }
+  }
 }
 
 ?>
 <body>
-<?php require_once __DIR__ . '/../src/templates/partials/headers.inc.php'; ?>
+<?php 
+require_once __DIR__ . '/../src/templates/partials/html_head.php';
+require_once __DIR__ . '/../src/templates/partials/headers.inc.php'; 
+?>
 
 <div>
     <h1>CONNEXION</h1>
@@ -34,9 +39,9 @@ if(isset($_POST['submit'])){
 <div class="login-page">
   <div class="form">
     
-    <form class="login-form" method="POST" action="login_exec.php">
-      Numéro Client : <input class="input_white" type="text" name="clientNumber"/>
-      Mot de passe : <input class="input_white" type="password" name="password"/>
+    <form class="login-form" method="POST" >
+      Numéro Client : <input class="input_white" type="text" name="client_number"/>
+      Mot de passe : <input class="input_white" type="password" name="mdp"/>
       <div><input type="checkbox" class="input white">Afficher le mot de passe</div>
       <input class="bouton_envoi" type="submit" value="login" name="submit">
       <p class="redirect">Not registered? <a href="/inscription.php">Create an account</a></p>
