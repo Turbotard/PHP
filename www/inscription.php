@@ -26,11 +26,12 @@ require_once __DIR__ . '/../src/templates/partials/html_head.php';
 
                
                
-    <div class="centrale">
+<div class="centrale">
     <section class="inputBox">
-    Mot de passe :<div class="passwordBox">
-            <input type="text" class="input_white" id="password" readonly>
-        </div>
+    Mot de passe :
+    <div class="passwordBox">
+        <input type="text" class="input_white" id="password" readonly>
+    </div>
         <div class="buttons">
             <button class="bouton_envoi" onclick="getPassword()">Générer</button>
         </div>
