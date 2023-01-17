@@ -11,9 +11,15 @@ require_once __DIR__ . '/../src/templates/partials/html_head.php';
 <div class='team'>
     <h2>L'équipe</h2>
     <video id="Sonic" class="video" src="/assets/super sonic frontiers status sans fond.mp4" ></video>
+    <video id="Putin" class="video" src="/assets/Wide Putin Walking.mp4" ></video>
+    <video id="Meme" class="video" src="/assets/Women meme template.mp4" ></video>
     <button id="fermer" class="croix"
     onclick="document.getElementById('Sonic').style.display='none';
     document.getElementById('Sonic').pause();
+    document.getElementById('Putin').style.display='none';
+    document.getElementById('Putin').pause();
+    document.getElementById('Meme').style.display='none';
+    document.getElementById('Meme').pause();
     document.getElementById('fermer').style.display='none'">X</button>
    <div class="user-inputs">
       <form action="#" method="POST">
@@ -30,11 +36,17 @@ require_once __DIR__ . '/../src/templates/partials/html_head.php';
             <img class='pdp' src='/assets/Stanewolfer.png'>
             <h3>Ethan <br/> développeur</h3>
         </div>
-        <div class="Aya">
+        <div class="Aya"
+        onclick="document.getElementById('Meme').style.display='block';
+        document.getElementById('Meme').play();
+        document.getElementById('fermer').style.display='block'">
             <img class='pdp' src='/assets/Aya.png'; >
             <h3>Aya <br/> développeur</h3>
         </div>
-        <div class="Benjamin">
+        <div class="Benjamin"
+        onclick="document.getElementById('Putin').style.display='block';
+        document.getElementById('Putin').play();
+        document.getElementById('fermer').style.display='block'">
             <img class="pdp" src='/assets/Benjamin.gif'; >
             <h3>Benjamin <br/> scrum master</h3>
         </div>
