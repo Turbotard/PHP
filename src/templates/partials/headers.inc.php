@@ -1,5 +1,5 @@
 <header>
-    <nav>
+   <nav>
     <a href="/index.php" class="connexion">
         <img class="fit-picture" src="/assets/Logo_BNParihaut_texte.png" alt="BNParihaut">
     </a>

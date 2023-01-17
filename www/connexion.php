@@ -37,6 +37,7 @@ if(isset($_POST['submit'])){
     <form class="login-form" method="POST" action="login_exec.php">
       Numéro Client : <input class="input_white" type="text" name="clientNumber"/>
       Mot de passe : <input class="input_white" type="password" name="password"/>
+      <div><input type="checkbox" class="input white">Afficher le mot de passe</div>
       <input class="bouton_envoi" type="submit" value="login" name="submit">
       <p class="redirect">Not registered? <a href="/inscription.php">Create an account</a></p>
     </form>

@@ -1,3 +1,8 @@
+html{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 body{
     background-color: #2C2F33;
     color: rgba(255, 255, 255, 0.8);
@@ -9,6 +14,7 @@ nav{
     justify-content: space-between;
     height: fit-content;
 }
+
 a{
     text-decoration: none;
     color: #9370DB;
@@ -30,6 +36,7 @@ form{
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
 }
 .input_white{
     color: rgba(255, 255, 255, 0.8);
@@ -45,6 +52,8 @@ form{
     width: 10%;
     height: 100%;
 }
+
+
 .bouton_envoi{
     color: rgba(255, 255, 255, 0.8);
     background-color: #9370DB;
@@ -91,6 +100,7 @@ form{
     display: flex;
     flex-direction: column;
     text-align: center;
+    justify-content: center;
 }
 .pp{
     display: flex;
@@ -128,9 +138,11 @@ form{
 }
 video{
     display: none;
-    height: auto;
-    width: auto;
+    height: 60%;
+    width: 60%;
+    margin: auto;
 }
+
 .croix{
     display: none;
     background-color: #9370DB;
@@ -140,7 +152,9 @@ video{
     text-align: center;
     color: white;
     border: none;
-    font-size: large;
+    font-size: larger;
+    font-weight: bolder;
+    margin-left: 25%;
 }
 .user-input{
     padding-bottom: 40px;
@@ -150,13 +164,13 @@ footer{
     display: flex;
     justify-content: space-around;
     background-color: #151515;
-    position: absolute;
-    overflow: auto;
+    position: relative;
     bottom: 0;
     left: 0;
     right: 0;
-    width:100%;
+    width: 100%;
     height: auto;
+    border: none;
     margin-top: 20px;
  }
  ul{

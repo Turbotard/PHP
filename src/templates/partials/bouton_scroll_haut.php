@@ -7,6 +7,7 @@
     justify-content: center;
     align-items: center;
     position: fixed;
+    z-index: 1000;
     right: 20px;
     bottom: 20px;
     cursor: pointer;">

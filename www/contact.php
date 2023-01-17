@@ -12,9 +12,6 @@ require_once __DIR__ . '/../src/config.php';
 </div>
 <div class='team'>
     <h2>L'équipe</h2>
-    <video id="Sonic" class="video" src="/assets/super sonic frontiers status sans fond.mp4" ></video>
-    <video id="Putin" class="video" src="/assets/Wide Putin Walking.mp4" ></video>
-    <video id="Meme" class="video" src="/assets/Women meme template.mp4" ></video>
     <button id="fermer" class="croix"
     onclick="document.getElementById('Sonic').style.display='none';
     document.getElementById('Sonic').pause();
@@ -26,11 +23,15 @@ require_once __DIR__ . '/../src/config.php';
     document.getElementById('Meme').pause();
     document.getElementById('Meme').currentTime=0;
     document.getElementById('fermer').style.display='none'">X</button>
+    <video id="Sonic" class="video" src="/assets/super sonic frontiers status sans fond.mp4" ></video>
+    <video id="Putin" class="video" src="/assets/Wide Putin Walking.mp4" ></video>
+    <video id="Meme" class="video" src="/assets/Women meme template.mp4" ></video>
+    
    <div class="user-inputs">
       <form action="#" method="POST">
         Nom d'utilisateur : <input type="text" class="input_white" name="author" id="author">
         Votre message : <textarea type="message" class="message" id="content" name="content"></textarea>
-        <button type="submit" class="bouton_envoi">🔥 Envoyer !</button>
+        <button type="submit" class="bouton_envoi">📤 Envoyer !</button>
       </form>
     </div>
    <div class='pp'>

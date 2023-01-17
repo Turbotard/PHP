@@ -35,30 +35,15 @@ require_once __DIR__ . '/../src/config.php';
     </label> 
 <div class="centrale">
     <section class="inputBox">
-    Mot de passe :
-    <div class="passwordBox">
-        <input type="password" class="input_white" id="password">
-    </div>
+        Mot de passe :
+        <div class="passwordBox">
+            <input type="password" class="input_white" id="password">
+        </div>
+            <input type="checkbox" class="input white">Afficher le mot de passe
         <div class="buttons">
             <button class="bouton_mdp" onclick="getPassword()">Générer un mot de passe</button>
         </div>
     </section>
-    <script>
-        function getPassword(){
-        var chars="0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-        var passwordLength= 16;
-        var password= "";
-
-        //générer le mot de passe
-        for(let i = 0; i < passwordLength ; i++){
-            let randomNumber = Math.floor(Math.random() * chars.length)
-
-            password += chars.substring(randomNumber , randomNumber + 1)
-        }
-            //afficher le mot de pass
-            document.getElementById('password').value = password;
-        }
-    </script>
 </div>
 
      Confirmer le mot de passe :<label for="password" >
@@ -109,6 +94,23 @@ if(isset($_POST["inscription"])){
 }
 ?>
 </form>
+<script>
+        function getPassword(){
+        var chars="0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        var passwordLength= 16;
+        var password= "";
+
+        //générer le mot de passe
+        for(let i = 0; i < passwordLength ; i++){
+            let randomNumber = Math.floor(Math.random() * chars.length)
+
+            password += chars.substring(randomNumber , randomNumber + 1)
+        }
+            //afficher le mot de pass
+            document.getElementById('password').value = password;
+        }
+    </script>
+
 </div>
 </div>
 </section>
