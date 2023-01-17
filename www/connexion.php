@@ -1,12 +1,12 @@
 <?php
-$page_title = 'Accueil';
+$page_title = 'Connexion';
 require_once __DIR__ . '/../src/templates/partials/html_head.php';
 ?>
 <body>
 <?php require_once __DIR__ . '/../src/templates/partials/headers.inc.php'; ?>
 
 <div>
-    <h1>BIENVENUE SUR LE SITE DE BNPARIHAUT</h1>
+    <h1>CONNEXION</h1>
 </div>
 <?php require_once __DIR__ . '/../src/templates/partials/bouton_scroll_haut.php'; ?>
 
