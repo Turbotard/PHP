@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:8889
--- Généré le : mar. 17 jan. 2023 à 09:39
+-- Généré le : mar. 17 jan. 2023 à 09:40
 -- Version du serveur :  5.7.34
 -- Version de PHP : 8.0.8
 
@@ -86,7 +86,7 @@ CREATE TABLE `users` (
   `prenom` varchar(255) NOT NULL,
   `mdp` varchar(255) NOT NULL,
   `mail` varchar(255) NOT NULL,
-  `tel` int(11) NOT NULL,
+  `tel` varchar(255) NOT NULL,
   `naissance` date NOT NULL,
   `grade` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
