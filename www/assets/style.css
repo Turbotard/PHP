@@ -1,4 +1,4 @@
-html{
+body{
     background-color: #2C2F33;
     color: rgba(255, 255, 255, 0.8);
     font-family: 'Banque',Regular;
@@ -7,20 +7,24 @@ nav{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    height: 100%;
+    height: fit-content;
 }
 a{
     text-decoration: none;
-    color: rgba(255, 255, 255, 0.8);
-    font-size: auto;
-}
-a:hover{
     color: #9370DB;
-    background-color: #4d4d4d;
+    font-size: auto;
+    transition: all 1s ease-out;
+
+}
+a:hover,
+a:focus {
+  color: #2C2F33;
+  background-color: #9370DB;
 }
 h1{
     font-size: 300%;
     text-align: center;
+    font-weight: bolder;
 }
 form{
     display: flex;

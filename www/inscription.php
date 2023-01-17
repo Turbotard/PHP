@@ -30,7 +30,7 @@ require_once __DIR__ . '/../src/templates/partials/html_head.php';
     <section class="inputBox">
     Mot de passe :
     <div class="passwordBox">
-        <input type="text" class="input_white" id="password" readonly>
+        <input type="text" class="input_white" id="password">
     </div>
         <div class="buttons">
             <button class="bouton_mdp" onclick="getPassword()">Générer</button>
