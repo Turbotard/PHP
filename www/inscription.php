@@ -17,17 +17,19 @@ require_once __DIR__ . '/../src/config.php';
 <form method="POST" action="">
 
 
+    Nom :<label for="nom">
+        <input type="text" class="input_white" id="name" name="name" autocomplete="off">
+    </label>
+
+    Prénom : <label for="first_name"> 
+        <input type="text" class="input_white" id="first_name" name="first_name" autocomplete="off">
+    </label>
     Adresse mail :<label for="email">
-        <input type="email" class="input_white" id="email" name="email" autocomplete="off" class="formInscription1">
-    </label>
-
-   Nom d'utilisateur : <label for="pseudo"> 
-        <input type="text" class="input_white" id="pseudo" name="pseudo" autocomplete="off" class="formInscription2">
-    </label>
-
-
-               
-               
+        <input type="email" class="input_white" id="email" name="email" autocomplete="off">
+    </label>   
+    Date de naissance  :<label for="dateNaiss">
+        <input type="date" class="input_white" id="dateNaiss" name="dateNaiss" autocomplete="off"ù>
+    </label> 
 <div class="centrale">
     <section class="inputBox">
     Mot de passe :
