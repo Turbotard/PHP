@@ -150,9 +150,16 @@ footer{
     display: flex;
     justify-content: space-around;
     background-color: #151515;
-    position:fixed;
-    bottom:0px;
-    right: 0px;
+    position: absolute;
+    overflow: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
     width:100%;
-    height:auto;
+    height: auto;
  }
+ ul{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    list-style-type: square;
+}
