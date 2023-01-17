@@ -10,11 +10,16 @@ require_once __DIR__ . '/../src/templates/partials/html_head.php';
 </div>
 <div class='team'>
     <h2>L'équipe</h2>
-    <video id="video_ID" class="video" src="/assets/super sonic frontiers status sans fond.mp4" ></video>
+    <video id="Sonic" class="video" src="/assets/super sonic frontiers status sans fond.mp4" ></video>
+    <button id="fermer" class="croix"
+    onclick="document.getElementById('Sonic').style.display='none';
+    document.getElementById('Sonic').pause();
+    document.getElementById('fermer').style.display='none'">X</button>
     <div class='pp'>
         <div class="Ethan"
-        onclick="document.getElementById('video_ID').style.display='block';
-        document.getElementById('video_ID').play();">
+        onclick="document.getElementById('Sonic').style.display='block';
+        document.getElementById('Sonic').play();
+        document.getElementById('fermer').style.display='block'">
             <img class='pdp' src='/assets/Stanewolfer.png'>
             <h3>Ethan <br/> développeur</h3>
         </div>
