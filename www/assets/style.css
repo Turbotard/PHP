@@ -71,8 +71,8 @@ form{
     flex-direction: column;
     align-items: center;
     border-radius: 25px;
-    color: rgba(0, 0, 0, 0.8);
-    background-color: #DEB887 ;
+    color: rgba(255,255,255, 0.8);
+    background-color: #000000 ;
     width: 20%;
 }
 .pdp{

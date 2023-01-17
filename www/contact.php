@@ -15,7 +15,14 @@ require_once __DIR__ . '/../src/templates/partials/html_head.php';
     onclick="document.getElementById('Sonic').style.display='none';
     document.getElementById('Sonic').pause();
     document.getElementById('fermer').style.display='none'">X</button>
-    <div class='pp'>
+   <div class="user-inputs">
+      <form action="#" method="POST">
+        Nom d'utilisateur : <input type="text" class="input_white" name="author" id="author">
+        Votre message : <input type="message" class="input_white" id="content" name="content">
+        <button type="submit" class="bouton_envoi">🔥 Envoyer !</button>
+      </form>
+    </div>
+   <div class='pp'>
         <div class="Ethan"
         onclick="document.getElementById('Sonic').style.display='block';
         document.getElementById('Sonic').play();
@@ -25,10 +32,10 @@ require_once __DIR__ . '/../src/templates/partials/html_head.php';
         </div>
         <div class="Aya">
             <img class='pdp' src='/assets/Aya.png'; >
-            <h3>Aya <br/> développeuse</h3>
+            <h3>Aya <br/> développeur</h3>
         </div>
         <div class="Benjamin">
-            <img class="pdp" src='/assets/Benjamin.png'; >
+            <img class="pdp" src='/assets/Benjamin.gif'; >
             <h3>Benjamin <br/> scrum master</h3>
         </div>
 </div>
