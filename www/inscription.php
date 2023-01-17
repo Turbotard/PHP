@@ -26,11 +26,12 @@ require_once __DIR__ . '/../src/templates/partials/html_head.php';
 
                
                
-    <div class="centrale">
+<div class="centrale">
     <section class="inputBox">
-    Mot de passe :<div class="passwordBox">
-            <input type="text" class="input_white" id="password" readonly>
-        </div>
+    Mot de passe :
+    <div class="passwordBox">
+        <input type="text" class="input_white" id="password" readonly>
+    </div>
         <div class="buttons">
             <button class="bouton_envoi" onclick="getPassword()">Générer</button>
         </div>
@@ -80,7 +81,7 @@ require_once __DIR__ . '/../src/templates/partials/html_head.php';
 
 //session_start();
 
-$bdd=new PDO('mysql:host=localhost;dbname=MySQL1;charset=utf8;','root','root');
+$bdd=new PDO('mysql:host=localhost;dbname=BNParihaut;charset=utf8;','root','root');
 if(isset($_POST["inscription"])){
     if(!empty($_POST["email"])AND !empty($_POST["pseudo"])AND !empty($_POST["mdp"])AND !empty($_POST["confirm_mdp"])AND $_POST['mdp']==
     $_POST['confirm_mdp']AND strlen($_POST['pseudo']>4) AND strlen($_POST['mdp']>8)AND
