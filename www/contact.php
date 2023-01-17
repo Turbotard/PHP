@@ -75,7 +75,7 @@ require_once __DIR__ . '/../src/templates/partials/html_head.php';
 <?php require_once __DIR__ . '/../src/templates/partials/bouton_scroll_haut.php'; ?>
 
 <?php
-require_once __DIR__. "/assets/footer.inc.php";?>
+require_once __DIR__. "/../src/templates/partials/footer.inc.php";?>
 </body>
 
 </html>
