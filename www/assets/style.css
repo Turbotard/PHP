@@ -13,7 +13,7 @@ a{
     text-decoration: none;
     color: #9370DB;
     font-size: auto;
-    transition: all 1s ease-out;
+    transition: all 0.5s ease-out;
 
 }
 a:hover,
@@ -157,6 +157,7 @@ footer{
     right: 0;
     width:100%;
     height: auto;
+    margin-top: 20px;
  }
  ul{
     margin-top: 20px;

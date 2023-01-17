@@ -17,25 +17,30 @@ require_once __DIR__ . '/../src/config.php';
 <form method="POST" action="">
 
 
+    Nom :<label for="nom">
+        <input type="text" class="input_white" id="name" name="name" autocomplete="off">
+    </label>
+
+    Prénom : <label for="first_name"> 
+        <input type="text" class="input_white" id="first_name" name="first_name" autocomplete="off">
+    </label>
     Adresse mail :<label for="email">
-        <input type="email" class="input_white" id="email" name="email" autocomplete="off" class="formInscription1">
-    </label>
-
-   Nom d'utilisateur : <label for="pseudo"> 
-        <input type="text" class="input_white" id="pseudo" name="pseudo" autocomplete="off" class="formInscription2">
-    </label>
-
-
-               
-               
+        <input type="email" class="input_white" id="email" name="email" autocomplete="off">
+    </label>   
+    Date de naissance  :<label for="dateNaiss">
+        <input type="date" class="input_white" id="dateNaiss" name="dateNaiss" autocomplete="off">
+    </label> 
+    Numéro de téléphone : <label for="numTel">
+        <input type="text" class="input_white" id="numTel" name="numTel" autocomplete="off">
+    </label> 
 <div class="centrale">
     <section class="inputBox">
     Mot de passe :
     <div class="passwordBox">
-        <input type="text" class="input_white" id="password">
+        <input type="password" class="input_white" id="password">
     </div>
         <div class="buttons">
-            <button class="bouton_mdp" onclick="getPassword()">Générer</button>
+            <button class="bouton_mdp" onclick="getPassword()">Générer un mot de passe</button>
         </div>
     </section>
     <script>
@@ -64,12 +69,7 @@ require_once __DIR__ . '/../src/config.php';
     <input type="submit" class="bouton_envoi" class="buttonInscription" name="inscription">
     <p class="redirect">Registered ? <a href="/connexion.php">Connect to your account</a></p>
 
-
-</form>
-
-</div>
-
-<?php
+    <?php
 
 //session_start();
 
@@ -79,20 +79,22 @@ if(isset($_POST["inscription"])){
     $_POST['confirm_mdp']AND strlen($_POST['pseudo']>4) AND strlen($_POST['mdp']>8)AND
     preg_match('#^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).{10,}$#',$_POST['mdp'])AND filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
         $email=htmlspecialchars($_POST["email"]);
-        $pseudo=htmlspecialchars($_POST["pseudo"]);
+        $nom=htmlspecialchars($_POST["name"]);
+        $prenom=htmlspecialchars($_POST["first_name"]);
+        $dateNaiss=date("d-m-Y", strtotime($_POST["dateNaiss"]));
+        $numTel=htmlspecialchars($_POST["numTel"]);
         $mdp=sha1($_POST["mdp"]);
         $insertUser = $bdd->prepare('INSERT INTO utilisateur(email,mot_de_passe,pseudo) VALUES(?, ?, ?)');
         $insertUser->execute(array($email,$mdp,$pseudo));
     }   
     else{
-        if(empty($_POST["email"])AND empty($_POST["pseudo"])AND empty($_POST["mdp"])AND empty($_POST["confirm_mdp"])){
+        if(empty($_POST["email"])AND empty($_POST["name"])AND empty($_POST["first_name"])
+        AND empty($_POST["dateNaiss"])AND empty($_POST["numTel"]AND empty($_POST["mdp"])
+        AND empty($_POST["confirm_mdp"]))){
             echo "Veuillez remplir tous les champs";
         }
         elseif(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
             echo "L'adresse email doit être valide";
-        }
-        elseif(strlen($_POST['pseudo']<=4)){
-            echo "Le nom d'utilisateur doit contenir au moins 4 caractères";
         }
         elseif($_POST['mdp']!=$_POST['confirm_mdp']){
             echo "Veuillez répéter le mot de passe à confirmer";
@@ -106,6 +108,8 @@ if(isset($_POST["inscription"])){
     }
 }
 ?>
+</form>
+</div>
 </div>
 </section>
 <?php require_once __DIR__ . '/../src/templates/partials/bouton_scroll_haut.php'; ?>

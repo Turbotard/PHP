@@ -14,7 +14,7 @@ require_once __DIR__ . '/../src/config.php';
 <div class="login-page">
   <div class="form">
     
-    <form class="login-form" method="POST" action="login_exec.php">
+    <form class="login-form" method="POST">
       Numéro Client : <input class="input_white" type="text" name="clientNumber"/>
       Mot de passe : <input class="input_white" type="password" name="password"/>
       <input class="bouton_envoi" type="submit" value="login" name="submit">
