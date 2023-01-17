@@ -7,6 +7,7 @@ nav{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    height: 100%;
 }
 a{
     text-decoration: none;
@@ -15,6 +16,7 @@ a{
 }
 a:hover{
     color: #9370DB;
+    background-color: #4d4d4d;
 }
 h1{
     font-size: 300%;
