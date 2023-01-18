@@ -3,6 +3,8 @@ require_once __DIR__ . '/../src/init.php';
 require_once __DIR__ . '/../src/config.php';
 $page_title = 'Mon espace';
 require_once __DIR__ . '/../src/templates/partials/html_head.php';
+
+
 ?>
 <body>
 <?php require_once __DIR__ . '/../src/templates/partials/headers.inc.php'; ?>
@@ -12,11 +14,15 @@ require_once __DIR__ . '/../src/templates/partials/html_head.php';
 </div class="table">
     <div>
     <div class="ligne 1">
-        <h2>NOM :</h2> 
-        <h2>PRENOM :</h2>
-        <h2>NUMERO DE COMPTE :</h2>
-        <h2>SOLDE :</h2>
-        <h2>GRADE :</h2>
+        <h2>NOM : <?php echo ($_SESSION['nom']);?></h2> 
+        <h2>PRENOM : <?php echo ($_SESSION['prenom']);?></h2>
+        <h2>NUMERO DE COMPTE : <?php echo ($_SESSION['client_number']);?></h2>
+        <h2>SOLDE : <?php echo ($_SESSION['solde']);?></h2>
+        <h2>GRADE : <?php if($_SESSION['grade'] == 1){
+            echo "Client";
+        }else{
+            echo "Admin";
+        };?></h2>
     </div>
     <div class="ligne2">
         <h2>MES TRANSACTION</h2>
