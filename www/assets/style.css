@@ -238,6 +238,12 @@ form{
     text-align: center;
     vertical-align: middle;
 }
+.solde{
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+}
 .inscription{
     background-image: url(/assets/fond_inscription.png);
     background-repeat: no-repeat;
