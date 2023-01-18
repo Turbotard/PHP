@@ -28,4 +28,12 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
         <p>NOUS CONTACTER</p>
     </a>
     </nav>
+    <?php
+    if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+    echo ("connecté 🟩");
+    }
+    else {
+        echo ("non connecté 🟥");
+    }
+    ?>
 </header>
