@@ -10,6 +10,13 @@ require_once __DIR__ . '/../src/config.php';
 <div>
     <h1>NOUS CONTACTER</h1>
 </div>
+<div class="user-inputs">
+      <form action="#" method="POST">
+        Adresse email : <input type="text" class="input_white" name="author" id="author">
+        Votre message : <textarea type="message" class="message" id="content" name="content"></textarea>
+        <button type="submit" class="bouton_envoi">📤 Envoyer !</button>
+      </form>
+    </div>
 <div class='team'>
     <h2>L'équipe</h2>
     <button id="fermer" class="croix"
@@ -27,14 +34,7 @@ require_once __DIR__ . '/../src/config.php';
     <video id="Putin" class="video" src="/assets/Wide Putin Walking.mp4" ></video>
     <video id="Meme" class="video" src="/assets/meme chat.mp4" ></video>
     
-   <div class="user-inputs">
-      <form action="#" method="POST">
-        Nom : <input type="text" class="input_white" name="name" id="name">
-        Prénom : <input type="text" class="input_white" name="firstName" id="firstName">
-        Votre message : <textarea type="message" class="message" id="content" name="content"></textarea>
-        <button type="submit" class="bouton_envoi">📤 Envoyer !</button>
-      </form>
-    </div>
+   
    <div class='pp'>
         <div class="Ethan"
         onclick="document.getElementById('Sonic').style.display='block';
