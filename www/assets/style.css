@@ -80,6 +80,7 @@ h5{
     align-items: center;
     text-align: center;
     width: 100%;
+    background-color: rgba(0, 0, 0,0.3);
 }
 .euro{
     display: flex;
@@ -107,6 +108,42 @@ h5{
     text-align: center;
     width: 100%;
     border: 7.5px solid #9370DB;
+}
+.dollar{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    border: 5px solid #9370DB;
+}
+.euro_belge{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    border: 5px solid #9370DB;
+}
+.coding{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    border: 5px solid #9370DB;
+}
+.dong{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    border: 5px solid #9370DB;
 }
 .slogan{
     display: flex;
