@@ -41,7 +41,7 @@ require_once __DIR__ . '/../src/templates/partials/headers.inc.php';
 ?>
 
 <div>
-    <h1>CONNEXION</h1>
+    <h1 class="Connexion">CONNEXION</h1>
 </div>
 <div class="ens">
 <div class="login-page">

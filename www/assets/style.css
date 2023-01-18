@@ -25,7 +25,14 @@ nav{
     height: fit-content;
     margin-right: 10%;
 }
-
+.fit-picture{
+    width:100%;
+    max-width: 198px;
+    min-width: 10px;
+    max-height: 49px;
+    min-height: 10px;
+    height:100%;
+}
 a{
     text-decoration: none;
     color: #9370DB;
@@ -35,7 +42,7 @@ a{
 }
 .connexion:hover,
 .connexion:focus {
-  color: #2C2F33;
+  color: rgb(0, 0, 61);
   background-color: #9370DB;
   border-radius: 10px;
 }
@@ -44,6 +51,7 @@ h1{
     text-align: center;
     font-weight: bolder;
     height: 150px;
+    background-color: rgba(147, 112, 219,0.5);
 }
 h2{
     font-size: 200%;
@@ -54,6 +62,51 @@ h3{
     font-size: 150%;
     text-align: center;
     font-weight: bolder;
+}
+h4{
+    font-size: 150%;
+    text-align: center;
+    font-weight: bolder;
+}
+h5{
+    font-size: 150%;
+    text-align: center;
+    font-weight: bolder;
+}
+.monnaies{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
+.euro{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    border: 5px solid #9370DB;
+}
+.bitcoin{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    border: 5px solid #9370DB;
+}
+.chamo{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    border: 7.5px solid #9370DB;
 }
 .slogan{
     display: flex;
@@ -67,6 +120,13 @@ form{
     align-items: center;
     text-align: center;
 }
+.i{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
 .form{
     border-radius: 10%;
     border: 10px solid #9370DB;
@@ -133,6 +193,14 @@ form{
 }
 .inscription{
     background-image: url(/assets/fond_inscription.png);
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: auto;
+    text-align: center;
+    vertical-align: middle;
+}
+.onnexion{
+    background-image: url(/assets/fond_connexion.png);
     background-repeat: no-repeat;
     background-position: bottom;
     background-size: auto;

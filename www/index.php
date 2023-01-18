@@ -25,6 +25,23 @@ else {
     <h3>Vous pouvez vous connecter à votre espace personnel en cliquant sur le bouton ci-dessous</h3>
     <a href="<?php echo $isconnect?>"><button class="bouton">MON ESPACE</button></a>
     </div>
+    <div class="i">
+        <h4>Créez votre compte</h4>
+    <a href="/inscription.php"><button class="bouton">INSCRIPTION</button></a>
+    </div>
+    <div class="monnaies">
+        <div class="euro">
+            <img src="/assets/euro.png" alt="€"><br>
+            <h5>1 €</h5>
+        </div>
+        <div class="bitcoin">
+            <img src="/assets/Bitcoin-Logo.png" alt="Bitcoin"><br>
+            <h5>19 538,05 €</h5>
+        </div>
+        <div class="chamo">
+            <img src="/assets/chameau.png" alt="Chamo"><br>
+            <h5>10 000 €</h5>
+        </div>
 <?php require_once __DIR__ . '/../src/templates/partials/bouton_scroll_haut.php'; ?>
 
 <?php require_once __DIR__ . '/../src/templates/partials/footer.inc.php'; ?>
