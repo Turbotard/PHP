@@ -25,11 +25,12 @@ require_once __DIR__ . '/../src/config.php';
     document.getElementById('fermer').style.display='none'">X</button>
     <video id="Sonic" class="video" src="/assets/super sonic frontiers status sans fond.mp4" ></video>
     <video id="Putin" class="video" src="/assets/Wide Putin Walking.mp4" ></video>
-    <video id="Meme" class="video" src="/assets/Women meme template.mp4" ></video>
+    <video id="Meme" class="video" src="/assets/meme chat.mp4" ></video>
     
    <div class="user-inputs">
       <form action="#" method="POST">
-        Nom d'utilisateur : <input type="text" class="input_white" name="author" id="author">
+        Nom : <input type="text" class="input_white" name="name" id="name">
+        Prénom : <input type="text" class="input_white" name="firstName" id="firstName">
         Votre message : <textarea type="message" class="message" id="content" name="content"></textarea>
         <button type="submit" class="bouton_envoi">📤 Envoyer !</button>
       </form>
