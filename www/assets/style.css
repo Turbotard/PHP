@@ -112,6 +112,15 @@ form{
     text-align: center;
     vertical-align: middle;
 }
+.inscription{
+    background-image: url(/assets/fond_insciption.png);
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: auto;
+    height: 150px;
+    text-align: center;
+    vertical-align: middle;
+}
 .message{
     color: rgba(255, 255, 255, 0.8);
     background-color: #9370DB;
