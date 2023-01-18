@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:8889
--- Généré le : mar. 17 jan. 2023 à 15:03
+-- Généré le : mer. 18 jan. 2023 à 13:23
 -- Version du serveur :  5.7.34
 -- Version de PHP : 8.0.8
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `BNParihaut`
+-- Base de données : `bnparihaut`
 --
 
 -- --------------------------------------------------------
@@ -46,6 +46,19 @@ CREATE TABLE `currencies` (
   `nomoney` varchar(255) NOT NULL,
   `valeure` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `currencies`
+--
+
+INSERT INTO `currencies` (`id`, `nomoney`, `valeure`) VALUES
+(1, 'euro', 1),
+(2, 'bitcoin', 19538.1),
+(3, 'chamo', 10000),
+(4, 'dollar', 0.92),
+(5, 'eurobelge', 0.5),
+(6, 'coding', 5800),
+(7, 'dong', 0.000039);
 
 -- --------------------------------------------------------
 
@@ -92,6 +105,16 @@ CREATE TABLE `users` (
   `grade` int(11) NOT NULL DEFAULT '1',
   `client_number` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `users`
+--
+
+INSERT INTO `users` (`id`, `nom`, `prenom`, `mdp`, `mail`, `tel`, `naissance`, `grade`, `client_number`) VALUES
+(3, 'test', 'test', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'test@test.tes', '0987654322', '2000-10-10', 1, '1644261803'),
+(4, 'test2', 'test2', '109f4b3c50d7b0df729d299bc6f8e9ef9066971f', 'test2@gmail.com', '0123456789', '1999-11-11', 1, '2039502072'),
+(5, 'admin', 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'admin@gmail.com', '0987654321', '2004-12-12', 1000, '1093792769'),
+(6, 'dardillac', 'esteban', 'df9a9e31aa162e462aafd4811053d1d072940ca7', 'est@gmail.com', '0987654321', '2004-09-04', 1, '1285224364');
 
 -- --------------------------------------------------------
 
@@ -169,7 +192,7 @@ ALTER TABLE `bankaccounts`
 -- AUTO_INCREMENT pour la table `currencies`
 --
 ALTER TABLE `currencies`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT pour la table `deposits`
@@ -187,7 +210,7 @@ ALTER TABLE `transactions`
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT pour la table `withdrawals`
