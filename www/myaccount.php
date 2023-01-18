@@ -33,7 +33,7 @@ require_once __DIR__ . '/../src/templates/partials/html_head.php';
         <div class="retrait">
         <label for="retrait">
             <h2>Faire un retrait : </h2>
-            Montant : <input type="text" class="input_white" id="retrait" name="depot" autocomplete="off"><br>
+            Montant : <input type="text" class="input_white" id="retrait" name="retrait" autocomplete="off"><br>
         </label>
         <button class="bouton_envoi">RETIRER</button>
         </div>
@@ -47,8 +47,8 @@ require_once __DIR__ . '/../src/templates/partials/html_head.php';
         <div class="virement">
         <label for="virement">
             <h2>Faire un virement : </h2>
-            Numéro de compte : <input type="text" class="input_white" id="depot" name="depot" autocomplete="off"><br>
-            Montant : <input type="text" class="input_white" id="depot" name="depot" autocomplete="off"><br>
+            Numéro de compte : <input type="text" class="input_white" id="depot" name="compte_virement" autocomplete="off"><br>
+            Montant : <input type="text" class="input_white" id="depot" name="montant_virement" autocomplete="off"><br>
         </label>
         <button class="bouton_envoi">FAIRE UN VIREMENT</button>
         </div>

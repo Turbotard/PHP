@@ -19,15 +19,25 @@ if(isset($_POST['inscription'])){
             $var = $db->prepare('INSERT INTO users (nom, prenom, mdp, mail, tel, naissance, grade, client_number) VALUES (?, ?, ?, ?, ?, ?, 1, ?)');
             $var->execute([$name, $first_name, $mdp, $email, $numTel, $dateNaiss, $client_number]);
             $donnees = $var->fetch();
-            $_SESSION['user'] = $donnees;
+
+            
+
+            $sql = $db->prepare('INSERT INTO bankaccounts (numerocompte, id_user, solde, id_currencies) VALUES (?, 0)');
+
+
+
+            $variable = $db->prepare('SELECT * FROM users WHERE client_number = ? AND mdp = ?');
+            $variable->execute([$client_number, $mdp]);
+            $data = $var->fetch();
+            $_SESSION['user'] = $data;
             $_SESSION['loggedin'] = true;
-            $_SESSION['client_number'] = $donnees['client_number'];
-            $_SESSION['nom'] = $donnees['nom'];
-            $_SESSION['prenom'] = $donnees['prenom'];
-            $_SESSION['grade'] = $donnees['grade'];
+            $_SESSION['client_number'] = $data['client_number'];
+            $_SESSION['nom'] = $data['nom'];
+            $_SESSION['prenom'] = $data['prenom'];
+            $_SESSION['grade'] = $data['grade'];
 
             $sql = $db->prepare('SELECT solde FROM bankaccounts WHERE id_user = ?');
-            $sql->execute([$donnees['id']]);
+            $sql->execute([$data['id']]);
             $solde = $sql->fetch();
             $_SESSION['solde'] = $solde['solde'];
             header('Location:/myaccount.php');

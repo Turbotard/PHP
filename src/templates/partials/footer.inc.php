@@ -1,4 +1,15 @@
+<?php
+require_once __DIR__ . '/../../init.php';
+require_once __DIR__ . './../../config.php';
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 
+        $isconnect = '../../../myaccount.php';
+    }
+    else {
+
+        $isconnect = '../../../connexion.php';
+    }
+?>
 <body class="body">
 <footer class="footer">
 
@@ -26,7 +37,7 @@
         <li><a href="/index.php">Accueil</a></li><br>
         <li><a href="/connexion.php">Se connecter</a></li><br>
         <li><a href="/inscription.php">S'inscrire</a></li><br>
-        <li><a href="/myaccount.php">Mon escpace client</a></li><br>
+        <li><a href="<?php echo $isconnect?>p">Mon escpace client</a></li><br>
         <li><a href="/contact.php">Nous contacter</a></li><br>
     </ul>
 </div>
