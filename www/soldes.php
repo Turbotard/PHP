@@ -41,6 +41,7 @@ $solde7 = $sql7->fetch();
 <div>
     <h1 class="soldes">MES SOLDES</h1>
 </div>
+<h4>Numéro de compte: <?php echo ($_SESSION['number_account']);?></h4>
 <div class="monnaies">
         <div class="euro">
             <img src="/assets/euro.png" alt="€"><br>

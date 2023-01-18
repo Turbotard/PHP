@@ -31,11 +31,13 @@ if(isset($_POST['inscription'])){
             $solde = $sql->fetch();
             $_SESSION['solde'] = $solde;
 
+            $number_count = rand();
+            $_SESSION['number_account'] = $number_count;
             $currencies = array(1, 2, 3, 4, 5, 6, 7);
             foreach ($currencies as $currencie) {
                 $val_cur = $currencie;
                 $sql = $db->prepare('INSERT INTO bankaccounts (numerocompte, id_user, solde, id_currencies) VALUES (?, ?, 0, ?)');
-                $sql->execute([$_SESSION['user']['client_number'], $_SESSION['user']['id'], $currencie]);
+                $sql->execute([$number_count, $_SESSION['user']['id'], $currencie]);
             }
 
 

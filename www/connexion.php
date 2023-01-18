@@ -22,6 +22,11 @@ if(isset($_POST['submit'])){
       $_SESSION['prenom'] = $donnees['prenom'];
       $_SESSION['grade'] = $donnees['grade'];
 
+      $count = $db->prepare('SELECT numerocompte FROM bankaccounts WHERE id_user = ?');
+      $count->execute([$donnees['id']]);
+      $number = $count->fetch();
+      $_SESSION['number_account'] = $number['numerocompte'];
+
       $sql = $db->prepare('SELECT solde FROM bankaccounts WHERE id_user = ?');
       $sql->execute([$donnees['id']]);
       $solde = $sql->fetch();
