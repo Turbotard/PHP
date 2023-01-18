@@ -10,6 +10,7 @@ require_once __DIR__ . '/../src/config.php';
 <div>
     <h1>MON ESPACE</h1>
 </div>
+<a class="menu" href="./deconnexion.php">Déconnexion</a></li>
 <?php require_once __DIR__ . '/../src/templates/partials/bouton_scroll_haut.php'; ?>
 
 <?php require_once __DIR__ . '/../src/templates/partials/footer.inc.php'; ?>
