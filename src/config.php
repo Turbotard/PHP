@@ -3,7 +3,7 @@
 $config = [
     'db' => [
         'host' => 'localhost',
-        'name' => 'BNParihaut',
+        'name' => 'bnparihaut',
         'port' => 8887,
         'user' => 'root',
         'pass' => 'root'
