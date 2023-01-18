@@ -22,6 +22,14 @@ if(isset($_POST['inscription'])){
             $_SESSION['user'] = $donnees;
             $_SESSION['loggedin'] = true;
             $_SESSION['client_number'] = $donnees['client_number'];
+            $_SESSION['nom'] = $donnees['nom'];
+            $_SESSION['prenom'] = $donnees['prenom'];
+            $_SESSION['grade'] = $donnees['grade'];
+
+            $sql = $db->prepare('SELECT solde FROM bankaccounts WHERE id_user = ?');
+            $sql->execute([$donnees['id']]);
+            $solde = $sql->fetch();
+            $_SESSION['solde'] = $solde['solde'];
             header('Location:/myaccount.php');
         }
     }
