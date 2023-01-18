@@ -19,7 +19,10 @@ if(isset($_POST['inscription'])){
             $var = $db->prepare('INSERT INTO users (nom, prenom, mdp, mail, tel, naissance, grade, client_number) VALUES (?, ?, ?, ?, ?, ?, 1, ?)');
             $var->execute([$name, $first_name, $mdp, $email, $numTel, $dateNaiss, $client_number]);
             $donnees = $var->fetch();
-            header('Location:/connexion.php');
+            $_SESSION['user'] = $donnees;
+            $_SESSION['loggedin'] = true;
+            $_SESSION['client_number'] = $donnees['client_number'];
+            header('Location:/myaccount.php');
         }
     }
     
