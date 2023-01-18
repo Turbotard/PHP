@@ -229,6 +229,15 @@ form{
     text-align: center;
     vertical-align: middle;
 }
+.soldes{
+    background-image: url(/assets/fond_soldes.png);
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: auto;
+    height: 150px;
+    text-align: center;
+    vertical-align: middle;
+}
 .inscription{
     background-image: url(/assets/fond_inscription.png);
     background-repeat: no-repeat;
