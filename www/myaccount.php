@@ -14,11 +14,11 @@ require_once __DIR__ . '/../src/templates/partials/html_head.php';
 </div class="table">
     <div>
     <div class="ligne 1">
-        <h2>NOM :<?php echo ($_SESSION['nom']);?></h2> 
-        <h2>PRENOM :<?php echo ($_SESSION['prenom']);?></h2>
-        <h2>NUMERO DE COMPTE :<?php echo ($_SESSION['client_number']);?></h2>
-        <h2>SOLDE :<?php echo ($_SESSION['solde']);?></h2>
-        <h2>GRADE :<?php if($_SESSION['grade'] == 1){
+        <h2>NOM : <?php echo ($_SESSION['nom']);?></h2> 
+        <h2>PRENOM : <?php echo ($_SESSION['prenom']);?></h2>
+        <h2>NUMERO DE COMPTE : <?php echo ($_SESSION['client_number']);?></h2>
+        <h2>SOLDE : <?php echo ($_SESSION['solde']);?></h2>
+        <h2>GRADE : <?php if($_SESSION['grade'] == 1){
             echo "Client";
         }else{
             echo "Admin";
