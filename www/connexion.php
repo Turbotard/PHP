@@ -18,6 +18,9 @@ if(isset($_POST['submit'])){
       $_SESSION['user'] = $donnees;
       $_SESSION['loggedin'] = true;
       $_SESSION['client_number'] = $donnees['client_number'];
+      $_SESSION['nom'] = $donnees['nom'];
+      $_SESSION['prenom'] = $donnees['prenom'];
+      $_SESSION['grade'] = $donnees['grade'];
       header('Location:/myaccount.php');
     } else {
       echo "Your Login Name or Password is invalid";
