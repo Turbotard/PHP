@@ -4,10 +4,39 @@ require_once __DIR__ . '/../src/config.php';
 $page_title = 'Mes soldes';
 require_once __DIR__ . '/../src/templates/partials/html_head.php';
 
+$sql = $db->prepare('SELECT solde FROM bankaccounts WHERE id_currencies = 1 AND numerocompte = ?');
+$sql->execute([$_SESSION['user']['client_number']]);
+$solde = $sql->fetch();
+
+$sql2 = $db->prepare('SELECT solde FROM bankaccounts WHERE id_currencies = 2 AND numerocompte = ?');
+$sql2->execute([$_SESSION['user']['client_number']]);
+$solde2 = $sql2->fetch();
+
+$sql3 = $db->prepare('SELECT solde FROM bankaccounts WHERE id_currencies = 3 AND numerocompte = ?');
+$sql3->execute([$_SESSION['user']['client_number']]);
+$solde3 = $sql3->fetch();
+
+$sql4 = $db->prepare('SELECT solde FROM bankaccounts WHERE id_currencies = 4 AND numerocompte = ?');
+$sql4->execute([$_SESSION['user']['client_number']]);
+$solde4 = $sql4->fetch();
+
+$sql5 = $db->prepare('SELECT solde FROM bankaccounts WHERE id_currencies = 5 AND numerocompte = ?');
+$sql5->execute([$_SESSION['user']['client_number']]);
+$solde5 = $sql5->fetch();
+
+$sql6 = $db->prepare('SELECT solde FROM bankaccounts WHERE id_currencies = 6 AND numerocompte = ?');
+$sql6->execute([$_SESSION['user']['client_number']]);
+$solde6 = $sql6->fetch();
+
+$sql7 = $db->prepare('SELECT solde FROM bankaccounts WHERE id_currencies = 7 AND numerocompte = ?');
+$sql7->execute([$_SESSION['user']['client_number']]);
+$solde7 = $sql7->fetch();
+
 
 ?>
 <body>
 <?php require_once __DIR__ . '/../src/templates/partials/headers.inc.php';
+
 ?>
 <div>
     <h1 class="soldes">MES SOLDES</h1>
@@ -15,34 +44,34 @@ require_once __DIR__ . '/../src/templates/partials/html_head.php';
 <div class="monnaies">
         <div class="euro">
             <img src="/assets/euro.png" alt="€"><br>
-            <h4>Euro</h4><br>
+            <h4><?php echo number_format($solde['solde'], 2);?></h4><br>
         </div>
         <div class="bitcoin">
             <img src="/assets/Bitcoin-Logo.png" alt="Bitcoin"><br>
-            <h4>Bitcoin</h4><br>
+            <h4><?php echo number_format($solde2['solde'], 2);?></h4><br>
         </div>
         <div class="chamo">
             <img src="/assets/chameau.png" alt="Chamo"><br>
-            <h4>Chamo</h4><br>
+            <h4><?php echo number_format($solde3['solde'], 2);?></h4><br>
         </div>
         <div class="dollar">
             <img src="/assets/dollar.png" alt="$"><br>
-            <h4>USD</h4><br>
+            <h4><?php echo number_format($solde4['solde'], 2);?></h4><br>
         </div>
         </div>
     <br>
         <div class="monnaies">
         <div class="euro_belge">
             <img src="/assets/euro_belge.png" alt="€ Belge"><br>
-            <h4>Euro Belge</h4><br>
+            <h4><?php echo number_format($solde5['solde'], 2);?></h4><br>
         </div>
         <div class="coding">
             <img src="/assets/coding.jpg" alt="Coding"><br>
-            <h4>Coding</h4><br>
+            <h4><?php echo number_format($solde6['solde'], 2);?></h4><br>
         </div>
         <div class="dong">
             <img src="/assets/dong.png" alt="Dong"><br>
-            <h4>Dong</h4><br>
+            <h4><?php echo number_format($solde7['solde'], 2);?></h4><br>
         </div>
     </div>
 <?php require_once __DIR__ . '/../src/templates/partials/bouton_scroll_haut.php'; ?>
