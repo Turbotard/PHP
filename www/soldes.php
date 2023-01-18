@@ -14,34 +14,34 @@ require_once __DIR__ . '/../src/templates/partials/html_head.php';
 </div>
 <div class="monnaies">
         <div class="euro">
-            <img src="/assets/euro.png" alt="€"><br>
+        <br><img src="/assets/euro.png" alt="€"><br>
             <h4>Euro</h4><br>
         </div>
         <div class="bitcoin">
-            <img src="/assets/Bitcoin-Logo.png" alt="Bitcoin"><br>
+        <br> <img src="/assets/Bitcoin-Logo.png" alt="Bitcoin"><br>
             <h4>Bitcoin</h4><br>
         </div>
         <div class="chamo">
-            <img src="/assets/chameau.png" alt="Chamo"><br>
+        <br><img src="/assets/chameau.png" alt="Chamo"><br>
             <h4>Chamo</h4><br>
         </div>
         <div class="dollar">
-            <img src="/assets/dollar.png" alt="$"><br>
+        <br> <img src="/assets/dollar.png" alt="$"><br>
             <h4>USD</h4><br>
         </div>
         </div>
     <br>
         <div class="monnaies">
         <div class="euro_belge">
-            <img src="/assets/euro_belge.png" alt="€ Belge"><br>
+        <br><img src="/assets/euro_belge.png" alt="€ Belge"><br>
             <h4>Euro Belge</h4><br>
         </div>
         <div class="coding">
-            <img src="/assets/coding.jpg" alt="Coding"><br>
+            <br><img src="/assets/coding.jpg" alt="Coding"><br>
             <h4>Coding</h4><br>
         </div>
         <div class="dong">
-            <img src="/assets/dong.png" alt="Dong"><br>
+        <br><img src="/assets/dong.png" alt="Dong"><br>
             <h4>Dong</h4><br>
         </div>
     </div>
