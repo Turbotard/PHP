@@ -20,12 +20,13 @@ a{
     color: #9370DB;
     font-size: auto;
     transition: all 0.5s ease-out;
-
+    border-radius: 10%;
 }
 a:hover,
 a:focus {
   color: #2C2F33;
   background-color: #9370DB;
+  border-radius: 10px;
 }
 h1{
     font-size: 300%;
@@ -44,12 +45,35 @@ form{
     border: none;
     border-radius: 10px;
 }
+.table{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between ;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
 .ligne1{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+}
+.ligne2{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
     width: 100%;
+}
+.contacter{
+    background-image: url(/assets/fond_contact.png);
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: auto;
+    height: 150px;
+    text-align: center;
+    vertical-align: middle;
 }
 .message{
     color: rgba(255, 255, 255, 0.8);
@@ -170,6 +194,7 @@ video{
     height: 60%;
     width: 60%;
     margin: auto;
+    margin-bottom: 20px;
 }
 
 .croix{
@@ -183,7 +208,7 @@ video{
     border: none;
     font-size: larger;
     font-weight: bolder;
-    margin-left: 15%;
+    margin-left: 17%;
 }
 .user-input{
     padding-bottom: 40px;

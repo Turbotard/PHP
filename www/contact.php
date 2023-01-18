@@ -8,7 +8,7 @@ require_once __DIR__ . '/../src/config.php';
 <?php require_once __DIR__ . '/../src/templates/partials/headers.inc.php'; ?>
 
 <div>
-    <h1>NOUS CONTACTER</h1>
+    <h1  class="contacter">NOUS CONTACTER</h1>
 </div>
 <div class="user-inputs">
       <form action="#" method="POST">

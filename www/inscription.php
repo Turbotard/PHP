@@ -61,7 +61,7 @@ require_once __DIR__ . '/../src/templates/partials/headers.inc.php'; ?>
         <input type="text" class="input_white" id="numTel" name="numTel" autocomplete="off">
     </label> 
     Mot de passe :<label for="password">
-        <input type="password" class="input_white" id="password" name="password" autocomplete="off">
+        <input type="password" class="input_white" id="password" name="mdp" autocomplete="off">
     </label>
     <div><input type="checkbox" class="case">Afficher le mot de passe</div>
     Confirmer le mot de passe :<label for="password" >
