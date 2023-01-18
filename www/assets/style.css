@@ -188,6 +188,7 @@ form{
     background-color: #9370DB;
     border: none;
     border-radius: 10px;
+    font-family: 'UTM Banque', sans-serif;
 }
 .table{
     display: flex;
