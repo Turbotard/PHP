@@ -16,7 +16,7 @@ require_once __DIR__ . '/../src/config.php';
         Votre message : <textarea type="message" class="message" id="content" name="content"></textarea>
         <button type="submit" class="bouton_envoi">📤 Envoyer !</button>
       </form>
-    </div>
+</div>
 <div class='team'>
     <h2>L'équipe</h2>
     <button id="fermer" class="croix"

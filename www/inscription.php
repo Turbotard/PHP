@@ -57,27 +57,19 @@ require_once __DIR__ . '/../src/templates/partials/headers.inc.php'; ?>
     Numéro de téléphone : <label for="numTel">
         <input type="text" class="input_white" id="numTel" name="numTel" autocomplete="off">
     </label> 
-<div class="centrale">
-    <section class="inputBox">
-        Mot de passe :
-        <div class="passwordBox">
-            <input type="password" class="input_white" id="password" name="mdp">
-        </div>
-            <input type="checkbox" class="input white">Afficher le mot de passe
-        <div class="buttons">
-            <button class="bouton_mdp" onclick="getPassword()">Générer un mot de passe</button>
-        </div>
-    </section>
-</div>
-
-     Confirmer le mot de passe :<label for="password" >
-        <input type="password" class="input_white" id="confirm_password" name="confirm_mdp"  autocomplete="off" class="formInscription3">
-
-       
+    Mot de passe :<label for="password">
+        <input type="password" class="input_white" id="password" name="password" autocomplete="off">
     </label>
-    <input type="submit" class="bouton_envoi" class="buttonInscription" name="inscription">
-    <p class="redirect">Registered ? <a href="/connexion.php">Connect to your account</a></p>
-
+    <div><input type="checkbox" class="case">Afficher le mot de passe</div>
+    Confirmer le mot de passe :<label for="password" >
+            <input type="password" class="input_white" id="confirm_password" name="confirm_mdp"  autocomplete="off">
+        </label>
+        <input type="submit" class="bouton_envoi" class="buttonInscription" name="inscription">
+        <p class="redirect">Registered ? <a href="/connexion.php">Connect to your account</a></p>
+</div>
+</div>
+</div>
+    </section>
     <?php
 
 
@@ -99,23 +91,6 @@ if(isset($_POST["inscription"])){
 }
 ?>
 </form>
-<script>
-        function getPassword(){
-        var chars="0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-        var passwordLength= 16;
-        var password= "";
-
-        //générer le mot de passe
-        for(let i = 0; i < passwordLength ; i++){
-            let randomNumber = Math.floor(Math.random() * chars.length)
-
-            password += chars.substring(randomNumber , randomNumber + 1)
-        }
-            //afficher le mot de pass
-            document.getElementById('password').value = password;
-        }
-    </script>
-
 </div>
 </div>
 </section>

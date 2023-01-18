@@ -10,6 +10,19 @@ require_once __DIR__ . '/../src/config.php';
 <div>
     <h1>MON ESPACE</h1>
 </div>
+<div class="ligne1">
+    <h2>MES TRANSACTION</h2>
+    <div class="tableau">
+    
+    </div>
+    <div class="dépot">
+    <label for="dépôt">
+        <h2>Faire un dépot : </h2>
+        <input type="text" class="input_white" id="depot" name="depot" autocomplete="off" placeholder="numéro de compte">
+        <input type="text" class="input_white" id="depot" name="depot" autocomplete="off" placeholder="montant">
+    </label>
+    <button class="bouton_depot">déposer</button>
+    </div>
 <?php require_once __DIR__ . '/../src/templates/partials/bouton_scroll_haut.php'; ?>
 
 <?php require_once __DIR__ . '/../src/templates/partials/footer.inc.php'; ?>
