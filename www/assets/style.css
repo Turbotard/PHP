@@ -2,12 +2,16 @@
 @import url('https://fonts.cdnfonts.com/css/action-women');
 @import url('https://fonts.cdnfonts.com/css/kg-traditional-fractions');
 html{
+    background-image: url(/assets/fond.jpg);
+    backdrop-filter: ;
+    background-repeat: no-repeat;
+    background-size: cover;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 body{
-    background-image: url(/assets/fond.jpg);
+    
     color: rgba(255, 255, 255, 0.8);
     font-family: 'UTM Banque', sans-serif;
 }

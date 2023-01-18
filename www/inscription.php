@@ -10,7 +10,7 @@ if(isset($_POST['inscription'])){
     $email = $_POST['email'];
     $dateNaiss = $_POST['dateNaiss'];
     $numTel = $_POST['numTel'];
-    $mdp = $_POST['mdp'];
+    $mdp = sha1($_POST['mdp']);
     $mdp2 = $_POST['confirm_mdp'];
     $client_number = rand();
 
