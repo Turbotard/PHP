@@ -42,20 +42,20 @@ require_once __DIR__ . '/../src/templates/partials/headers.inc.php';
     <form class="login-form" method="POST" >
       Numéro Client : <input class="input_white" type="text" name="client_number"/>
       Mot de passe : <input class="input_white" type="password" name="mdp"/>
-      <div><input type="checkbox" class="case">Afficher le mot de passe</div>
+      <div><input type="checkbox" class="case" id="case"><label for="case">Afficher le mot de passe</label></div>
       <input class="bouton_envoi" type="submit" value="login" name="submit">
       <p class="redirect">Not registered? <a href="/inscription.php">Create an account</a></p>
     </form>
     <script>
       const togglePassword = document.querySelector('.case');
-      const password = document.querySelector('.input_white');
-      togglePassword.addEventListener('click', function (e) {
-      // toggle the type attribute
-      const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
-      password.setAttribute('type', type);
-      // toggle the eye / eye slash icon
-      this.classList.toggle('fa-eye-slash');
-      });
+      const passwordField = document.querySelector("input[type=password]");
+      if(togglePassword.checked){
+        passwordField.type = "text";
+      }
+      else{
+        passwordField.type = "password";
+      }
+    </script>
   </div>
 </div>
   </div>
