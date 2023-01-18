@@ -56,7 +56,7 @@ require_once __DIR__ . '/../src/templates/partials/headers.inc.php';
       Numéro Client : <input class="input_white" type="text" name="client_number"/>
       Mot de passe : <input class="input_white" type="password" name="mdp"/>
       <input class="bouton_envoi" type="submit" value="login" name="submit">
-      <p class="redirect">Not registered? <a href="/inscription.php">Create an account</a></p>
+      <p class="redirect">Pas inscrit ? <a href="/inscription.php">Créez un compte !</a></p>
     </form>
     <script>
       const togglePassword = document.querySelector('.case');
