@@ -4,32 +4,32 @@ require_once __DIR__ . '/../src/config.php';
 $page_title = 'Mes soldes';
 require_once __DIR__ . '/../src/templates/partials/html_head.php';
 
-$sql = $db->prepare('SELECT solde FROM bankaccounts WHERE id_currencies = 1 AND numerocompte = ?');
-$sql->execute([$_SESSION['user']['client_number']]);
+$sql = $db->prepare('SELECT solde FROM bankaccounts WHERE id_currencies = 1 AND id_user = ?');
+$sql->execute([$_SESSION['user']['id']]);
 $solde = $sql->fetch();
 
-$sql2 = $db->prepare('SELECT solde FROM bankaccounts WHERE id_currencies = 2 AND numerocompte = ?');
-$sql2->execute([$_SESSION['user']['client_number']]);
+$sql2 = $db->prepare('SELECT solde FROM bankaccounts WHERE id_currencies = 2 AND id_user = ?');
+$sql2->execute([$_SESSION['user']['id']]);
 $solde2 = $sql2->fetch();
 
-$sql3 = $db->prepare('SELECT solde FROM bankaccounts WHERE id_currencies = 3 AND numerocompte = ?');
-$sql3->execute([$_SESSION['user']['client_number']]);
+$sql3 = $db->prepare('SELECT solde FROM bankaccounts WHERE id_currencies = 3 AND id_user = ?');
+$sql3->execute([$_SESSION['user']['id']]);
 $solde3 = $sql3->fetch();
 
-$sql4 = $db->prepare('SELECT solde FROM bankaccounts WHERE id_currencies = 4 AND numerocompte = ?');
-$sql4->execute([$_SESSION['user']['client_number']]);
+$sql4 = $db->prepare('SELECT solde FROM bankaccounts WHERE id_currencies = 4 AND id_user = ?');
+$sql4->execute([$_SESSION['user']['id']]);
 $solde4 = $sql4->fetch();
 
-$sql5 = $db->prepare('SELECT solde FROM bankaccounts WHERE id_currencies = 5 AND numerocompte = ?');
-$sql5->execute([$_SESSION['user']['client_number']]);
+$sql5 = $db->prepare('SELECT solde FROM bankaccounts WHERE id_currencies = 5 AND id_user = ?');
+$sql5->execute([$_SESSION['user']['id']]);
 $solde5 = $sql5->fetch();
 
-$sql6 = $db->prepare('SELECT solde FROM bankaccounts WHERE id_currencies = 6 AND numerocompte = ?');
-$sql6->execute([$_SESSION['user']['client_number']]);
+$sql6 = $db->prepare('SELECT solde FROM bankaccounts WHERE id_currencies = 6 AND id_user = ?');
+$sql6->execute([$_SESSION['user']['id']]);
 $solde6 = $sql6->fetch();
 
-$sql7 = $db->prepare('SELECT solde FROM bankaccounts WHERE id_currencies = 7 AND numerocompte = ?');
-$sql7->execute([$_SESSION['user']['client_number']]);
+$sql7 = $db->prepare('SELECT solde FROM bankaccounts WHERE id_currencies = 7 AND id_user = ?');
+$sql7->execute([$_SESSION['user']['id']]);
 $solde7 = $sql7->fetch();
 
 
