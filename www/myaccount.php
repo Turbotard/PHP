@@ -26,7 +26,7 @@ require_once __DIR__ . '/../src/templates/partials/html_head.php';
         <div class="transactions">
         <div class="retrait">
         <label for="retrait">
-            <h2>Faire un dépot : </h2>
+            <h2>Faire un retrait : </h2>
             Montant : <input type="text" class="input_white" id="retrait" name="depot" autocomplete="off"><br>
         </label>
         <button class="bouton_envoi">RETIRER</button>
