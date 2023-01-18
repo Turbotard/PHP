@@ -42,6 +42,14 @@ form{
     align-items: center;
     text-align: center;
 }
+.menu{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
 .input_white{
     color: rgba(255, 255, 255, 0.8);
     background-color: #9370DB;
@@ -71,6 +79,15 @@ form{
 }
 .contacter{
     background-image: url(/assets/fond_contact.png);
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: auto;
+    height: 150px;
+    text-align: center;
+    vertical-align: middle;
+}
+.espace_baque{
+    background-image: url(/assets/fond_mon_espace.png);
     background-repeat: no-repeat;
     background-position: bottom;
     background-size: auto;
