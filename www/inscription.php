@@ -43,7 +43,7 @@ require_once __DIR__ . '/../src/templates/partials/html_head.php';
 require_once __DIR__ . '/../src/templates/partials/headers.inc.php'; ?>
 
 <div>
-    <h1>INSCRIPTION</h1>
+    <h1 class="inscription">INSCRIPTION</h1>
 </div>
 <section>
 <div class="ens">

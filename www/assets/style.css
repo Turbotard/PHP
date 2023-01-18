@@ -16,6 +16,7 @@ nav{
     flex-direction: row;
     justify-content: space-between;
     height: fit-content;
+    margin-right: 10%;
 }
 
 a{
@@ -35,12 +36,28 @@ h1{
     font-size: 300%;
     text-align: center;
     font-weight: bolder;
+    height: 150px;
+}
+h2{
+    font-size: 200%;
+    text-align: center;
+    font-weight: bolder;
 }
 form{
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
+}
+.form{
+    border-radius: 10%;
+    border: 10px solid #9370DB;
+    width: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 .menu{
     display: flex;
@@ -86,8 +103,17 @@ form{
     text-align: center;
     vertical-align: middle;
 }
-.espace_baque{
+.espace_banque{
     background-image: url(/assets/fond_mon_espace.png);
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: auto;
+    height: 150px;
+    text-align: center;
+    vertical-align: middle;
+}
+.inscription{
+    background-image: url(/assets/fond_insciption.png);
     background-repeat: no-repeat;
     background-position: bottom;
     background-size: auto;
