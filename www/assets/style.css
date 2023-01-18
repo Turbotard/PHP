@@ -69,7 +69,7 @@ h4{
     font-weight: bolder;
 }
 h5{
-    font-size: 150%;
+    font-size: 100%;
     text-align: center;
     font-weight: bolder;
 }
@@ -80,6 +80,7 @@ h5{
     align-items: center;
     text-align: center;
     width: 100%;
+    background-color: rgba(0, 0, 0,0.3);
 }
 .euro{
     display: flex;
@@ -106,7 +107,43 @@ h5{
     align-items: center;
     text-align: center;
     width: 100%;
-    border: 7.5px solid #9370DB;
+    border: 5px solid #9370DB;
+}
+.dollar{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    border: 5px solid #9370DB;
+}
+.euro_belge{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    border: 5px solid #9370DB;
+}
+.coding{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    border: 5px solid #9370DB;
+}
+.dong{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    border: 5px solid #9370DB;
 }
 .slogan{
     display: flex;
@@ -151,6 +188,7 @@ form{
     background-color: #9370DB;
     border: none;
     border-radius: 10px;
+    font-family: 'UTM Banque', sans-serif;
 }
 .table{
     display: flex;
@@ -191,6 +229,15 @@ form{
     text-align: center;
     vertical-align: middle;
 }
+.soldes{
+    background-image: url(/assets/fond_soldes.png);
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: auto;
+    height: 150px;
+    text-align: center;
+    vertical-align: middle;
+}
 .inscription{
     background-image: url(/assets/fond_inscription.png);
     background-repeat: no-repeat;
@@ -199,7 +246,7 @@ form{
     text-align: center;
     vertical-align: middle;
 }
-.onnexion{
+.page_connexion{
     background-image: url(/assets/fond_connexion.png);
     background-repeat: no-repeat;
     background-position: bottom;

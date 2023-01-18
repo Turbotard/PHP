@@ -83,7 +83,6 @@ require_once __DIR__ . '/../src/templates/partials/headers.inc.php';
     Mot de passe :<label for="password">
         <input type="password" class="input_white" id="password" name="mdp" autocomplete="off">
     </label>
-    <div><input type="checkbox" class="case" id="case"><label for="case">Afficher le mot de passe</label></div>
     Confirmer le mot de passe :<label for="password" >
             <input type="password" class="input_white" id="confirm_password" name="confirm_mdp"  autocomplete="off">
         </label>
