@@ -20,10 +20,13 @@ if(isset($_POST['inscription'])){
             $var->execute([$name, $first_name, $mdp, $email, $numTel, $dateNaiss, $client_number]);
             $donnees = $var->fetch();
 
-            
 
-            $sql = $db->prepare('INSERT INTO bankaccounts (numerocompte, id_user, solde, id_currencies) VALUES (?, 0)');
-
+            $currencies = array('euro', 'bitcoin', 'chamo', 'dollar', 'eurobelge', 'coding', 'dong');
+            foreach ($currencies as $currencie) {
+                $val_cur = $currencie;
+                $sql = $db->prepare('INSERT INTO bankaccounts (numerocompte, id_user, solde, id_currencies) VALUES (?, 0)');
+                $sql->execute([]);
+            }
 
 
             $variable = $db->prepare('SELECT * FROM users WHERE client_number = ? AND mdp = ?');
