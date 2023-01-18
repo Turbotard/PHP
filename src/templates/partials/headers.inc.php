@@ -3,9 +3,11 @@ require_once __DIR__ . '/../../init.php';
 require_once __DIR__ . './../../config.php';
 
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+    echo ("connecté");
     $isconnect = '../../../myaccount.php';
 }
 else {
+    echo ("non connecté");
     $isconnect = '../../../connexion.php';
 }
 ?>
@@ -26,5 +28,14 @@ else {
     <a href="/contact.php" class="connexion">
         <p>NOUS CONTACTER</p>
     </a>
+    <? if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+    echo ("connecté 🟩");
+        $isconnect = '../../../myaccount.php';
+    }
+    else {
+        echo ("non connecté 🟥");
+        $isconnect = '../../../connexion.php';
+    }
+    ?>
     </nav>
 </header>
