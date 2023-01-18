@@ -12,11 +12,9 @@ require_once __DIR__ . '/../src/templates/partials/html_head.php';
 </div class="table">
     <div>
     <div class="ligne 1">
-        <h2>MES INFORMATIONS</h2>
-        <div class="infos">
-        <h3>NOM :</h3>
-        <h3>PRENOM :</h3>
-        <h3>NUMERO DE COMPTE :</h3>
+        <h2>NOM :</h2> 
+        <h2>PRENOM :</h2>
+        <h2>NUMERO DE COMPTE :</h2>
     </div>
     <div class="ligne2">
         <h2>MES TRANSACTION</h2>

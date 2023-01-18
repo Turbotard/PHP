@@ -23,7 +23,7 @@ a{
     color: #9370DB;
     font-size: auto;
     transition: all 0.5s ease-out;
-    border-radius: 10%;
+    border-radius: 5%;
 }
 a:hover,
 a:focus {
