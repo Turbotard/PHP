@@ -7,20 +7,21 @@ require_once __DIR__ . '/../src/templates/partials/html_head.php';
 
 ?>
 <body>
-<?php require_once __DIR__ . '/../src/templates/partials/headers.inc.php'; ?>
+<?php require_once __DIR__ . '/../src/templates/partials/headers.inc.php';
+?>
 
 <div>
     <h1 class="espace_banque">MON ESPACE</h1>
 </div class="table">
     <div>
     <div class="ligne 1">
-        <h2>NOM : <?php echo ($_SESSION['nom']);?></h2> 
-        <h2>PRENOM : <?php echo ($_SESSION['prenom']);?></h2>
-        <h2>NUMERO DE COMPTE : <?php echo ($_SESSION['client_number']);?></h2>
+        <h2>NOM : <?php echo ($_SESSION['user']['nom']);?></h2> 
+        <h2>PRENOM : <?php echo ($_SESSION['user']['prenom']);?></h2>
+        <h2>NUMERO DE COMPTE : <?php echo ($_SESSION['user']['client_number']);?></h2>
         <h2>SOLDE : <?php echo ($_SESSION['solde']);?></h2>
-        <h2>GRADE : <?php if($_SESSION['grade'] == 1){
+        <h2>GRADE : <?php if($_SESSION['user']['grade'] == 1){
             echo "Client";
-        }else{
+        }else if($_SESSION['user']['grade'] == 1000){
             echo "Admin";
         };?></h2>
     </div>
@@ -58,6 +59,7 @@ require_once __DIR__ . '/../src/templates/partials/html_head.php';
 <div class="menu">
     <a class="menu" href="./deconnexion.php"><button class="bouton">DECONNEXION</button></a>
 </div>
+
 </div>
 </div>
 <?php require_once __DIR__ . '/../src/templates/partials/bouton_scroll_haut.php'; ?>

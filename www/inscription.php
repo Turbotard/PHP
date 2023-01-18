@@ -28,13 +28,9 @@ if(isset($_POST['inscription'])){
 
             $variable = $db->prepare('SELECT * FROM users WHERE client_number = ? AND mdp = ?');
             $variable->execute([$client_number, $mdp]);
-            $data = $var->fetch();
+            $data = $variable->fetch();
             $_SESSION['user'] = $data;
             $_SESSION['loggedin'] = true;
-            $_SESSION['client_number'] = $data['client_number'];
-            $_SESSION['nom'] = $data['nom'];
-            $_SESSION['prenom'] = $data['prenom'];
-            $_SESSION['grade'] = $data['grade'];
 
             $sql = $db->prepare('SELECT solde FROM bankaccounts WHERE id_user = ?');
             $sql->execute([$data['id']]);
@@ -50,7 +46,9 @@ if(isset($_POST['inscription'])){
 <body>
 <?php 
 require_once __DIR__ . '/../src/templates/partials/html_head.php';
-require_once __DIR__ . '/../src/templates/partials/headers.inc.php'; ?>
+require_once __DIR__ . '/../src/templates/partials/headers.inc.php';
+
+?>
 
 <div>
     <h1 class="inscription">INSCRIPTION</h1>
