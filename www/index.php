@@ -29,7 +29,7 @@ else {
         <h4>Créez votre compte</h4>
     <a href="/inscription.php"><button class="bouton">INSCRIPTION</button></a>
     </div>
-        <h4>Nos monnaies : </h4>
+        <h4>Nos monnaies (Valeur pour une unité) : </h4>
     <div class="monnaies">
         <div class="euro">
         <br>  <img src="/assets/euro.png" alt="€"><br>
