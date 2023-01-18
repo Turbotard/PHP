@@ -50,7 +50,7 @@ require_once __DIR__ . '/../src/templates/partials/html_head.php';
     </div>
 </div>
 <div class="menu">
-    <a class="menu" href="./deconnexion.php">Déconnexion</a>
+    <a class="menu" href="./deconnexion.php"><button class="bouton">DECONNEXION</button></a>
 </div>
 </div>
 </div>

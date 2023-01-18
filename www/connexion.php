@@ -49,7 +49,7 @@ require_once __DIR__ . '/../src/templates/partials/headers.inc.php';
     <script>
       const togglePassword = document.querySelector('.case');
       const passwordField = document.querySelector("input[type=password]");
-      if(togglePassword.checked){
+      if(togglePassword:checked + togglePassword::after) {
         passwordField.type = "text";
       }
       else{

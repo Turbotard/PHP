@@ -30,10 +30,10 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
     </nav>
     <?php
     if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
-    echo ("connecté 🟩");
+    echo ("connecté &#129001");
     }
     else {
-        echo ("non connecté 🟥");
+        echo ("non connecté &#128997");
     }
     ?>
 </header>

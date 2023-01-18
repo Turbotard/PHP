@@ -26,8 +26,8 @@ a{
     transition: all 0.5s ease-out;
     border-radius: 5%;
 }
-a:hover,
-a:focus {
+.connexion:hover,
+.connexion:focus {
   color: #2C2F33;
   background-color: #9370DB;
   border-radius: 10px;
@@ -43,6 +43,17 @@ h2{
     text-align: center;
     font-weight: bolder;
 }
+h3{
+    font-size: 150%;
+    text-align: center;
+    font-weight: bolder;
+}
+.slogan{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
 form{
     display: flex;
     flex-direction: column;
@@ -52,6 +63,7 @@ form{
 .form{
     border-radius: 10%;
     border: 10px solid #9370DB;
+    background-color: rgba(0, 0, 0,0.3);
     width: 25%;
     display: flex;
     align-items: center;
@@ -113,13 +125,21 @@ form{
     vertical-align: middle;
 }
 .inscription{
-    background-image: url(/assets/fond_insciption.png);
+    background-image: url(/assets/fond_inscription.png);
     background-repeat: no-repeat;
     background-position: bottom;
     background-size: auto;
-    height: 150px;
     text-align: center;
     vertical-align: middle;
+}
+.accueil{
+    background-image: url(/assets/Logo-BNP-Paribas-modified.jpg);
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: auto;
+    text-align: center;
+    vertical-align: middle;
+    background-color: rgba(147, 112, 219,0.5);
 }
 .message{
     color: rgba(255, 255, 255, 0.8);
@@ -149,6 +169,33 @@ form{
     box-shadow: 0px 3px 0px #483D8B;
     position:relative;
     top:1px;
+}
+.bouton{
+    color: rgba(255, 255, 255, 0.8);
+    background-color: #9370DB;
+    border: none;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    -webkit-transition: all 0.1s;
+    -moz-transition: all 0.1s;
+    transition: all 0.1s;
+    -webkit-box-shadow: 0px 4px 0px #483D8B;
+    -moz-box-shadow: 0px 4px 0px #483D8B;
+    box-shadow: 0px 4px 0px #483D8B;
+    width: auto;
+    font-size: larger;
+    font-weight: bolder;
+}
+.bouton:active{
+    -webkit-box-shadow: 0px 3px 0px #483D8B;
+    -moz-box-shadow: 0px 3px 0px #483D8B;
+    box-shadow: 0px 3px 0px #483D8B;
+    position:relative;
+    top:1px;
+    width: auto;
+    font-size: larger;
+    font-weight: bolder;
 }
 .bouton_mdp{
     color: rgba(255, 255, 255, 0.8);
