@@ -20,21 +20,20 @@ if(isset($_POST['inscription'])){
             $var->execute([$name, $first_name, $mdp, $email, $numTel, $dateNaiss, $client_number]);
             $donnees = $var->fetch();
 
-            
 
-            $sql = $db->prepare('INSERT INTO bankaccounts (numerocompte, id_user, solde, id_currencies) VALUES (?, 0)');
-
+            $currencies = array('euro', 'bitcoin', 'chamo', 'dollar', 'eurobelge', 'coding', 'dong');
+            foreach ($currencies as $currencie) {
+                $val_cur = $currencie;
+                $sql = $db->prepare('INSERT INTO bankaccounts (numerocompte, id_user, solde, id_currencies) VALUES (?, 0)');
+                $sql->execute([]);
+            }
 
 
             $variable = $db->prepare('SELECT * FROM users WHERE client_number = ? AND mdp = ?');
             $variable->execute([$client_number, $mdp]);
-            $data = $var->fetch();
+            $data = $variable->fetch();
             $_SESSION['user'] = $data;
             $_SESSION['loggedin'] = true;
-            $_SESSION['client_number'] = $data['client_number'];
-            $_SESSION['nom'] = $data['nom'];
-            $_SESSION['prenom'] = $data['prenom'];
-            $_SESSION['grade'] = $data['grade'];
 
             $sql = $db->prepare('SELECT solde FROM bankaccounts WHERE id_user = ?');
             $sql->execute([$data['id']]);
@@ -50,7 +49,9 @@ if(isset($_POST['inscription'])){
 <body>
 <?php 
 require_once __DIR__ . '/../src/templates/partials/html_head.php';
-require_once __DIR__ . '/../src/templates/partials/headers.inc.php'; ?>
+require_once __DIR__ . '/../src/templates/partials/headers.inc.php';
+
+?>
 
 <div>
     <h1 class="inscription">INSCRIPTION</h1>
