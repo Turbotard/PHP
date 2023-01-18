@@ -59,7 +59,7 @@ else {
         <div class="coding">
             <img src="/assets/coding.jpg" alt="Coding"><br>
             <h5>Coding</h5>
-            <h5>1 000 000 €</h5>
+            <h5>5 800 €</h5>
         </div>
         <div class="dong">
             <img src="/assets/dong.png" alt="Dong"><br>
