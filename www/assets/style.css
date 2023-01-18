@@ -3,7 +3,7 @@
 @import url('https://fonts.cdnfonts.com/css/kg-traditional-fractions');
 html{
     background-image: url(/assets/fond.jpg);
-    backdrop-filter: ;
+    backdrop-filter: blur(5px);
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
@@ -14,6 +14,9 @@ body{
     
     color: rgba(255, 255, 255, 0.8);
     font-family: 'UTM Banque', sans-serif;
+}
+header{
+    background-color: rgb(0, 0, 61);
 }
 nav{
     display: flex;
@@ -154,6 +157,7 @@ form{
     height: 100%;
 }
 .bouton_envoi{
+    font-family: 'UTM Banque', sans-serif;
     color: rgba(255, 255, 255, 0.8);
     background-color: #9370DB;
     border: none;
@@ -168,6 +172,7 @@ form{
     box-shadow: 0px 4px 0px #483D8B;
 }
 .bouton_envoi:active{
+    font-family: 'UTM Banque', sans-serif;
     -webkit-box-shadow: 0px 3px 0px #483D8B;
     -moz-box-shadow: 0px 3px 0px #483D8B;
     box-shadow: 0px 3px 0px #483D8B;
@@ -175,6 +180,7 @@ form{
     top:1px;
 }
 .bouton{
+    font-family: 'UTM Banque', sans-serif;
     color: rgba(255, 255, 255, 0.8);
     background-color: #9370DB;
     border: none;
@@ -192,6 +198,7 @@ form{
     font-weight: bolder;
 }
 .bouton:active{
+    font-family: 'UTM Banque', sans-serif;
     -webkit-box-shadow: 0px 3px 0px #483D8B;
     -moz-box-shadow: 0px 3px 0px #483D8B;
     box-shadow: 0px 3px 0px #483D8B;
@@ -202,6 +209,7 @@ form{
     font-weight: bolder;
 }
 .bouton_mdp{
+    font-family: 'UTM Banque', sans-serif;
     color: rgba(255, 255, 255, 0.8);
     background-color: #9370DB;
     border: none;
@@ -216,6 +224,7 @@ form{
     box-shadow: 0px 3px 0px #483D8B;
 }
 .bouton_mdp:active{
+    font-family: 'UTM Banque', sans-serif;
     -webkit-box-shadow: 0px 2px 0px #483D8B;
     -moz-box-shadow: 0px 2px 0px #483D8B;
     box-shadow: 0px 2px 0px #483D8B;
@@ -223,6 +232,7 @@ form{
     top:1px;
 }
 .bouton_depot{
+    font-family: 'UTM Banque', sans-serif;
     color: rgba(255, 255, 255, 0.8);
     background-color: #9370DB;
     border: none;
@@ -240,6 +250,7 @@ form{
     box-shadow: 0px 3px 0px #483D8B;
 }
 .bouton_depot:active{
+    font-family: 'UTM Banque', sans-serif;
     -webkit-box-shadow: 0px 2px 0px #483D8B;
     -moz-box-shadow: 0px 2px 0px #483D8B;
     box-shadow: 0px 2px 0px #483D8B;

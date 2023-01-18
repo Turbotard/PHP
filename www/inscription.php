@@ -11,7 +11,7 @@ if(isset($_POST['inscription'])){
     $dateNaiss = $_POST['dateNaiss'];
     $numTel = $_POST['numTel'];
     $mdp = sha1($_POST['mdp']);
-    $mdp2 = $_POST['confirm_mdp'];
+    $mdp2 = sha1($_POST['confirm_mdp']);
     $client_number = rand();
 
     if(filter_var($email, FILTER_VALIDATE_EMAIL)){

@@ -6,7 +6,7 @@ $page_title = 'Connexion';
 
 if(isset($_POST['submit'])){
     $client_number = $_POST['client_number'];
-    $mdp = $_POST['mdp'];
+    $mdp = sha1($_POST['mdp']);
 
   if ($client_number != '' && $mdp != '') {
 
