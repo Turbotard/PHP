@@ -1,11 +1,35 @@
 <?php
-$page_title = 'Inscription';
-require_once __DIR__ . '/../src/templates/partials/html_head.php';
+
 require_once __DIR__ . '/../src/init.php';
 require_once __DIR__ . '/../src/config.php';
+$page_title = 'Inscription';
+
+if(isset($_POST['inscription'])){
+    $name = $_POST['name'];
+    $first_name = $_POST['first_name'];
+    $email = $_POST['email'];
+    $dateNaiss = $_POST['dateNaiss'];
+    $numTel = $_POST['numTel'];
+    $mdp = $_POST['mdp'];
+    $mdp2 = $_POST['confirm_mdp'];
+    $client_number = rand();
+
+    if(filter_var($email, FILTER_VALIDATE_EMAIL)){
+        if ($mdp2 == $mdp) {
+            $var = $db->prepare('INSERT INTO users (nom, prenom, mdp, mail, tel, naissance, grade, client_number) VALUES (?, ?, ?, ?, ?, ?, 1, ?)');
+            $var->execute([$name, $first_name, $mdp, $email, $numTel, $dateNaiss, $client_number]);
+            $donnees = $var->fetch();
+            header('Location:/connexion.php');
+        }
+    }
+    
+
+}
 ?>
 <body>
-<?php require_once __DIR__ . '/../src/templates/partials/headers.inc.php'; ?>
+<?php 
+require_once __DIR__ . '/../src/templates/partials/html_head.php';
+require_once __DIR__ . '/../src/templates/partials/headers.inc.php'; ?>
 
 <div>
     <h1>INSCRIPTION</h1>
@@ -37,7 +61,7 @@ require_once __DIR__ . '/../src/config.php';
     <section class="inputBox">
         Mot de passe :
         <div class="passwordBox">
-            <input type="password" class="input_white" id="password">
+            <input type="password" class="input_white" id="password" name="mdp">
         </div>
             <input type="checkbox" class="input white">Afficher le mot de passe
         <div class="buttons">
@@ -56,7 +80,7 @@ require_once __DIR__ . '/../src/config.php';
 
     <?php
 
-//session_start();
+
 
 $bdd=new PDO('mysql:host=localhost;dbname=BNParihaut;charset=utf8;','root','root');
 if(isset($_POST["inscription"])){
@@ -72,25 +96,6 @@ if(isset($_POST["inscription"])){
         $insertUser = $bdd->prepare('INSERT INTO utilisateur(email,mot_de_passe,pseudo) VALUES(?, ?, ?)');
         $insertUser->execute(array($email,$mdp,$pseudo));
     }   
-    else{
-        if(empty($_POST["email"])AND empty($_POST["name"])AND empty($_POST["first_name"])
-        AND empty($_POST["dateNaiss"])AND empty($_POST["numTel"]AND empty($_POST["mdp"])
-        AND empty($_POST["confirm_mdp"]))){
-            echo "Veuillez remplir tous les champs";
-        }
-        elseif(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
-            echo "L'adresse email doit être valide";
-        }
-        elseif($_POST['mdp']!=$_POST['confirm_mdp']){
-            echo "Veuillez répéter le mot de passe à confirmer";
-        }
-        elseif(strlen($_POST['mdp']<=8)){
-            echo "Le mot de passe doit contenir au moins 8 caractères";
-        }
-        elseif(!preg_match('#^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).{10,}$#',$_POST['mdp'])){
-            echo "Le mot de passe doit contenir au moins une majuscule, une minuscule, un chiffre et un caractère spécial (. * $ etc)";
-        }
-    }
 }
 ?>
 </form>
