@@ -7,7 +7,7 @@ html{
     justify-content: space-between;
 }
 body{
-    background-color: #2C2F33;
+    background-image: url(/assets/fond.jpg);
     color: rgba(255, 255, 255, 0.8);
     font-family: 'UTM Banque', sans-serif;
 }
