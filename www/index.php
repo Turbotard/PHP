@@ -54,7 +54,7 @@ else {
         <div class="euro_belge">
             <img src="/assets/euro_belge.png" alt="€ Belge"><br>
             <h5>Euro Belge</h5>
-            <h5>0,5 €</h5>
+            <h5>42 €</h5>
         </div>
         <div class="coding">
             <img src="/assets/coding.jpg" alt="Coding"><br>
