@@ -20,15 +20,6 @@ if(isset($_POST['inscription'])){
             $var->execute([$name, $first_name, $mdp, $email, $numTel, $dateNaiss, $client_number]);
             $donnees = $var->fetch();
 
-
-            $currencies = array('euro', 'bitcoin', 'chamo', 'dollar', 'eurobelge', 'coding', 'dong');
-            foreach ($currencies as $currencie) {
-                $val_cur = $currencie;
-                $sql = $db->prepare('INSERT INTO bankaccounts (numerocompte, id_user, solde, id_currencies) VALUES (?, 0)');
-                $sql->execute([]);
-            }
-
-
             $variable = $db->prepare('SELECT * FROM users WHERE client_number = ? AND mdp = ?');
             $variable->execute([$client_number, $mdp]);
             $data = $variable->fetch();
@@ -38,7 +29,17 @@ if(isset($_POST['inscription'])){
             $sql = $db->prepare('SELECT solde FROM bankaccounts WHERE id_user = ?');
             $sql->execute([$data['id']]);
             $solde = $sql->fetch();
-            $_SESSION['solde'] = $solde['solde'];
+            $_SESSION['solde'] = $solde;
+
+            $currencies = array(1, 2, 3, 4, 5, 6, 7);
+            foreach ($currencies as $currencie) {
+                $val_cur = $currencie;
+                $sql = $db->prepare('INSERT INTO bankaccounts (numerocompte, id_user, solde, id_currencies) VALUES (?, ?, 0, ?)');
+                $sql->execute([$_SESSION['user']['client_number'], $_SESSION['user']['id'], $currencie]);
+            }
+
+
+            
             header('Location:/myaccount.php');
         }
     }
