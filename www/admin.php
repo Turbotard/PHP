@@ -9,6 +9,18 @@ require_once __DIR__ . '/../src/templates/partials/html_head.php';
 <body>
 <?php require_once __DIR__ . '/../src/templates/partials/headers.inc.php';
 // fonctionne 
+$user = $db->prepare('SELECT * FROM users');
+$user->execute();
+$donnes = $user->fetchAll();
+$_SESSION['nom'] = $donnes[1];
+$_SESSION['prenom'] = $donnes[2];
+$_SESSION['client_number'] = $donnes[8];
+$_SESSION['grade'] = $donnes[7];
+$_SESSION['naissance'] = $donnes[6];
+$_SESSION['tel'] = $donnes[5];
+$_SESSION['mail'] = $donnes[4];
+
+
 $var = $db->prepare('SELECT * FROM bankaccounts WHERE id_user = ?');
 $var->execute([$_SESSION['user']['id']]);
 $donnees = $var->fetchAll();
@@ -137,9 +149,31 @@ else{
                     </label>
                     <input type="submit" class="bouton_envoi" value="MODIFIER">
                 </form>
-            </div>
+            </div>   
     </div>
+    
 </div><br><br><br>
+<div class="list">
+                <?php
+                foreach($donnes as $utilisateurs)
+                {
+                    echo '<div class="infos">';
+                    echo '<h2>Utilisateur : ' . $utilisateurs['nom'] . ' ' . $utilisateurs['prenom'] . '</h2>';
+                    echo '<h2>Grade : ' . $utilisateurs['grade'] . '</h2>';
+                    echo '<h2>Numéro de client : ' . $utilisateurs['client_number'] . '</h2>';
+                    echo '<h2>Adresse mail : ' . $utilisateurs['mail'] . '</h2>';
+                    echo '<h2>Date de naissance : ' . $utilisateurs['naissance'] . '</h2>';
+                    echo '<h2>Téléphone : ' . $utilisateurs['tel'] . '</h2>';
+                    echo '</div>';
+                    echo '<br>';
+                }
+                
+                
+                ?>
+
+
+
+        </div>
 <div class="solde"><a href="./deconnexion.php"><button class="bouton">DECONNEXION</button></a></div>
 
 </div>
