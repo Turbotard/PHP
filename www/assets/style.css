@@ -487,7 +487,10 @@ footer{
     list-style-type: square;
 }
 
-.historique{
+.historique {
     display: flex;
     flex-direction: column;
+    border: 5px solid #9370DB;
+    border-radius: 10%;
+    background-color: rgba(0, 0, 0,0.3);
 }
