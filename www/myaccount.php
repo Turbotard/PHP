@@ -8,11 +8,11 @@ require_once __DIR__ . '/../src/templates/partials/html_head.php';
 ?>
 <body>
 <?php require_once __DIR__ . '/../src/templates/partials/headers.inc.php';
+// fonctionne 
 $var = $db->prepare('SELECT * FROM bankaccounts WHERE id_user = ?');
 $var->execute([$_SESSION['user']['id']]);
 $donnees = $var->fetchAll();
-$_SESSION['bank'] = $donnees;
-var_dump($_SESSION['bank']);
+$_SESSION['bank'] = $donnees; // prend tout les comptes en rapport avec le user
 $var2 = $db-> prepare('SELECT * FROM transactions WHERE id_user = ?');
 $var2->execute([$_SESSION['user']['id']]);
 $donnees2 = $var2->fetch();
@@ -62,25 +62,16 @@ $bankaccounts = $query->fetchAll();
 
 
             // Check if there are any transactions
-            if(count($transactions) > 0){
-            echo '<table>';
-            echo '<thead>';
-            echo '<tr>';
-            echo '<th>Montant</th>';
-            echo '<th>Devise</th>';
-            echo '</tr>';
-            echo '</thead>';
-            echo '<tbody>';
+            if(count($donnees2) > 0){
+
 
             // Loop through the transactions and display them in a table
-            foreach($transactions as $transaction) {
-                echo '<tr>';
-                echo '<td>' . $transaction['somme'] . '</td>';
-                echo '<td>' . $transaction['id_currencie'] . '</td>';
-                echo '</tr>';
+            foreach($donnees2 as $transaction) {
+                echo $somme;
+                echo $currencie;
+
             }
-            echo '</tbody>';
-            echo '</table>';
+
             } else {
             echo "Il n'y a pas d'historique de transaction pour ce compte.";
         }
