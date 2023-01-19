@@ -72,12 +72,7 @@ require_once __DIR__ . '/../src/templates/partials/html_head.php';
             echo "Il n'y a pas d'historique de transaction pour ce compte.";
         }
         
-        ?>
-
-                        
-            }
-
-                    
+        ?>                   
             </div>
         </div>
         <div class="infos">
