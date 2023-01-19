@@ -211,8 +211,8 @@ form{
 }
 .table{
     display: flex;
-    flex-direction: row;
-    justify-content: space-evenly ;
+    flex-direction: column;
+    justify-content: space-between ;
     align-items: center;
     text-align: center;
     width: 100%;

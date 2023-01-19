@@ -68,10 +68,10 @@ require_once __DIR__ . '/../src/templates/partials/html_head.php';
                     if(isset($_POST['modif_nom'])&& !empty($_POST['nom'])){
                         $nom = $_POST['nom'];
                         $req = $db->prepare("UPDATE users SET nom = ? WHERE id = ?");
-                        $req->execute(array(
+                        $req->execute(
                             $nom,
                             $_SESSION['user']['id']
-                        ));
+                        );
                     }
                     ?>
             </div><br>
