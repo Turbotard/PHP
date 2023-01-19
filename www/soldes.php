@@ -98,10 +98,48 @@ if (isset($_POST['virement'])){
 }
 
 if(isset($_POST['converter'])){
-    $convert= $db->prepare('SELECT valeure FROM currencies WHERE nomoney = ?');
-    $euro= ($convert->execute([$_POST['convert']]))*($_POST['montant']);
-    $montant2 = $euro/($convert->execute([$_POST['convert2']]));
-    echo $montant2;
+    $cpnvert=0;
+    if($_POST['convert']=="Euro"){
+        $convert = 1;
+    }elseif ($_POST['convert']=="Bitcoin"){
+        $convert = 2;
+    }elseif ($_POST['convert']=="Chamo"){
+        $convert = 3;
+    }elseif ($_POST['convert']=="Dollar"){
+        $convert = 4;
+    }elseif ($_POST['convert']=="Euro Belge"){
+        $convert = 5;
+    }elseif ($_POST['convert']=="Coding"){
+        $convert = 6;
+    }elseif ($_POST['convert']=="Dong"){
+        $convert = 7;
+    }
+    $convert=0;
+    if($_POST['convert2']=="Euro"){
+        $convert2 = 1;
+    }elseif ($_POST['convert2']=="Bitcoin"){
+        $convert2 = 2;
+    }elseif ($_POST['convert2']=="Chamo"){
+        $convert2 = 3;
+    }elseif ($_POST['convert2']=="Dollar"){
+        $convert2 = 4;
+    }elseif ($_POST['convert2']=="Euro Belge"){
+        $convert2 = 5;
+    }elseif ($_POST['convert2']=="Coding"){
+        $convert2 = 6;
+    }elseif ($_POST['convert2']=="Dong"){
+        $convert2 = 7;
+    }
+    $montant = $_POST['montant'];
+    $sql = $db->prepare('UPDATE bankaccounts SET solde = solde - ? WHERE id_currencies = ? AND id_user = ?');
+    $sql2 = $db->prepare('UPDATE bankaccounts SET solde = solde + ? WHERE id_currencies = ? AND id_user = ?');
+    $sql3 = $db->prepare('INSERT INTO transactions (id_account, somme, id_currencie, id_user) VALUES (?, ?, ?, ?)');
+    $sql4 = $db->prepare('INSERT INTO transactions (id_account, somme, id_currencie, id_user) VALUES (?, ?, ?, ?)');
+    $sql->execute([$montant, $convert, $_SESSION['user']['id']]);
+    $sql2->execute([$montant, $convert2, $_SESSION['user']['id']]);
+    $sql3->execute([$bankaccount['id'], '-'.$montant, $convert, $_SESSION['user']['id']]);
+    $sql4->execute([$bankaccount['id'], $montant, $convert2, $_SESSION['user']['id']]);
+    header('location:/soldes.php');
 }
 ?>
 <body>
@@ -169,8 +207,21 @@ if(isset($_POST['converter'])){
             <form method = "POST">
             <label for="convert">
                 <h2>Convertir une monnaie : </h2>
-                Monnaie à convertir : <input type="text" class="input_white" id="convert" name="convert" autocomplete="off"><br>
-                Monnaie de destination : <input type="text" class="input_white" id="convert1" name="convert2" autocomplete="off"><br>
+                Devise à convertir : <select name="convert">
+                <?php
+                $options = array("Euro", "Bitcoin", "Chamo", "Dollar", "Euro Belge", "Coding", "Dong");
+                foreach ($options as $option) {
+                    echo "<option class='input_white' value='$option'>$option</option>";
+                }
+                ?>
+</select><br>
+                Devise de destination : <select name="convert2">
+                <?php
+                $options = array("Euro", "Bitcoin", "Chamo", "Dollar", "Euro Belge", "Coding", "Dong");
+                foreach ($options as $option) {
+                    echo "<option class='input_white' value='$option'>$option</option>";
+                }
+                ?></select><br>
                 Montant : <input type="number" class="input_white" id="convert" name="montant" autocomplete="off"><br>
             </label>
             <input type="submit" class="bouton_envoi" name="converter" value="CONVERTIR">
@@ -181,6 +232,13 @@ if(isset($_POST['converter'])){
             <label for="virement">
             <h2>Faire un virement : </h2>
             Numéro de compte : <input type="text" class="input_white" id="depot" name="compte_virement" autocomplete="off"><br>
+            Devise de virement :  <select name="devise_virement">
+                <?php
+                $options = array("Euro", "Bitcoin", "Chamo", "Dollar", "Euro Belge", "Coding", "Dong");
+                foreach ($options as $option) {
+                    echo "<option class='input_white' value='$option'>$option</option>";
+                }
+                ?></select><br>
             Montant : <input type="text" class="input_white" id="depot" name="montant_virement" autocomplete="off"><br>
             </label>
             <input type="submit" class="bouton_envoi" value="FAIRE UN VIREMENT" name="virement">

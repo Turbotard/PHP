@@ -209,6 +209,13 @@ form{
     border-radius: 10%;
     font-family: 'UTM Banque', sans-serif;
 }
+select{
+    color: rgba(255, 255, 255, 0.8);
+    background-color: #9370DB;
+    border: none;
+    border-radius: 10%;
+    font-family: 'UTM Banque', sans-serif;
+}
 .table{
     display: flex;
     flex-direction: column;
