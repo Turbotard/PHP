@@ -94,26 +94,6 @@ require_once __DIR__ . '/../src/templates/partials/headers.inc.php';
 </div>
 </div>
     </section>
-    <?php
-
-
-
-$bdd=new PDO('mysql:host=localhost;dbname=BNParihaut;charset=utf8;','root','root');
-if(isset($_POST["inscription"])){
-    if(!empty($_POST["email"])AND !empty($_POST["pseudo"])AND !empty($_POST["mdp"])AND !empty($_POST["confirm_mdp"])AND $_POST['mdp']==
-    $_POST['confirm_mdp']AND strlen($_POST['pseudo']>4) AND strlen($_POST['mdp']>8)AND
-    preg_match('#^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).{10,}$#',$_POST['mdp'])AND filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
-        $email=htmlspecialchars($_POST["email"]);
-        $nom=htmlspecialchars($_POST["name"]);
-        $prenom=htmlspecialchars($_POST["first_name"]);
-        $dateNaiss=date("d-m-Y", strtotime($_POST["dateNaiss"]));
-        $numTel=htmlspecialchars($_POST["numTel"]);
-        $mdp=sha1($_POST["mdp"]);
-        $insertUser = $bdd->prepare('INSERT INTO utilisateur(email,mot_de_passe,pseudo) VALUES(?, ?, ?)');
-        $insertUser->execute(array($email,$mdp,$pseudo));
-    }   
-}
-?>
 </form>
 </div>
 </div>
