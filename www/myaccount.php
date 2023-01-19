@@ -22,7 +22,7 @@ $currencie = $_SESSION['transactions']['id_currencie'];
 
 <div>
     <h1 class="espace_banque">MON ESPACE</h1>
-</div class="table">
+<div class="table">
     <div>
     <div class="ligne 1">
         <h2>NOM : <?php echo ($_SESSION['user']['nom']);?></h2> 
@@ -133,7 +133,6 @@ $currencie = $_SESSION['transactions']['id_currencie'];
     </div>
 </div><br><br><br>
 <div class="solde"><a href="./deconnexion.php"><button class="bouton">DECONNEXION</button></a></div>
-
 </div>
 </div>
 <?php require_once __DIR__ . '/../src/templates/partials/bouton_scroll_haut.php'; ?>
