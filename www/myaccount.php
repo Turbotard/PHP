@@ -38,16 +38,17 @@ $currencie = $_SESSION['transactions']['id_currencie'];
         };?></h2>
         <div class="solde"><a href="/soldes.php"><button class="bouton">MES SOLDES</button></a></div>
     </div> <br>
+    <div class="table">
     <div class="ligne2">
-            <div class="historique">
+            <div class="transactions">
             <h2>MES TRANSACTION</h2>
             <div class="tableau">
                 <?php
                     echo '<div>'.$somme.'</div>';
                     echo '<div>'.$currencie.'</div>';
                 ?>
-                
             </div>
+        </div>
         </div>
         <div class="infos">
             <h2>MODIFIER MES INFORMATIONS</h2>
@@ -56,15 +57,25 @@ $currencie = $_SESSION['transactions']['id_currencie'];
                     <label for="nom">NOM : 
                         <input type="text" name="nom" id="nom" class="input_white">
                     </label>
-                    <input type="submit" class="bouton_envoi" value="MODIFIER">
+                    <input type="submit" class="bouton_envoi" name="modif_nom" value="MODIFIER">
                 </form>
+                <?php
+                    if(isset($_POST['modif_nom'])&& !empty($_POST['nom'])){
+                        $nom = $_POST['nom'];
+                        $req = $db->prepare("UPDATE users SET nom = ? WHERE id = ?");
+                        $req->execute(array(
+                            $nom,
+                            $_SESSION['user']['id']
+                        ));
+                    }
+                    ?>
             </div><br>
             <div class="prénom">
                 <form>
                     <label for="prénom">PRENOM : 
                         <input type="text" name="prénom" id="prénom" class="input_white">
                     </label>
-                    <input type="submit" class="bouton_envoi" value="MODIFIER">
+                    <input type="submit" class="bouton_envoi" name="modif_prenom" value="MODIFIER">
                 </form>
             </div><br>
             <div class="email">
@@ -72,7 +83,7 @@ $currencie = $_SESSION['transactions']['id_currencie'];
                     <label for="email">EMAIL : 
                         <input type="text" name="email" id="email" class="input_white">
                     </label>
-                    <input type="submit" class="bouton_envoi" value="MODIFIER">
+                    <input type="submit" class="bouton_envoi" name="modif_mail" value="MODIFIER">
                 </form>
             </div><br>
             <div class="mdp">
@@ -80,7 +91,7 @@ $currencie = $_SESSION['transactions']['id_currencie'];
                     <label for="mdp">MOT DE PASSE : 
                         <input type="text" name="mdp" id="mdp" class="input_white">
                     </label>
-                    <input type="submit" class="bouton_envoi" value="MODIFIER">
+                    <input type="submit" class="bouton_envoi" name="modif_mdp" value="MODIFIER">
                 </form>
             </div><br>
             <div class="dateNaiss">
@@ -88,7 +99,7 @@ $currencie = $_SESSION['transactions']['id_currencie'];
                     <label for="dateNaiss">DATE DE NAISSANCE : 
                         <input type="date" name="dateNaiss" id="dateNaiss" class="input_white">
                     </label>
-                    <input type="submit" class="bouton_envoi" value="MODIFIER">
+                    <input type="submit" class="bouton_envoi" name="modif_date" value="MODIFIER">
                 </form>
             </div><br>
             <div class="tel">
@@ -96,12 +107,12 @@ $currencie = $_SESSION['transactions']['id_currencie'];
                     <label for="tel">TELEPHONE : 
                         <input type="text" name="tel" id="tel" class="input_white">
                     </label>
-                    <input type="submit" class="bouton_envoi" value="MODIFIER">
+                    <input type="submit" class="bouton_envoi" name="modif_tel" value="MODIFIER">
                 </form>
             </div>
     </div>
 </div><br><br><br>
-<div class="solde"><a href="./déconnexion.php"><button class="bouton">DECONNEXION</button></a></div>
+<div class="solde"><a href="./deconnexion.php"><button class="bouton">DECONNEXION</button></a></div>
 
 </div>
 </div>

@@ -32,12 +32,7 @@ $sql7 = $db->prepare('SELECT solde FROM bankaccounts WHERE id_currencies = 7 AND
 $sql7->execute([$_SESSION['user']['id']]);
 $solde7 = $sql7->fetch();
 
-if(isset($_POST['converter'])){
-    $convert= $db->prepare('SELECT valeure FROM currencies WHERE nomoney = ?');
-    $euro= ($convert->execute([$_POST['convert']]))*($_POST['montant']);
-    $montant2 = $euro/($convert->execute([$_POST['convert2']]));
-    echo $montant2;
-}
+
 ?>
 <body>
 <?php require_once __DIR__ . '/../src/templates/partials/headers.inc.php';
@@ -112,6 +107,14 @@ if(isset($_POST['converter'])){
             </label>
             <input type="submit" class="bouton_envoi" name="converter" value="CONVERTIR">
             </form>
+            <?php
+            if(isset($_POST['converter'])&& !empty($_POST['convert']) && !empty($_POST['convert2']) && !empty($_POST['montant'])){
+                $convert= $db->prepare('SELECT valeure FROM currencies WHERE nomoney = ?');
+                $euro= ($convert->execute([$_POST['convert']]))*($_POST['montant']);
+                $montant2 = $euro/($convert->execute([$_POST['convert2']]));
+                echo "succès";
+            }
+            ?>
         </div>
         <form>
             <div class="virement">
