@@ -25,35 +25,42 @@ else{
     $somme = $_SESSION['transactions'][0]['somme']; 
     $currencie = $_SESSION['transactions'][0]['id_currencie'];
 }
-if(isset($_POST['modif_nom']) && !empty($_POST['nom'])){
+
+
+if(isset($_POST['modif_nom']) ){
     $var = $db->prepare('UPDATE users SET nom = ? WHERE id = ?');
     $var->execute([$_POST['nom'], $_SESSION['user']['id']]);
-    $_SESSION['user']['nom'] = $_POST['nom'];
+    header('Location: myaccount.php');
 }
-if(isset($_POST['modif_prenom']) && !empty($_POST['prenom'])){
+
+if(isset($_POST['modif_prenom']) ){
     $var = $db->prepare('UPDATE users SET prenom = ? WHERE id = ?');
     $var->execute([$_POST['prénom'], $_SESSION['user']['id']]);
-    $_SESSION['user']['prenom'] = $_POST['prénom'];
+    header('Location: myaccount.php');
 }
-if(isset($_POST['modif_mail']) && !empty($_POST['email'])){
+
+if(isset($_POST['modif_mail'])){
     $var = $db->prepare('UPDATE users SET email = ? WHERE id = ?');
     $var->execute([$_POST['email'], $_SESSION['user']['id']]);
-    $_SESSION['user']['email'] = $_POST['email'];
+    header('Location: myaccount.php');
 }
-if(isset($_POST['modif_mdp']) && !empty($_POST['mdp'])){
+
+if(isset($_POST['modif_mdp'])){
     $var = $db->prepare('UPDATE users SET mdp = ? WHERE id = ?');
     $var->execute([$_POST['mdp'], $_SESSION['user']['id']]);
-    $_SESSION['user']['mdp'] = $_POST['mdp'];
+    header('Location: myaccount.php');
 }
-if(isset($_POST['modif_date']) && !empty($_POST['dateNaiss'])){
+
+if(isset($_POST['modif_date'])){
     $var = $db->prepare('UPDATE users SET naissance = ? WHERE id = ?');
     $var->execute([$_POST['dateNaiss'], $_SESSION['user']['id']]);
-    $_SESSION['user']['dateNaiss'] = $_POST['dateNaiss'];
+    header('Location: myaccount.php');
 }
-if(isset($_POST['modif_tel']) && !empty($_POST['tel'])){
+
+if(isset($_POST['modif_tel'])){
     $var = $db->prepare('UPDATE users SET tel = ? WHERE id = ?');
     $var->execute([$_POST['tel'], $_SESSION['user']['id']]);
-    $_SESSION['user']['tel'] = $_POST['tel'];
+    header('Location: myaccount.php');
 }
 ?>
 
@@ -65,7 +72,7 @@ if(isset($_POST['modif_tel']) && !empty($_POST['tel'])){
         <h2>NOM : <?php echo ($_SESSION['user']['nom']);?></h2> 
         <h2>PRENOM : <?php echo ($_SESSION['user']['prenom']);?></h2>
         <h2>NUMERO DE CLIENT : <?php echo ($_SESSION['user']['client_number']);?></h2>
-        <h2>GRADE : <?php if($_SESSION['user']['grade'] == 1){
+        <h2>GRADE : <?php if($_SESSION['user']['grade'] == 10){
             echo "Client";
         }else if($_SESSION['user']['grade'] == 1000){
             echo "Admin";

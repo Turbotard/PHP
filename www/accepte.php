@@ -121,6 +121,12 @@ $donnees3 = $var3->fetchAll();
                             echo " ";
                             echo '<input type="submit" class="bouton_accepte" name="accepte" value="✔️">';
                             echo "</br>";
+
+                            if(isset($_POST['accepte'])){
+                                $var = $db->prepare('UPDATE users SET grade = 10 WHERE id = ?');
+                                $var->execute([$donnee['id']]);
+                                header('Location: accepte.php');
+                            }
                         }
                     ?>
                     </div>
