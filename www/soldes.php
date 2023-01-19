@@ -33,6 +33,16 @@ $sql7->execute([$_SESSION['user']['id']]);
 $solde7 = $sql7->fetch();
 
 
+if(isset($_POST['depot'])){
+    $montant = $_POST['montant_depot'];
+    $var = $db->prepare('UPDATE bankaccounts SET solde = solde + ? WHERE id_currencies = 1 AND id_user = ?');
+    $var->execute([$montant, $_SESSION['user']['id']]);
+
+    $var2 = $db->prepare('INSERT INTO transactions (id_account, somme, id_currencie) VALUES (?, ?, ?)');
+    $var2->execute([$_SESSION['user']['id'], $montant, 1]);
+}
+
+
 ?>
 <body>
 <?php require_once __DIR__ . '/../src/templates/partials/headers.inc.php';
@@ -86,9 +96,9 @@ $solde7 = $sql7->fetch();
         <div class="dépot">
         <label for="dépôt">
             <h2>Faire un dépot : </h2>
-            Montant : <input type="text" class="input_white" id="depot" name="depot" autocomplete="off"><br>
+            Montant : <input type="text" class="input_white" id="depot" name="montant_depot" autocomplete="off"><br>
         </label>
-        <input type="submit" class="bouton_envoi" name="dépot" value="DEPOT">
+        <input type="submit" class="bouton_envoi" name="depot" value="DEPOT">
     </div>
         <div class="convert">
             <label for="convert">
@@ -105,7 +115,7 @@ $solde7 = $sql7->fetch();
             Numéro de compte : <input type="text" class="input_white" id="depot" name="compte_virement" autocomplete="off"><br>
             Montant : <input type="text" class="input_white" id="depot" name="montant_virement" autocomplete="off"><br>
         </label>
-    <input type="submit" class="bouton_envoi" value="FAIRE UN VIREMENT">
+    <input type="submit" class="bouton_envoi" value="FAIRE UN VIREMENT" name="virement">
     </div>
     </div>
 <?php require_once __DIR__ . '/../src/templates/partials/bouton_scroll_haut.php'; ?>
