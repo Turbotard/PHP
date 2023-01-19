@@ -16,9 +16,16 @@ $_SESSION['bank'] = $donnees; // prend tout les comptes en rapport avec le user
 $var2 = $db-> prepare('SELECT * FROM transactions WHERE id_user = ?');
 $var2->execute([$_SESSION['user']['id']]);
 $donnees2 = $var2->fetch();
-$_SESSION['transactions'] = $donnees2;
-$somme = $_SESSION['transactions']['somme']; 
-$currencie = $_SESSION['transactions']['id_currencie'];
+if ($donnees2 == null){
+    $verif = false;
+}
+else{
+    $verif = true;
+    $_SESSION['transactions'] = $donnees2;
+    $somme = $_SESSION['transactions']['somme']; 
+    $currencie = $_SESSION['transactions']['id_currencie'];
+}
+
 ?>
 
 <div>
@@ -42,7 +49,7 @@ $currencie = $_SESSION['transactions']['id_currencie'];
             <div class="tableau">
             <?php
             // Check if there are any transactions
-            if(count($donnees2) > 0){
+            if($verif){
 
 
             // Loop through the transactions and display them in a table
