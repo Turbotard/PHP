@@ -53,12 +53,11 @@ else{
 
 
             // Loop through the transactions and display them in a table
-            foreach($donnees2 as $transaction) {
+            
                 echo $somme;
                 echo $currencie;
-
-            }
-
+           
+            
             } else {
             echo "Il n'y a pas d'historique de transaction pour ce compte.";
         }
