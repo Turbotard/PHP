@@ -504,3 +504,9 @@ footer{
     margin-bottom: 20px;
     list-style-type: square;
 }
+
+.container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
