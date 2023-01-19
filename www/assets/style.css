@@ -269,6 +269,13 @@ form{
     align-items: center;
     text-align: center;
 }
+.historique {
+    display: flex;
+    flex-direction: column;
+    border: 5px solid #9370DB;
+    border-radius: 10%;
+    background-color: rgba(0, 0, 0,0.3);
+}
 .inscription{
     background-image: url(/assets/fond_inscription.png);
     background-repeat: no-repeat;
@@ -485,11 +492,4 @@ footer{
     margin-top: 20px;
     margin-bottom: 20px;
     list-style-type: square;
-}
-.historique {
-    display: flex;
-    flex-direction: column;
-    border: 5px solid #9370DB;
-    border-radius: 10%;
-    background-color: rgba(0, 0, 0,0.3);
 }

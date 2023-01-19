@@ -63,9 +63,9 @@ else{
             } else {
             echo "Il n'y a pas d'historique de transaction pour ce compte.";
         }
-        ?>
-                    
+        ?>    
             </div>
+            <br>
         </div>
         <div class="infos">
             <h2>MODIFIER MES INFORMATIONS</h2>
