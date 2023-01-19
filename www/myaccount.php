@@ -55,7 +55,28 @@ else{
             // Loop through the transactions and display them in a table
             foreach($donnees2 as $transaction){
                 echo $transaction['somme'];
-                echo $transaction['id_currencie'];
+                    echo " ";
+                if ($transaction['id_currencie'] == 1){
+                    echo "€";
+                }
+                elseif ($transaction['id_currencie'] == 2){
+                    echo "₿";
+                }
+                elseif ($transaction['id_currencie'] == 3){
+                    echo "&#x1F42B";
+                }
+                elseif ($transaction['id_currencie'] == 4){
+                    echo "$";
+                }
+                elseif ($transaction['id_currencie'] == 5){
+                    echo "€B";
+                }
+                elseif ($transaction['id_currencie'] == 6){
+                    echo "Co";
+                }
+                elseif ($transaction['id_currencie'] == 7){
+                    echo "₫";
+                }
                 echo '</br>';
             }
            

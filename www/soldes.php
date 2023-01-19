@@ -66,7 +66,6 @@ if (isset($_POST['retrait'])){
 
     header('location:/soldes.php');
 }
-<<<<<<< Updated upstream
 
 if(isset($_POST['converter'])){
     $convert= $db->prepare('SELECT valeure FROM currencies WHERE nomoney = ?');
@@ -74,8 +73,6 @@ if(isset($_POST['converter'])){
     $montant2 = $euro/($convert->execute([$_POST['convert2']]));
     echo $montant2;
 }
-=======
->>>>>>> Stashed changes
 ?>
 <body>
 <?php require_once __DIR__ . '/../src/templates/partials/headers.inc.php'; ?>
