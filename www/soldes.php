@@ -37,6 +37,7 @@ $bankaccount->execute([$_SESSION['user']['id']]);
 $bankaccount = $bankaccount->fetch();
 
 
+
 if (isset($_POST['depot'])){
     $quantiter_depot = $_POST['montant_depot'];
 
@@ -65,6 +66,33 @@ if (isset($_POST['retrait'])){
     $sql_depo->execute([ $bankaccount['id'], '-'.$quantiter_retrait, 1, 1]);
 
     header('location:/soldes.php');
+}
+
+if (isset($_POST['virement'])){
+    $montant_virement = $_POST['montant_virement'];
+    $compte_virement = $_POST['compte_virement'];
+
+    $id_virement = $db->prepare('SELECT id_user FROM bankaccounts WHERE numerocompte = ?');
+    $id_virement->execute([$compte_virement]);
+    $id_virement = $id_virement->fetch();
+
+    $bankaccount2 = $db->prepare('SELECT id FROM bankaccounts WHERE id_user = ? AND id_currencies = 1');
+    $bankaccount2->execute([$id_virement['id_user']]);
+    $bankaccount2 = $bankaccount2->fetch();
+
+
+    $sql = $db->prepare('UPDATE bankaccounts SET solde = solde - ? WHERE id_currencies = 1 AND id_user = ?');
+    $sql->execute([$montant_virement, $_SESSION['user']['id']]);
+
+    $sql_trans = $db->prepare('INSERT INTO transactions (id_account, somme, id_currencie, id_user) VALUES (?, ?, ?, ?)');
+    $sql_trans->execute([$bankaccount['id'], '-'.$montant_virement,1, $_SESSION['user']['id']]);
+
+    $sql2 = $db->prepare('UPDATE bankaccounts SET solde = solde + ? WHERE id_currencies = 1 AND id_user = ?');
+    $sql2->execute([$montant_virement, $compte_virement]);
+
+    $sql_trans = $db->prepare('INSERT INTO transactions (id_account, somme, id_currencie, id_user) VALUES (?, ?, ?, ?)');
+    $sql_trans->execute([$bankaccount2['id'], $montant_virement, 1, $id_virement['id_user']]);
+
 }
 
 if(isset($_POST['converter'])){
@@ -136,7 +164,7 @@ if(isset($_POST['converter'])){
     </div>
     <div class="ligne2">
         <div class="convert">
-            <form>
+            <form method = "POST">
             <label for="convert">
                 <h2>Convertir une monnaie : </h2>
                 Monnaie à convertir : <input type="text" class="input_white" id="convert" name="convert" autocomplete="off"><br>
@@ -154,7 +182,7 @@ if(isset($_POST['converter'])){
             }
             ?>
         </div>
-        <form>
+        <form method="POST">
             <div class="virement">
             <label for="virement">
             <h2>Faire un virement : </h2>
