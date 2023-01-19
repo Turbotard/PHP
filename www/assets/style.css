@@ -157,6 +157,11 @@ form{
     align-items: center;
     text-align: center;
 }
+.infos{
+    border: 5px solid #9370DB;
+    border-radius: 10%;
+    background-color: rgba(0, 0, 0,0.3);
+}
 .i{
     display: flex;
     flex-direction: column;

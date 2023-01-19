@@ -32,7 +32,12 @@ $sql7 = $db->prepare('SELECT solde FROM bankaccounts WHERE id_currencies = 7 AND
 $sql7->execute([$_SESSION['user']['id']]);
 $solde7 = $sql7->fetch();
 
-
+if(isset($_POST['converter'])){
+    $convert= $db->prepare('SELECT valeure FROM currencies WHERE nomoney = ?');
+    $euro= ($convert->execute([$_POST['convert']]))*($_POST['montant']);
+    $montant2 = $euro/($convert->execute([$_POST['convert2']]));
+    echo $montant2;
+}
 ?>
 <body>
 <?php require_once __DIR__ . '/../src/templates/partials/headers.inc.php';
@@ -74,7 +79,7 @@ $solde7 = $sql7->fetch();
             <img src="/assets/dong.png" alt="Dong"><br>
             <h4><?php echo number_format($solde7['solde'], 2);?></h4><br>
         </div>
-    </div>
+    </div> <br>
     <div class="transactions">
         <div class="ligne1">
         <div class="retrait">

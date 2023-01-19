@@ -3,13 +3,7 @@ require_once __DIR__ . '/../src/init.php';
 require_once __DIR__ . '/../src/config.php';
 $page_title = 'Mon espace';
 require_once __DIR__ . '/../src/templates/partials/html_head.php';
-if(isset($_POST['converter'])){
-    $montant = $_POST['montant'];
-    $devise = $_POST['convert'];
-    $devise2 = $_POST['convert1'];
-    $montant2 = $montant * $devise2 / $devise;
-    echo $montant2;
-}
+
 ?>
 <body>
 <?php require_once __DIR__ . '/../src/templates/partials/headers.inc.php';
@@ -29,7 +23,7 @@ if(isset($_POST['converter'])){
             echo "Admin";
         };?></h2>
         <div class="solde"><a href="/soldes.php"><button class="bouton">MES SOLDES</button></a></div>
-    </div>
+    </div> <br>
     <div class="ligne2">
         <h2>MES TRANSACTION</h2>
         <div class="tableau">
