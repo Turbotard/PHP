@@ -32,15 +32,23 @@ $sql7 = $db->prepare('SELECT solde FROM bankaccounts WHERE id_currencies = 7 AND
 $sql7->execute([$_SESSION['user']['id']]);
 $solde7 = $sql7->fetch();
 
+$bankaccount = $db->prepare('SELECT id FROM bankaccounts WHERE id_user = ? AND id_currencies = 1');
+$bankaccount->execute([$_SESSION['user']['id']]);
+$bankaccount = $bankaccount->fetch();
+
 
 if (isset($_POST['depot'])){
     $quantiter_depot = $_POST['montant_depot'];
+
     $sql = $db->prepare('UPDATE bankaccounts SET solde = solde + ? WHERE id_currencies = 1 AND id_user = ?');
     $sql->execute([$quantiter_depot, $_SESSION['user']['id']]);
-    $sql_trans = $db->prepare('INSERT INTO transactions (id_account, somme, id_currencie) VALUES (?, ?, ?)');
-    $sql_trans->execute([$_SESSION['number_account'], $quantiter_depot,1]);
+
+    $sql_trans = $db->prepare('INSERT INTO transactions (id_account, somme, id_currencie, id_user) VALUES (?, ?, ?, ?)');
+    $sql_trans->execute([$bankaccount['id'], $quantiter_depot,1, $_SESSION['user']['id']]);
+    
     $sql_depo =$db->prepare('INSERT INTO deposits ( id_account, somme, id_currencie, done) VALUES(? ,?, ?, ?)');
-    $sql_depo->execute([$_SESSION['user']['id'], $_SESSION['number_account'], $quantiter_depot, 1, 1]);
+    $sql_depo->execute([ $bankaccount['id'], $quantiter_depot, 1, 1]);
+
     header('location:/soldes.php');
 
 }
