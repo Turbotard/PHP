@@ -91,7 +91,7 @@ else{
         <div class="infos">
             <h2>MODIFIER MES INFORMATIONS</h2>
             <div class="nom">
-                <form>
+                <form method="POST">
                     <label for="nom">NOM : 
                         <input type="text" name="nom" id="nom" class="input_white">
                     </label>
@@ -99,7 +99,7 @@ else{
                 </form>
             </div><br>
             <div class="prénom">
-                <form>
+                <form method="POST">
                     <label for="prénom">PRENOM : 
                         <input type="text" name="prénom" id="prénom" class="input_white">
                     </label>
@@ -107,7 +107,7 @@ else{
                 </form>
             </div><br>
             <div class="email">
-                <form>
+                <form method="POST">
                     <label for="email">EMAIL : 
                         <input type="text" name="email" id="email" class="input_white">
                     </label>
@@ -115,7 +115,7 @@ else{
                 </form>
             </div><br>
             <div class="mdp">
-                <form>
+                <form method ="POST">
                     <label for="mdp">MOT DE PASSE : 
                         <input type="text" name="mdp" id="mdp" class="input_white">
                     </label>
@@ -123,7 +123,7 @@ else{
                 </form>
             </div><br>
             <div class="dateNaiss">
-                <form>
+                <form method="POST">
                     <label for="dateNaiss">DATE DE NAISSANCE : 
                         <input type="date" name="dateNaiss" id="dateNaiss" class="input_white">
                     </label>
@@ -131,7 +131,7 @@ else{
                 </form>
             </div><br>
             <div class="tel">
-                <form>
+                <form method="POST">
                     <label for="tel">TELEPHONE : 
                         <input type="text" name="tel" id="tel" class="input_white">
                     </label>
