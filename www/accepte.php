@@ -4,11 +4,11 @@ require_once __DIR__ . '/../src/config.php';
 $page_title = 'Acceptations';
 require_once __DIR__ . '/../src/templates/partials/html_head.php';
 
-$var = $db->prepare('SELECT * FROM deposits WHERE done = 1');
+$var = $db->prepare('SELECT * FROM deposits WHERE done = 0');
 $var->execute();
 $donnees = $var->fetchAll();
 
-$var2 = $db->prepare('SELECT * FROM withdrawals WHERE done = 1');
+$var2 = $db->prepare('SELECT * FROM withdrawals WHERE done = 0');
 $var2->execute();
 $donnees2 = $var2->fetchAll();
 
