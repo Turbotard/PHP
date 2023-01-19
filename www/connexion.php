@@ -55,19 +55,9 @@ require_once __DIR__ . '/../src/templates/partials/headers.inc.php';
     <form class="login-form" method="POST" >
       Numéro Client : <input class="input_white" type="text" name="client_number"/>
       Mot de passe : <input class="input_white" type="password" name="mdp"/>
-      <input class="bouton_envoi" type="submit" value="login" name="submit">
+      <input class="bouton_envoi" type="submit" value="CONNEXION" name="submit">
       <p class="redirect">Pas inscrit ? <a href="/inscription.php">Créez un compte !</a></p>
     </form>
-    <script>
-      const togglePassword = document.querySelector('.case');
-      const passwordField = document.querySelector("input[type=password]");
-      if(togglePassword:checked + togglePassword::after) {
-        passwordField.type = "text";
-      }
-      else{
-        passwordField.type = "password";
-      }
-    </script>
   </div>
 </div>
   </div>

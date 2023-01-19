@@ -220,6 +220,12 @@ form{
     text-align: center;
     vertical-align: middle;
 }
+.transactions{
+   text-align: center;
+   border: 5px solid #9370DB;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0,0.3);
+}
 .espace_banque{
     background-image: url(/assets/fond_mon_espace.png);
     background-repeat: no-repeat;
