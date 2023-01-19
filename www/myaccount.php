@@ -8,16 +8,7 @@ require_once __DIR__ . '/../src/templates/partials/html_head.php';
 ?>
 <body>
 <?php require_once __DIR__ . '/../src/templates/partials/headers.inc.php';
-$var = $db->prepare('SELECT * FROM bankaccounts WHERE id_user = ?');
-$var->execute([$_SESSION['user']['id']]);
-$donnees = $var->fetchAll();
-$_SESSION['bank'] = $donnees;
-$var2 = $db-> prepare('SELECT * FROM transactions WHERE id_account = ?');
-$var2->execute([$_SESSION['bank']['id']]);
-$donnees2 = $var2->fetch();
-$_SESSION['transactions'] = $donnees2;
-$somme = $_SESSION['transactions']['somme']; 
-$currencie = $_SESSION['transactions']['id_currencie'];
+
 ?>
 
 <div>
@@ -39,34 +30,26 @@ $currencie = $_SESSION['transactions']['id_currencie'];
             <div class="historique">
             <h2>MES TRANSACTION</h2>
             <div class="tableau">
-                    
-                    <table>
-                        <thead>
-                        <tr>
-                            <th>Numéro de compte</th>
-                            <th>Montant</th>
-                            <th>Devise</th>
-                            <th>Date</th>
-                            <th>Type</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        $i = 0;
-                        $count = count($_SESSION['transactions']);
-                        while($i < $count) {
-                            echo '<tr>';
-                            echo '<td>' . $_SESSION['transactions'][$i]['numerocompte'] . '</td>';
-                            echo '<td>' . $_SESSION['transactions'][$i]['montant'] . '</td>';
-                            echo '<td>' . $_SESSION['transactions'][$i]['id_currencie'] . '</td>';
-                            echo '<td>' . $_SESSION['transactions'][$i]['date'] . '</td>';
-                            echo '<td>' . $_SESSION['transactions'][$i]['type'] . '</td>';
-                            echo '</tr>';
-                            $i++;
-                            }
-                            ?>
-                        </tbody>
-                    </table>
+            <?php
+            $var = $db->prepare('SELECT * FROM bankaccounts WHERE id_user = ?');
+            $var->execute([$_SESSION['user']['id']]);
+            $donnees = $var->fetchAll();
+            $_SESSION['bank'] = $donnees;
+            $var2 = $db-> prepare('SELECT * FROM transactions WHERE id_account = ?');
+            $var2->execute([$_SESSION['bank']['id']]);
+            $donnees2 = $var2->fetch();
+            $_SESSION['transactions'] = $donnees2;
+            $somme = $_SESSION['transactions']['somme']; 
+            $currencie = $_SESSION['transactions']['id_currencie'];
+            foreach($transactions as $transaction) {
+                echo '<tr>';
+                echo '<td>' . $transaction['somme'] . '</td>';
+                echo '<td>' . $transaction['id_currencie'] . '</td>';
+                echo '</tr>';
+            }
+            ?>    
+            
+}
 
                     
             </div>
