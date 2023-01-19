@@ -139,7 +139,7 @@ foreach($bankaccounts as $bankaccount) {
             </div>
     </div>
 </div><br><br><br>
-<div class="solde"><a href="./déconnexion.php"><button class="bouton">DECONNEXION</button></a></div>
+<div class="solde"><a href="./deconnexion.php"><button class="bouton">DECONNEXION</button></a></div>
 
 </div>
 </div>
