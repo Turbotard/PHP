@@ -53,13 +53,7 @@ $currencie = $_SESSION['transactions']['id_currencie'];
 $query->execute();
 $bankaccounts = $query->fetchAll();
 
-foreach($bankaccounts as $bankaccount) {
-    echo $bankaccount['id'] . '<br>';
-    echo $bankaccount['numerocompte'] . '<br>';
-    echo $bankaccount['solde'] . '<br>';
-    echo $bankaccount['id_currencies'] . '<br>';
-    echo '<br>';
-}
+
             // Check if there are any transactions
             if(count($transactions) > 0){
             echo '<table>';
@@ -139,7 +133,7 @@ foreach($bankaccounts as $bankaccount) {
             </div>
     </div>
 </div><br><br><br>
-<div class="solde"><a href="./déconnexion.php"><button class="bouton">DECONNEXION</button></a></div>
+<div class="solde"><a href="./deconnexion.php"><button class="bouton">DECONNEXION</button></a></div>
 
 </div>
 </div>
