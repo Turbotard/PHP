@@ -510,3 +510,53 @@ footer{
     flex-direction: row;
     justify-content: space-around;
 }
+
+.bouton_accepte{
+    font-family: 'UTM Banque', sans-serif;
+    color: rgba(255, 255, 255, 0.8);
+    background-color: #9370DB;
+    border: none;
+    border-radius: 10%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    -webkit-transition: all 0.1s;
+    -moz-transition: all 0.1s;
+    transition: all 0.1s;
+    -webkit-box-shadow: 0px 4px 0px #483D8B;
+    -moz-box-shadow: 0px 4px 0px #483D8B;
+    box-shadow: 0px 4px 0px #483D8B;
+    width: auto;
+    font-size: larger;
+    font-weight: bolder;
+}
+
+.bouton_accepte:hover{
+    font-family: 'UTM Banque', sans-serif;
+    color: rgba(255, 255, 255, 0.8);
+    background-color: #7e60ba;
+    border: none;
+    border-radius: 10%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    -webkit-transition: all 0.1s;
+    -moz-transition: all 0.1s;
+    transition: all 0.1s;
+    -webkit-box-shadow: 0px 3px 0px #483D8B;
+    -moz-box-shadow: 0px 3px 0px #483D8B;
+    box-shadow: 0px 3px 0px #483D8B;
+    width: auto;
+    font-size: larger;
+    font-weight: bolder;
+}
+
+.bouton_accepte:active{
+    font-family: 'UTM Banque', sans-serif;
+    -webkit-box-shadow: 0px 2px 0px #483D8B;
+    -moz-box-shadow: 0px 2px 0px #483D8B;
+    box-shadow: 0px 2px 0px #483D8B;
+    position:relative;
+    top:1px;
+    width: auto;
+    font-size: larger;
+    font-weight: bolder;
+}

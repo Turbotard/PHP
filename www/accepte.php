@@ -111,7 +111,9 @@ $donnees3 = $var3->fetchAll();
                             echo " ";
                             echo $donnee['mail'];
                             echo " ";
-                            echo $donnee['tel'];   
+                            echo $donnee['tel'];
+                            echo " ";
+                            echo '<input type="submit" class="bouton_accepte" name="accepte" value="✔️">';
                             echo "</br>";
                         }
                     ?>
