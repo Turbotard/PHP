@@ -45,7 +45,7 @@ if (isset($_POST['depot'])){
     $sql->execute([$quantiter_depot, $_SESSION['user']['id']]);
 
     $sql_trans = $db->prepare('INSERT INTO transactions (id_account, somme, id_currencie, id_user) VALUES (?, ?, ?, ?)');
-    $sql_trans->execute([$bankaccount['id'], $quantiter_depot,1, $_SESSION['user']['id']]);
+    $sql_trans->execute([$bankaccount['id'], '+'.$quantiter_depot,1, $_SESSION['user']['id']]);
     
     $sql_depo =$db->prepare('INSERT INTO deposits ( id_account, somme, id_currencie, done) VALUES(? ,?, ?, ?)');
     $sql_depo->execute([ $bankaccount['id'], $quantiter_depot, 1, 1]);
@@ -92,7 +92,7 @@ if (isset($_POST['virement'])){
     $sql2->execute([$montant_virement,$devise, $id_virement['id_user']]);
 
     $sql_trans = $db->prepare('INSERT INTO transactions (id_account, somme, id_currencie, id_user) VALUES (?, ?, ?, ?)');
-    $sql_trans->execute([$bankaccount2['id'], $montant_virement, $devise, $id_virement['id_user']]);
+    $sql_trans->execute([$bankaccount2['id'], '+'.$montant_virement, $devise, $id_virement['id_user']]);
 
     header('location:/soldes.php');
 
