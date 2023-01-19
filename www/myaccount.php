@@ -8,7 +8,16 @@ require_once __DIR__ . '/../src/templates/partials/html_head.php';
 ?>
 <body>
 <?php require_once __DIR__ . '/../src/templates/partials/headers.inc.php';
-
+$var = $db->prepare('SELECT * FROM bankaccounts WHERE id_user = ?');
+$var->execute([$_SESSION['user']['id']]);
+$donnees = $var->fetchAll();
+$_SESSION['bank'] = $donnees;
+$var2 = $db-> prepare('SELECT * FROM transactions WHERE id_account = ?');
+$var2->execute([$_SESSION['bank']['id']]);
+$donnees2 = $var2->fetch();
+$_SESSION['transactions'] = $donnees2;
+$somme = $_SESSION['transactions']['somme']; 
+$currencie = $_SESSION['transactions']['id_currencie'];
 ?>
 
 <div>
@@ -32,9 +41,6 @@ require_once __DIR__ . '/../src/templates/partials/html_head.php';
             <div class="tableau">
             <?php
 
-            // Connect to the database
-            $db = new PDO('mysql:host=localhost;dbname=bnparihaut', 'root', 'root');
-
             // Get the account ID
             $account_id = $_SESSION['bank']['id'];
 
@@ -50,8 +56,6 @@ require_once __DIR__ . '/../src/templates/partials/html_head.php';
             echo '<tr>';
             echo '<th>Montant</th>';
             echo '<th>Devise</th>';
-            echo '<th>Taux de change</th>';
-            echo '<th>Date</th>';
             echo '</tr>';
             echo '</thead>';
             echo '<tbody>';
@@ -61,8 +65,6 @@ require_once __DIR__ . '/../src/templates/partials/html_head.php';
                 echo '<tr>';
                 echo '<td>' . $transaction['somme'] . '</td>';
                 echo '<td>' . $transaction['id_currencie'] . '</td>';
-                echo '<td>' . $transaction['taux_change'] . '</td>';
-                echo '<td>' . $transaction['date'] . '</td>';
                 echo '</tr>';
             }
             echo '</tbody>';
@@ -70,12 +72,7 @@ require_once __DIR__ . '/../src/templates/partials/html_head.php';
             } else {
             echo "Il n'y a pas d'historique de transaction pour ce compte.";
         }
-        
         ?>
-
-                        
-            }
-
                     
             </div>
         </div>
