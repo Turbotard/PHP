@@ -93,6 +93,8 @@ if (isset($_POST['virement'])){
     $sql_trans = $db->prepare('INSERT INTO transactions (id_account, somme, id_currencie, id_user) VALUES (?, ?, ?, ?)');
     $sql_trans->execute([$bankaccount2['id'], $montant_virement, 1, $id_virement['id_user']]);
 
+    header('location:/soldes.php');
+
 }
 
 if(isset($_POST['converter'])){
