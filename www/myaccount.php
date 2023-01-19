@@ -13,7 +13,7 @@ $var->execute([$_SESSION['user']['id']]);
 $donnees = $var->fetchAll();
 $_SESSION['bank'] = $donnees;
 $var2 = $db-> prepare('SELECT * FROM transactions WHERE id_account = ?');
-$var2->execute([$_SESSION['bank']['id']]);
+$var2->execute([$_SESSION['bank']]);
 $donnees2 = $var2->fetch();
 $_SESSION['transactions'] = $donnees2;
 $somme = $_SESSION['transactions']['somme']; 
@@ -43,7 +43,7 @@ $currencie = $_SESSION['transactions']['id_currencie'];
             <?php
 
             // Get the account ID
-            $account_id = $_SESSION['bank']['id'];
+            $account_id = $_SESSION['bank'];
 
             // Prepare and execute the query to retrieve the transactions
             $query = $db->prepare('SELECT * FROM transactions WHERE id_account = ?');
@@ -98,6 +98,7 @@ foreach($bankaccounts as $bankaccount) {
                     <input type="submit" class="bouton_envoi" name="modif_nom" value="MODIFIER">
                 </form>
                 <?php
+<<<<<<< Updated upstream
                     if(isset($_POST['modif_nom'])&& !empty($_POST['nom'])){
                         $nom = $_POST['nom'];
                         $req = $db->prepare("UPDATE users SET nom = ? WHERE id = ?");
@@ -106,6 +107,13 @@ foreach($bankaccounts as $bankaccount) {
                             $_SESSION['user']['id']]
                         );
                     }
+=======
+                if (isset($_POST['modif_nom']) && !empty($_POST['nom'])) {
+                    $nom = $_POST['nom'];
+                    $var = $db->prepare('UPDATE users SET nom = ? WHERE id = ?');
+                    $var->execute([$nom, $_SESSION['user']['id']]);
+                }
+>>>>>>> Stashed changes
                     ?>
             </div><br>
             <div class="prénom">
