@@ -15,8 +15,8 @@ $donnees = $var->fetchAll();
 $_SESSION['bank'] = $donnees; // prend tout les comptes en rapport avec le user
 $var2 = $db-> prepare('SELECT * FROM transactions WHERE id_user = ?');
 $var2->execute([$_SESSION['user']['id']]);
-$donnees2 = $var2->fetch();
-if ($donnees2 == null){
+$donnees2 = $var2->fetchAll();
+if (count($donnees2) == 0){
     $verif = false;
 }
 else{
@@ -53,12 +53,13 @@ else{
 
 
             // Loop through the transactions and display them in a table
-            foreach($donnees2 as $transaction) {
-                echo $somme;
-                echo $currencie;
-
+            foreach($donnees2 as $transaction){
+                echo $transaction['somme'];
+                echo $transaction['id_currencie'];
+                echo '</br>';
             }
-
+           
+            
             } else {
             echo "Il n'y a pas d'historique de transaction pour ce compte.";
         }

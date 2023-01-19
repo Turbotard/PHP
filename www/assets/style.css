@@ -44,7 +44,7 @@ a{
 .connexion:focus {
   color: rgb(0, 0, 61);
   background-color: #9370DB;
-  border-radius: 10px;
+  border-radius: 10%;
 }
 h1{
     font-size: 300%;
@@ -206,7 +206,7 @@ form{
     color: rgba(255, 255, 255, 0.8);
     background-color: #9370DB;
     border: none;
-    border-radius: 10px;
+    border-radius: 10%;
     font-family: 'UTM Banque', sans-serif;
 }
 .table{
@@ -242,7 +242,7 @@ form{
 .transactions{
    text-align: center;
    border: 5px solid #9370DB;
-    border-radius: 10px;
+    border-radius: 10%;
     background-color: rgba(0, 0, 0,0.3);
 }
 .espace_banque{
@@ -297,7 +297,7 @@ form{
     color: rgba(255, 255, 255, 0.8);
     background-color: #9370DB;
     border: none;
-    border-radius: 10px;
+    border-radius: 10%;
     width: 10%;
     height: 100%;
 }
@@ -306,7 +306,7 @@ form{
     color: rgba(255, 255, 255, 0.8);
     background-color: #9370DB;
     border: none;
-    border-radius: 10px;
+    border-radius: 10%;
     margin-top: 10px;
     margin-bottom: 10px;
     -webkit-transition: all 0.1s;
@@ -329,7 +329,7 @@ form{
     color: rgba(255, 255, 255, 0.8);
     background-color: #9370DB;
     border: none;
-    border-radius: 10px;
+    border-radius: 10%;
     margin-top: 10px;
     margin-bottom: 10px;
     -webkit-transition: all 0.1s;
@@ -358,7 +358,7 @@ form{
     color: rgba(255, 255, 255, 0.8);
     background-color: #9370DB;
     border: none;
-    border-radius: 10px;
+    border-radius: 10%;
     margin-top: 10px;
     margin-bottom: 10px;
     -webkit-transition: all 0.1s;
@@ -384,7 +384,7 @@ form{
     width: 100%;
     height: 100%;
     font-size: 300%;
-    border-radius: 10px;
+    border-radius: 10%;
     margin-top: 10px;
     margin-bottom: 10px;
     -webkit-transition: all 0.1s;
@@ -417,7 +417,7 @@ form{
     display: flex;
     flex-direction: column;
     align-items: center;
-    border-radius: 25px;
+    border-radius: 10%;
     background-color: #030133;
     width: 20%;
 }
@@ -425,7 +425,7 @@ form{
     display: flex;
     flex-direction: column;
     align-items: center;
-    border-radius: 25px;
+    border-radius: 10%;
     color: rgba(0, 0, 0, 0.8);
     background-color: white;
     width: 20%;
@@ -434,13 +434,13 @@ form{
     display: flex;
     flex-direction: column;
     align-items: center;
-    border-radius: 25px;
+    border-radius: 10%;
     color: rgba(255,255,255, 0.8);
     background-color: #000000 ;
     width: 20%;
 }
 .pdp{
-    border-radius: 25px;
+    border-radius: 10%;
 }
 video{
     display: none;
