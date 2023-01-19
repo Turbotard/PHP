@@ -24,6 +24,16 @@ if (isset($_POST['modif_nom']) && !empty($_POST['nom'])) {
     $var = $db->prepare('UPDATE users SET nom = ? WHERE id = ?');
     $var->execute(array($nom, $_SESSION['user']['id']));
 }
+if ($donnees2 == null){
+    $verif = false;
+}
+else{
+    $verif = true;
+    $_SESSION['transactions'] = $donnees2;
+    $somme = $_SESSION['transactions']['somme']; 
+    $currencie = $_SESSION['transactions']['id_currencie'];
+}
+
 ?>
 
 <div>
@@ -62,7 +72,7 @@ $bankaccounts = $query->fetchAll();
 
 
             // Check if there are any transactions
-            if(count($donnees2) > 0){
+            if($verif){
 
 
             // Loop through the transactions and display them in a table
