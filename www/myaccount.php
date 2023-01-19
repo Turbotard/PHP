@@ -12,8 +12,9 @@ $var = $db->prepare('SELECT * FROM bankaccounts WHERE id_user = ?');
 $var->execute([$_SESSION['user']['id']]);
 $donnees = $var->fetchAll();
 $_SESSION['bank'] = $donnees;
-$var2 = $db-> prepare('SELECT * FROM transactions WHERE id_account = ?');
-$var2->execute([$_SESSION['bank']]);
+var_dump($_SESSION['bank']);
+$var2 = $db-> prepare('SELECT * FROM transactions WHERE id_user = ?');
+$var2->execute([$_SESSION['user']['id']]);
 $donnees2 = $var2->fetch();
 $_SESSION['transactions'] = $donnees2;
 $somme = $_SESSION['transactions']['somme']; 
@@ -59,13 +60,7 @@ if (isset($_POST['modif_nom']) && !empty($_POST['nom'])) {
 $query->execute();
 $bankaccounts = $query->fetchAll();
 
-foreach($bankaccounts as $bankaccount) {
-    echo $bankaccount['id'] . '<br>';
-    echo $bankaccount['numerocompte'] . '<br>';
-    echo $bankaccount['solde'] . '<br>';
-    echo $bankaccount['id_currencies'] . '<br>';
-    echo '<br>';
-}
+
             // Check if there are any transactions
             if(count($transactions) > 0){
             echo '<table>';
@@ -147,6 +142,7 @@ foreach($bankaccounts as $bankaccount) {
     </div>
 </div><br><br><br>
 <div class="solde"><a href="./deconnexion.php"><button class="bouton">DECONNEXION</button></a></div>
+
 </div>
 </div>
 <?php require_once __DIR__ . '/../src/templates/partials/bouton_scroll_haut.php'; ?>
