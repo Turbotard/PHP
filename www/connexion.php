@@ -31,7 +31,17 @@ if(isset($_POST['submit'])){
       $sql->execute([$donnees['id']]);
       $solde = $sql->fetch();
       $_SESSION['solde'] = $solde['solde'];
-      header('Location:/myaccount.php');
+
+      if($_SESSION['grade'] == 1000){
+        header('Location:/admin.php');
+      }
+      else if($_SESSION['grade'] == 1){
+        header('Location:/myaccount.php');
+      }
+      else{
+        header('Location:/ban.php');
+      }
+      
     } else {
       echo "Your Login Name or Password is invalid";
     }

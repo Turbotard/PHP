@@ -4,7 +4,7 @@ require_once __DIR__ . '/../src/init.php';
 require_once __DIR__ . '/../src/config.php';
 $page_title = 'Inscription';
 
-if(isset($_POST['inscription'])){
+if(isset($_POST['inscription']) && !empty($_POST['name']) && !empty($_POST['first_name']) && !empty($_POST['email']) && !empty($_POST['dateNaiss']) && !empty($_POST['numTel']) && !empty($_POST['mpd']) && !empty($_POST['mdp2'])){
     $name = $_POST['name'];
     $first_name = $_POST['first_name'];
     $email = $_POST['email'];
