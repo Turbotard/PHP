@@ -71,27 +71,28 @@ if (isset($_POST['retrait'])){
 if (isset($_POST['virement'])){
     $montant_virement = $_POST['montant_virement'];
     $compte_virement = $_POST['compte_virement'];
+    $devise = $_POST['devise_virement'];
 
     $id_virement = $db->prepare('SELECT id_user FROM bankaccounts WHERE numerocompte = ?');
     $id_virement->execute([$compte_virement]);
     $id_virement = $id_virement->fetch();
 
-    $bankaccount2 = $db->prepare('SELECT id FROM bankaccounts WHERE id_user = ? AND id_currencies = 1');
-    $bankaccount2->execute([$id_virement['id_user']]);
+    $bankaccount2 = $db->prepare('SELECT id FROM bankaccounts WHERE id_user = ? AND id_currencies = ?');
+    $bankaccount2->execute([$id_virement['id_user'], $devise]);
     $bankaccount2 = $bankaccount2->fetch();
 
 
-    $sql = $db->prepare('UPDATE bankaccounts SET solde = solde - ? WHERE id_currencies = 1 AND id_user = ?');
-    $sql->execute([$montant_virement, $_SESSION['user']['id']]);
+    $sql = $db->prepare('UPDATE bankaccounts SET solde = solde - ? WHERE id_currencies = ? AND id_user = ?');
+    $sql->execute([$montant_virement, $devise, $_SESSION['user']['id']]);
 
     $sql_trans = $db->prepare('INSERT INTO transactions (id_account, somme, id_currencie, id_user) VALUES (?, ?, ?, ?)');
-    $sql_trans->execute([$bankaccount['id'], '-'.$montant_virement,1, $_SESSION['user']['id']]);
+    $sql_trans->execute([$bankaccount['id'], '-'.$montant_virement,$devise , $_SESSION['user']['id']]);
 
-    $sql2 = $db->prepare('UPDATE bankaccounts SET solde = solde + ? WHERE id_currencies = 1 AND id_user = ?');
-    $sql2->execute([$montant_virement, $id_virement['id_user']]);
+    $sql2 = $db->prepare('UPDATE bankaccounts SET solde = solde + ? WHERE id_currencies = ? AND id_user = ?');
+    $sql2->execute([$montant_virement,$devise, $id_virement['id_user']]);
 
     $sql_trans = $db->prepare('INSERT INTO transactions (id_account, somme, id_currencie, id_user) VALUES (?, ?, ?, ?)');
-    $sql_trans->execute([$bankaccount2['id'], $montant_virement, 1, $id_virement['id_user']]);
+    $sql_trans->execute([$bankaccount2['id'], $montant_virement, $devise, $id_virement['id_user']]);
 
     header('location:/soldes.php');
 
