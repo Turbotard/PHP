@@ -37,7 +37,7 @@ $currencie = $_SESSION['transactions']['id_currencie'];
             echo "Admin";
         };?></h2>
         <div class="solde"><a href="/soldes.php"><button class="bouton">MES SOLDES</button></a></div>
-    </div>
+    </div> <br>
     <div class="ligne2">
             <div class="historique">
             <h2>MES TRANSACTION</h2>
@@ -49,35 +49,59 @@ $currencie = $_SESSION['transactions']['id_currencie'];
                 
             </div>
         </div>
-        <div class="transactions">
-        <div class="retrait">
-        <label for="retrait">
-            <h2>Faire un retrait : </h2>
-            Montant : <input type="text" class="input_white" id="retrait" name="retrait" autocomplete="off"><br>
-        </label>
-        <button class="bouton_envoi">RETIRER</button>
-        </div>
-        <div class="dépot">
-        <label for="dépôt">
-            <h2>Faire un dépot : </h2>
-            Montant : <input type="text" class="input_white" id="depot" name="depot" autocomplete="off"><br>
-        </label>
-        <button class="bouton_envoi">DEPOSER</button>
-        </div>
-        <div class="virement">
-        <label for="virement">
-            <h2>Faire un virement : </h2>
-            Numéro de compte : <input type="text" class="input_white" id="depot" name="compte_virement" autocomplete="off"><br>
-            Montant : <input type="text" class="input_white" id="depot" name="montant_virement" autocomplete="off"><br>
-        </label>
-        <button class="bouton_envoi">FAIRE UN VIREMENT</button>
-        </div>
+        <div class="infos">
+            <h2>MODIFIER MES INFORMATIONS</h2>
+            <div class="nom">
+                <form>
+                    <label for="nom">NOM : 
+                        <input type="text" name="nom" id="nom" class="input_white">
+                    </label>
+                    <input type="submit" class="bouton_envoi" value="MODIFIER">
+                </form>
+            </div><br>
+            <div class="prénom">
+                <form>
+                    <label for="prénom">PRENOM : 
+                        <input type="text" name="prénom" id="prénom" class="input_white">
+                    </label>
+                    <input type="submit" class="bouton_envoi" value="MODIFIER">
+                </form>
+            </div><br>
+            <div class="email">
+                <form>
+                    <label for="email">EMAIL : 
+                        <input type="text" name="email" id="email" class="input_white">
+                    </label>
+                    <input type="submit" class="bouton_envoi" value="MODIFIER">
+                </form>
+            </div><br>
+            <div class="mdp">
+                <form>
+                    <label for="mdp">MOT DE PASSE : 
+                        <input type="text" name="mdp" id="mdp" class="input_white">
+                    </label>
+                    <input type="submit" class="bouton_envoi" value="MODIFIER">
+                </form>
+            </div><br>
+            <div class="dateNaiss">
+                <form>
+                    <label for="dateNaiss">DATE DE NAISSANCE : 
+                        <input type="date" name="dateNaiss" id="dateNaiss" class="input_white">
+                    </label>
+                    <input type="submit" class="bouton_envoi" value="MODIFIER">
+                </form>
+            </div><br>
+            <div class="tel">
+                <form>
+                    <label for="tel">TELEPHONE : 
+                        <input type="text" name="tel" id="tel" class="input_white">
+                    </label>
+                    <input type="submit" class="bouton_envoi" value="MODIFIER">
+                </form>
+            </div>
     </div>
-    </div>
-</div>
-<div class="menu">
-    <a class="menu" href="./deconnexion.php"><button class="bouton">DECONNEXION</button></a>
-</div>
+</div><br><br><br>
+<div class="solde"><a href="./déconnexion.php"><button class="bouton">DECONNEXION</button></a></div>
 
 </div>
 </div>

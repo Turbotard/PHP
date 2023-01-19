@@ -88,7 +88,7 @@ require_once __DIR__ . '/../src/templates/partials/headers.inc.php';
     Confirmer le mot de passe :<label for="password" >
             <input type="password" class="input_white" id="confirm_password" name="confirm_mdp"  autocomplete="off">
         </label>
-        <input type="submit" class="bouton_envoi" class="buttonInscription" name="inscription">
+        <input type="submit" class="bouton_envoi" class="buttonInscription" name="inscription" value="INSCRIPTION">
         <p class="redirect">Déjà inscrit ? <a href="/connexion.php">Connectez-vous !</a></p>
 </div>
 </div>
