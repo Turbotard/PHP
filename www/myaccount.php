@@ -18,6 +18,11 @@ $donnees2 = $var2->fetch();
 $_SESSION['transactions'] = $donnees2;
 $somme = $_SESSION['transactions']['somme']; 
 $currencie = $_SESSION['transactions']['id_currencie'];
+if (isset($_POST['modif_nom']) && !empty($_POST['nom'])) {
+    $nom = $_POST['nom'];
+    $var = $db->prepare('UPDATE users SET nom = ? WHERE id = ?');
+    $var->execute(array($nom, $_SESSION['user']['id']));
+}
 ?>
 
 <div>
@@ -84,6 +89,7 @@ foreach($bankaccounts as $bankaccount) {
             } else {
             echo "Il n'y a pas d'historique de transaction pour ce compte.";
         }
+
         ?>
                     
             </div>
@@ -97,13 +103,6 @@ foreach($bankaccounts as $bankaccount) {
                     </label>
                     <input type="submit" class="bouton_envoi" name="modif_nom" value="MODIFIER">
                 </form>
-                <?php
-                if (isset($_POST['modif_nom']) && !empty($_POST['nom'])) {
-                    $nom = $_POST['nom'];
-                    $var = $db->prepare('UPDATE users SET nom = ? WHERE id = ?');
-                    $var->execute([$nom, $_SESSION['user']['id']]);
-                }
-                    ?>
             </div><br>
             <div class="prénom">
                 <form>
