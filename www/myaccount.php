@@ -49,6 +49,17 @@ $currencie = $_SESSION['transactions']['id_currencie'];
             $query->execute([$account_id]);
             $transactions = $query->fetchAll();
 
+            $query = $db->prepare('SELECT * FROM bankaccounts');
+$query->execute();
+$bankaccounts = $query->fetchAll();
+
+foreach($bankaccounts as $bankaccount) {
+    echo $bankaccount['id'] . '<br>';
+    echo $bankaccount['numerocompte'] . '<br>';
+    echo $bankaccount['solde'] . '<br>';
+    echo $bankaccount['id_currencies'] . '<br>';
+    echo '<br>';
+}
             // Check if there are any transactions
             if(count($transactions) > 0){
             echo '<table>';
