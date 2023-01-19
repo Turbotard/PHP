@@ -35,8 +35,11 @@ if(isset($_POST['submit'])){
       if($_SESSION['grade'] == 1000){
         header('Location:/admin.php');
       }
-      else if($_SESSION['grade'] == 1){
+      else if($_SESSION['grade'] == 10){
         header('Location:/myaccount.php');
+      }
+      else if($_SESSION['grade'] == 1){
+        header('Location:/nonverif.php');
       }
       else{
         header('Location:/ban.php');

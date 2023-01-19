@@ -5,9 +5,12 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
     if($_SESSION['user']['grade'] == 1000){
         $isconnect = '../../../admin.php';
 
+      }else if ($_SESSION['user']['grade'] == 10){
+        $isconnect = '../../../myaccount.php';
+
       }
       else if($_SESSION['user']['grade'] == 1){
-        $isconnect = '../../../myaccount.php';
+        $isconnect = '../../../nonverif.php';
 
       }
       else if ($_SESSION['user']['grade'] == 0){
