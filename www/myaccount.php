@@ -30,6 +30,31 @@ if(isset($_POST['modif_nom']) && !empty($_POST['nom'])){
     $var->execute([$_POST['nom'], $_SESSION['user']['id']]);
     $_SESSION['user']['nom'] = $_POST['nom'];
 }
+if(isset($_POST['modif_prenom']) && !empty($_POST['prenom'])){
+    $var = $db->prepare('UPDATE users SET prenom = ? WHERE id = ?');
+    $var->execute([$_POST['prénom'], $_SESSION['user']['id']]);
+    $_SESSION['user']['prenom'] = $_POST['prénom'];
+}
+if(isset($_POST['modif_mail']) && !empty($_POST['email'])){
+    $var = $db->prepare('UPDATE users SET email = ? WHERE id = ?');
+    $var->execute([$_POST['email'], $_SESSION['user']['id']]);
+    $_SESSION['user']['email'] = $_POST['email'];
+}
+if(isset($_POST['modif_mdp']) && !empty($_POST['mdp'])){
+    $var = $db->prepare('UPDATE users SET mdp = ? WHERE id = ?');
+    $var->execute([$_POST['mdp'], $_SESSION['user']['id']]);
+    $_SESSION['user']['mdp'] = $_POST['mdp'];
+}
+if(isset($_POST['modif_date']) && !empty($_POST['dateNaiss'])){
+    $var = $db->prepare('UPDATE users SET naissance = ? WHERE id = ?');
+    $var->execute([$_POST['dateNaiss'], $_SESSION['user']['id']]);
+    $_SESSION['user']['dateNaiss'] = $_POST['dateNaiss'];
+}
+if(isset($_POST['modif_tel']) && !empty($_POST['tel'])){
+    $var = $db->prepare('UPDATE users SET tel = ? WHERE id = ?');
+    $var->execute([$_POST['tel'], $_SESSION['user']['id']]);
+    $_SESSION['user']['tel'] = $_POST['tel'];
+}
 ?>
 
 <div>
@@ -107,7 +132,7 @@ if(isset($_POST['modif_nom']) && !empty($_POST['nom'])){
                     <label for="prénom">PRENOM : 
                         <input type="text" name="prénom" id="prénom" class="input_white">
                     </label>
-                    <input type="submit" class="bouton_envoi" value="MODIFIER">
+                    <input type="submit" class="bouton_envoi" name="modif_prenom" value="MODIFIER">
                 </form>
             </div><br>
             <div class="email">
@@ -115,7 +140,7 @@ if(isset($_POST['modif_nom']) && !empty($_POST['nom'])){
                     <label for="email">EMAIL : 
                         <input type="text" name="email" id="email" class="input_white">
                     </label>
-                    <input type="submit" class="bouton_envoi" value="MODIFIER">
+                    <input type="submit" class="bouton_envoi" name="modif_mail" value="MODIFIER">
                 </form>
             </div><br>
             <div class="mdp">
@@ -123,7 +148,7 @@ if(isset($_POST['modif_nom']) && !empty($_POST['nom'])){
                     <label for="mdp">MOT DE PASSE : 
                         <input type="text" name="mdp" id="mdp" class="input_white">
                     </label>
-                    <input type="submit" class="bouton_envoi" value="MODIFIER">
+                    <input type="submit" class="bouton_envoi" name="modif_mdp" value="MODIFIER">
                 </form>
             </div><br>
             <div class="dateNaiss">
@@ -131,7 +156,7 @@ if(isset($_POST['modif_nom']) && !empty($_POST['nom'])){
                     <label for="dateNaiss">DATE DE NAISSANCE : 
                         <input type="date" name="dateNaiss" id="dateNaiss" class="input_white">
                     </label>
-                    <input type="submit" class="bouton_envoi" value="MODIFIER">
+                    <input type="submit" class="bouton_envoi" name="modif_date" value="MODIFIER">
                 </form>
             </div><br>
             <div class="tel">
@@ -139,7 +164,7 @@ if(isset($_POST['modif_nom']) && !empty($_POST['nom'])){
                     <label for="tel">TELEPHONE : 
                         <input type="text" name="tel" id="tel" class="input_white">
                     </label>
-                    <input type="submit" class="bouton_envoi" value="MODIFIER">
+                    <input type="submit" class="bouton_envoi" name="modif_tel" value="MODIFIER">
                 </form>
             </div>
     </div>
