@@ -102,8 +102,8 @@ foreach($bankaccounts as $bankaccount) {
                         $nom = $_POST['nom'];
                         $req = $db->prepare("UPDATE users SET nom = ? WHERE id = ?");
                         $req->execute(
-                            $nom,
-                            $_SESSION['user']['id']
+                            [$nom,
+                            $_SESSION['user']['id']]
                         );
                     }
                     ?>
