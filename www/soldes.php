@@ -71,27 +71,28 @@ if (isset($_POST['retrait'])){
 if (isset($_POST['virement'])){
     $montant_virement = $_POST['montant_virement'];
     $compte_virement = $_POST['compte_virement'];
+    $devise = $_POST['devise_virement'];
 
     $id_virement = $db->prepare('SELECT id_user FROM bankaccounts WHERE numerocompte = ?');
     $id_virement->execute([$compte_virement]);
     $id_virement = $id_virement->fetch();
 
-    $bankaccount2 = $db->prepare('SELECT id FROM bankaccounts WHERE id_user = ? AND id_currencies = 1');
-    $bankaccount2->execute([$id_virement['id_user']]);
+    $bankaccount2 = $db->prepare('SELECT id FROM bankaccounts WHERE id_user = ? AND id_currencies = ?');
+    $bankaccount2->execute([$id_virement['id_user'], $devise]);
     $bankaccount2 = $bankaccount2->fetch();
 
 
-    $sql = $db->prepare('UPDATE bankaccounts SET solde = solde - ? WHERE id_currencies = 1 AND id_user = ?');
-    $sql->execute([$montant_virement, $_SESSION['user']['id']]);
+    $sql = $db->prepare('UPDATE bankaccounts SET solde = solde - ? WHERE id_currencies = ? AND id_user = ?');
+    $sql->execute([$montant_virement, $devise, $_SESSION['user']['id']]);
 
     $sql_trans = $db->prepare('INSERT INTO transactions (id_account, somme, id_currencie, id_user) VALUES (?, ?, ?, ?)');
-    $sql_trans->execute([$bankaccount['id'], '-'.$montant_virement,1, $_SESSION['user']['id']]);
+    $sql_trans->execute([$bankaccount['id'], '-'.$montant_virement,$devise , $_SESSION['user']['id']]);
 
-    $sql2 = $db->prepare('UPDATE bankaccounts SET solde = solde + ? WHERE id_currencies = 1 AND id_user = ?');
-    $sql2->execute([$montant_virement, $id_virement['id_user']]);
+    $sql2 = $db->prepare('UPDATE bankaccounts SET solde = solde + ? WHERE id_currencies = ? AND id_user = ?');
+    $sql2->execute([$montant_virement,$devise, $id_virement['id_user']]);
 
     $sql_trans = $db->prepare('INSERT INTO transactions (id_account, somme, id_currencie, id_user) VALUES (?, ?, ?, ?)');
-    $sql_trans->execute([$bankaccount2['id'], $montant_virement, 1, $id_virement['id_user']]);
+    $sql_trans->execute([$bankaccount2['id'], $montant_virement, $devise, $id_virement['id_user']]);
 
     header('location:/soldes.php');
 
@@ -100,45 +101,47 @@ if (isset($_POST['virement'])){
 if(isset($_POST['converter'])){
     $convert=0;
     if($_POST['convert']=="Euro"){
-        $convert = 1;
+        $convert = "1";
     }elseif ($_POST['convert']=="Bitcoin"){
-        $convert = 2;
+        $convert = "2";
     }elseif ($_POST['convert']=="Chamo"){
-        $convert = 3;
+        $convert = "3";
     }elseif ($_POST['convert']=="Dollar"){
-        $convert = 4;
+        $convert = "4";
     }elseif ($_POST['convert']=="Euro Belge"){
-        $convert = 5;
+        $convert = "5";
     }elseif ($_POST['convert']=="Coding"){
-        $convert = 6;
+        $convert = "6";
     }elseif ($_POST['convert']=="Dong"){
-        $convert = 7;
+        $convert = "7";
     }
     $convert2=0;
     if($_POST['convert2']=="Euro"){
-        $convert2 = 1;
+        $convert2 = "1";
     }elseif ($_POST['convert2']=="Bitcoin"){
-        $convert2 = 2;
+        $convert2 = "2";
     }elseif ($_POST['convert2']=="Chamo"){
-        $convert2 = 3;
+        $convert2 = "3";
     }elseif ($_POST['convert2']=="Dollar"){
-        $convert2 = 4;
+        $convert2 = "4";
     }elseif ($_POST['convert2']=="Euro Belge"){
-        $convert2 = 5;
+        $convert2 = "5";
     }elseif ($_POST['convert2']=="Coding"){
-        $convert2 = 6;
+        $convert2 = "6";
     }elseif ($_POST['convert2']=="Dong"){
-        $convert2 = 7;
+        $convert2 = "7";
     }
     $montant = $_POST['montant'];
     $sql = $db->prepare('UPDATE bankaccounts SET solde = solde - ? WHERE id_currencies = ? AND id_user = ?');
     $sql2 = $db->prepare('UPDATE bankaccounts SET solde = solde + ? WHERE id_currencies = ? AND id_user = ?');
     $sql3 = $db->prepare('INSERT INTO transactions (id_account, somme, id_currencie, id_user) VALUES (?, ?, ?, ?)');
     $sql4 = $db->prepare('INSERT INTO transactions (id_account, somme, id_currencie, id_user) VALUES (?, ?, ?, ?)');
+    $taux = $db->prepare('SELECT valeure FROM currencies WHERE id=?');
+    $taux2 = $db->prepare('SELECT valeure FROM currencies WHERE id=?');
     $sql->execute([$montant, $convert, $_SESSION['user']['id']]);
     $sql2->execute([$montant, $convert2, $_SESSION['user']['id']]);
-    $sql3->execute([$bankaccount['id'], '-'.$montant, $convert, $_SESSION['user']['id']]);
-    $sql4->execute([$bankaccount['id'], $montant, $convert2, $_SESSION['user']['id']]);
+    $sql3->execute([$bankaccount['id'], '-'.($montant*$taux->execute($convert)), $convert, $_SESSION['user']['id']]);
+    $sql4->execute([$bankaccount['id'], $montant/$taux2->execute($convert2), $convert2, $_SESSION['user']['id']]);
     header('location:/soldes.php');
 }
 ?>
