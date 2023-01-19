@@ -59,7 +59,7 @@ else{
     </div> <br>
     <div class="ligne2">
             <div class="historique">
-            <h2>MES TRANSACTION</h2>
+            <h2> MES TRANSACTIONS </h2>
             <div class="tableau">
             <?php
             // Check if there are any transactions
