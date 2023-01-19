@@ -88,7 +88,7 @@ if (isset($_POST['virement'])){
     $sql_trans->execute([$bankaccount['id'], '-'.$montant_virement,1, $_SESSION['user']['id']]);
 
     $sql2 = $db->prepare('UPDATE bankaccounts SET solde = solde + ? WHERE id_currencies = 1 AND id_user = ?');
-    $sql2->execute([$montant_virement, $compte_virement]);
+    $sql2->execute([$montant_virement, $id_virement['id_user']]);
 
     $sql_trans = $db->prepare('INSERT INTO transactions (id_account, somme, id_currencie, id_user) VALUES (?, ?, ?, ?)');
     $sql_trans->execute([$bankaccount2['id'], $montant_virement, 1, $id_virement['id_user']]);
