@@ -40,9 +40,6 @@ a{
     transition: all 0.5s ease-out;
     border-radius: 5%;
 }
-.déco{
-    color: white;
-}
 .connexion:hover,
 .connexion:focus {
   color: rgb(0, 0, 61);
