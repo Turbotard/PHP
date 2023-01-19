@@ -33,11 +33,11 @@ $sql7->execute([$_SESSION['user']['id']]);
 $solde7 = $sql7->fetch();
 
 
-
 if(isset($_POST['depot'])){
-    $montant = $_POST['montant_depot'];
-    $var = $db->prepare('UPDATE bankaccounts SET solde = solde + ? WHERE id_currencies = 1 AND id_user = ?');
-    $var->execute([$montant, $_SESSION['user']['id']]);
+    die(e);
+    // $montant = $_POST['montant_depot'];
+    // $var = $db->prepare('UPDATE bankaccounts SET solde = solde + ? WHERE id_currencies = 1 AND id_user = ?');
+    // $var->execute([$montant, $_SESSION['user']['id']]);
 
     // $bankaccount = $db->prepare('SELECT * FROM bankaccounts WHERE id_user = ? AND id_currencies = ?');
     // $bankaccount->execute([$_SESSION['user']['id'], 1]);
