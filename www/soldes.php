@@ -66,6 +66,7 @@ if (isset($_POST['retrait'])){
 
     header('location:/soldes.php');
 }
+<<<<<<< Updated upstream
 
 if(isset($_POST['converter'])){
     $convert= $db->prepare('SELECT valeure FROM currencies WHERE nomoney = ?');
@@ -73,6 +74,8 @@ if(isset($_POST['converter'])){
     $montant2 = $euro/($convert->execute([$_POST['convert2']]));
     echo $montant2;
 }
+=======
+>>>>>>> Stashed changes
 ?>
 <body>
 <?php require_once __DIR__ . '/../src/templates/partials/headers.inc.php'; ?>
@@ -145,14 +148,6 @@ if(isset($_POST['converter'])){
             </label>
             <input type="submit" class="bouton_envoi" name="converter" value="CONVERTIR">
             </form>
-            <?php
-            if(isset($_POST['converter'])&& !empty($_POST['convert']) && !empty($_POST['convert2']) && !empty($_POST['montant'])){
-                $convert= $db->prepare('SELECT valeure FROM currencies WHERE nomoney = ?');
-                $euro= ($convert->execute([$_POST['convert']]))*($_POST['montant']);
-                $montant2 = $euro/($convert->execute([$_POST['convert2']]));
-                echo "succès";
-            }
-            ?>
         </div>
         <form>
             <div class="virement">
