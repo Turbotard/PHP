@@ -5,19 +5,6 @@ $page_title = 'Mon espace';
 require_once __DIR__ . '/../src/templates/partials/html_head.php';
 
 
-$var = $db->prepare('SELECT * FROM bankaccounts WHERE id_user = ?');
-$var->execute([$_SESSION['user']['id']]);
-$donnees = $var->fetch();
-$_SESSION['bank'] = $donnees;
-$var2 = $db-> prepare('SELECT * FROM transactions WHERE id_account = ?');
-$var2->execute([$_SESSION['bank']['id']]);
-$donnees2 = $var2->fetchAll();
-$_SESSION['transactions'] = $donnees2;
-$somme = $_SESSION['transactions']['somme']; 
-$currencie = $_SESSION['transactions']['id_currencie'];
-
-
-
 ?>
 <body>
 <?php require_once __DIR__ . '/../src/templates/partials/headers.inc.php';
@@ -43,10 +30,24 @@ $currencie = $_SESSION['transactions']['id_currencie'];
             <h2>MES TRANSACTION</h2>
             <div class="tableau">
                 <?php
-                    echo '<div>'.$somme.'</div>';
-                    echo '<div>'.$currencie.'</div>';
-                ?>
-                
+                    $var = $db->prepare('SELECT * FROM bankaccounts WHERE id_user = ?');
+                    $var->execute([$_SESSION['user']['id']]);
+                    $donnees = $var->fetchAll();
+                    $_SESSION['bank'] = $donnees;
+                    $var2 = $db-> prepare('SELECT * FROM transactions WHERE id_account = ?');
+                    $var2->execute([$_SESSION['bank']['id']]);
+                    $donnees2 = $var2->fetch();
+                    $_SESSION['transactions'] = $donnees2;
+                    $somme = $_SESSION['transactions']['somme']; 
+                    $currencie = $_SESSION['transactions']['id_currencie'];
+                    $i = 0;
+                    $count = count($_SESSION['bank']);
+                    while($i < $count) {
+                    echo '<div>Numéro de compte: ' . $_SESSION['bank'][$i]['numerocompte'] . '</div>';
+                    echo '<div>Solde: ' . $_SESSION['bank'][$i]['solde'] . '</div>';
+                    echo '<div>Devise: ' . $_SESSION['bank'][$i]['id_currencies'] . '</div>';
+                    $i++;
+                    }
             </div>
         </div>
         <div class="infos">
