@@ -22,8 +22,8 @@ if (count($donnees2) == 0){
 else{
     $verif = true;
     $_SESSION['transactions'] = $donnees2;
-    $somme = $_SESSION['transactions']['somme']; 
-    $currencie = $_SESSION['transactions']['id_currencie'];
+    $somme = $_SESSION['transactions'][0]['somme']; 
+    $currencie = $_SESSION['transactions'][0]['id_currencie'];
 }
 
 ?>
