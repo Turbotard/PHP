@@ -98,22 +98,11 @@ foreach($bankaccounts as $bankaccount) {
                     <input type="submit" class="bouton_envoi" name="modif_nom" value="MODIFIER">
                 </form>
                 <?php
-<<<<<<< Updated upstream
-                    if(isset($_POST['modif_nom'])&& !empty($_POST['nom'])){
-                        $nom = $_POST['nom'];
-                        $req = $db->prepare("UPDATE users SET nom = ? WHERE id = ?");
-                        $req->execute(
-                            [$nom,
-                            $_SESSION['user']['id']]
-                        );
-                    }
-=======
                 if (isset($_POST['modif_nom']) && !empty($_POST['nom'])) {
                     $nom = $_POST['nom'];
                     $var = $db->prepare('UPDATE users SET nom = ? WHERE id = ?');
                     $var->execute([$nom, $_SESSION['user']['id']]);
                 }
->>>>>>> Stashed changes
                     ?>
             </div><br>
             <div class="prénom">
