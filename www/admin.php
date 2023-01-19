@@ -54,6 +54,8 @@ else{
             echo "Admin";
         };?></h2>
         <div class="solde"><a href="/soldes.php"><button class="bouton">MES SOLDES</button></a></div>
+        <div class="solde"><a href="/accepte.php"><button class="bouton">Acceptations</button></a></div>
+
     </div> <br>
     <div class="ligne2">
             <div class="historique">
