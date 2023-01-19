@@ -244,6 +244,13 @@ form{
     align-items: center;
     text-align: center;
 }
+.convert{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+}
 .inscription{
     background-image: url(/assets/fond_inscription.png);
     background-repeat: no-repeat;

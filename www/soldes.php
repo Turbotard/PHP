@@ -75,6 +75,15 @@ $solde7 = $sql7->fetch();
             <h4><?php echo number_format($solde7['solde'], 2);?></h4><br>
         </div>
     </div>
+    <div class="convert">
+            <label for="convert">
+                <h2>Convertir une monnaie : </h2>
+                Monnaie à convertir : <input type="text" class="input_white" id="convert" name="convert" autocomplete="off"><br>
+                Monnaie de destination : <input type="text" class="input_white" id="convert1" name="convert1" autocomplete="off"><br>
+                Montant : <input type="text" class="input_white" id="convert" name="convert" autocomplete="off"><br>
+            </label>
+            <input type="submit" class="bouton_envoi" name="converter" value="CONVERTIR">
+        </div>
 <?php require_once __DIR__ . '/../src/templates/partials/bouton_scroll_haut.php'; ?>
 
 <?php require_once __DIR__ . '/../src/templates/partials/footer.inc.php'; ?>
