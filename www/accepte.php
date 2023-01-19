@@ -52,6 +52,9 @@ $donnees3 = $var3->fetchAll();
                             elseif ($donnee['id_currencie'] == 7){
                                 echo "₫";
                             }
+                            echo " ";
+                            echo '<input type="submit" class="bouton_accepte" name="accepte_depot" value="✔️">';
+                            
                             echo "</br>";
                         }
                     ?>
@@ -90,6 +93,9 @@ $donnees3 = $var3->fetchAll();
                             elseif ($donnee['id_currencie'] == 7){
                                 echo "₫";
                             }
+                            echo " ";
+                            echo '<input type="submit" class="bouton_accepte" name="accepte_retrait" value="✔️">';
+                            
                             echo "</br>";
                         }
                     ?>
