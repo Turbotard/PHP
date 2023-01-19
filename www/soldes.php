@@ -32,13 +32,22 @@ $sql7 = $db->prepare('SELECT solde FROM bankaccounts WHERE id_currencies = 7 AND
 $sql7->execute([$_SESSION['user']['id']]);
 $solde7 = $sql7->fetch();
 
+
+
 if(isset($_POST['depot'])){
     $montant = $_POST['montant_depot'];
     $var = $db->prepare('UPDATE bankaccounts SET solde = solde + ? WHERE id_currencies = 1 AND id_user = ?');
     $var->execute([$montant, $_SESSION['user']['id']]);
 
-    $var2 = $db->prepare('INSERT INTO transactions (id_account, somme, id_currencie) VALUES (?, ?, ?)');
-    $var2->execute([$_SESSION['user']['id'], $montant, 1]);
+    // $bankaccount = $db->prepare('SELECT * FROM bankaccounts WHERE id_user = ? AND id_currencies = ?');
+    // $bankaccount->execute([$_SESSION['user']['id'], 1]);
+    // $bank = $bankaccount->fetch();
+
+    // $var_trans = $db->prepare('INSERT INTO transactions (id_account, somme, id_currencie) VALUES (?, ?, ?)');
+    // $var_trans->execute([$bank['id'], $montant, 1]);
+
+    // $var_withd = $db->prepare('INSERT INTO deposits (id_account, somme, id_currencie, done) VALUES(?, ?, ?, ?)');
+    // $var_withd->execute([$bank['id'], $montant, 1, 1]);
 }
 
 if(isset($_POST['converter'])){

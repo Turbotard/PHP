@@ -1,10 +1,10 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:8889
--- Généré le : mer. 18 jan. 2023 à 13:23
--- Version du serveur :  5.7.34
+-- Généré le : jeu. 19 jan. 2023 à 10:58
+-- Version du serveur : 5.7.34
 -- Version de PHP : 8.0.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -34,6 +34,26 @@ CREATE TABLE `bankaccounts` (
   `solde` float NOT NULL DEFAULT '0',
   `id_currencies` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `bankaccounts`
+--
+
+INSERT INTO `bankaccounts` (`id`, `numerocompte`, `id_user`, `solde`, `id_currencies`) VALUES
+(1, 132218628, 13, 0, 1),
+(2, 132218628, 13, 0, 2),
+(3, 132218628, 13, 0, 3),
+(4, 132218628, 13, 0, 4),
+(5, 132218628, 13, 0, 5),
+(6, 132218628, 13, 0, 6),
+(7, 132218628, 13, 0, 7),
+(15, 1529876953, 15, 0, 1),
+(16, 1529876953, 15, 0, 2),
+(17, 1529876953, 15, 0, 3),
+(18, 1529876953, 15, 0, 4),
+(19, 1529876953, 15, 0, 5),
+(20, 1529876953, 15, 0, 6),
+(21, 1529876953, 15, 0, 7);
 
 -- --------------------------------------------------------
 
@@ -85,7 +105,7 @@ CREATE TABLE `transactions` (
   `id_account` int(11) NOT NULL,
   `somme` float NOT NULL,
   `id_currencie` int(11) NOT NULL,
-  `taux_change` float NOT NULL
+  `id_user` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -114,7 +134,9 @@ INSERT INTO `users` (`id`, `nom`, `prenom`, `mdp`, `mail`, `tel`, `naissance`, `
 (3, 'test', 'test', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'test@test.tes', '0987654322', '2000-10-10', 1, '1644261803'),
 (4, 'test2', 'test2', '109f4b3c50d7b0df729d299bc6f8e9ef9066971f', 'test2@gmail.com', '0123456789', '1999-11-11', 1, '2039502072'),
 (5, 'admin', 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'admin@gmail.com', '0987654321', '2004-12-12', 1000, '1093792769'),
-(6, 'dardillac', 'esteban', 'df9a9e31aa162e462aafd4811053d1d072940ca7', 'est@gmail.com', '0987654321', '2004-09-04', 1, '1285224364');
+(6, 'dardillac', 'esteban', 'df9a9e31aa162e462aafd4811053d1d072940ca7', 'est@gmail.com', '0987654321', '2004-09-04', 1, '1285224364'),
+(13, 'cruise', 'tom', 'a6fbef7d4a7eb48d3d5f3f3053c0c7fcb7af8937', 'tom.cruise@gmail.com', '0783494412', '1962-07-03', 1, '132218628'),
+(15, 'tisserand', 'benj', 'a6fbef7d4a7eb48d3d5f3f3053c0c7fcb7af8937', 'benj@connard.com', '0666666666', '2004-12-12', 1, '851601297');
 
 -- --------------------------------------------------------
 
@@ -162,7 +184,8 @@ ALTER TABLE `deposits`
 ALTER TABLE `transactions`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_compte` (`id_account`),
-  ADD KEY `id_currencie` (`id_currencie`);
+  ADD KEY `id_currencie` (`id_currencie`),
+  ADD KEY `id_user` (`id_user`);
 
 --
 -- Index pour la table `users`
@@ -186,7 +209,7 @@ ALTER TABLE `withdrawals`
 -- AUTO_INCREMENT pour la table `bankaccounts`
 --
 ALTER TABLE `bankaccounts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT pour la table `currencies`
@@ -210,7 +233,7 @@ ALTER TABLE `transactions`
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT pour la table `withdrawals`
@@ -241,7 +264,8 @@ ALTER TABLE `deposits`
 --
 ALTER TABLE `transactions`
   ADD CONSTRAINT `transactions_ibfk_1` FOREIGN KEY (`id_account`) REFERENCES `bankaccounts` (`id`),
-  ADD CONSTRAINT `transactions_ibfk_2` FOREIGN KEY (`id_currencie`) REFERENCES `currencies` (`id`);
+  ADD CONSTRAINT `transactions_ibfk_2` FOREIGN KEY (`id_currencie`) REFERENCES `currencies` (`id`),
+  ADD CONSTRAINT `transactions_ibfk_3` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`);
 
 --
 -- Contraintes pour la table `withdrawals`
