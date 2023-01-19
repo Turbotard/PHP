@@ -50,8 +50,23 @@ if (isset($_POST['depot'])){
     $sql_depo->execute([ $bankaccount['id'], $quantiter_depot, 1, 1]);
 
     header('location:/soldes.php');
-
 }
+
+if (isset($_POST['retrait'])){
+    $quantiter_retrait = $_POST['montant_retrait'];
+
+    $sql = $db->prepare('UPDATE bankaccounts SET solde = solde - ? WHERE id_currencies = 1 AND id_user = ?');
+    $sql->execute([$quantiter_retrait, $_SESSION['user']['id']]);
+
+    $sql_trans = $db->prepare('INSERT INTO transactions (id_account, somme, id_currencie, id_user) VALUES (?, ?, ?, ?)');
+    $sql_trans->execute([$bankaccount['id'], '-'.$quantiter_retrait,1, $_SESSION['user']['id']]);
+    
+    $sql_depo =$db->prepare('INSERT INTO withdrawals ( id_account, somme, id_currencie, done) VALUES(? ,?, ?, ?)');
+    $sql_depo->execute([ $bankaccount['id'], '-'.$quantiter_retrait, 1, 1]);
+
+    header('location:/soldes.php');
+}
+
 if(isset($_POST['converter'])){
     $convert= $db->prepare('SELECT valeure FROM currencies WHERE nomoney = ?');
     $euro= ($convert->execute([$_POST['convert']]))*($_POST['montant']);
@@ -101,7 +116,7 @@ if(isset($_POST['converter'])){
     <div class="transactions">
         <div class="ligne1">
         <div class="retrait">
-            <form>
+            <form method = "POST">
         <label for="retrait">
             <h2>Faire un retrait : </h2>
             Montant : <input type="number" class="input_white" id="retrait" name="montant_retrait" autocomplete="off"><br>
