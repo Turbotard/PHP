@@ -224,6 +224,9 @@ select{
     text-align: center;
     width: 100%;
 }
+.tableau{
+    text-align: center;
+}
 .ligne1{
     display: flex;
     flex-direction: row;
