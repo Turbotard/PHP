@@ -47,7 +47,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
         <li><a href="/index.php">Accueil</a></li><br>
         <li><a href="/connexion.php">Se connecter</a></li><br>
         <li><a href="/inscription.php">S'inscrire</a></li><br>
-        <li><a href="<?php echo $isconnect?>p">Mon escpace client</a></li><br>
+        <li><a href="<?php echo $isconnect?>">Mon escpace client</a></li><br>
         <li><a href="/contact.php">Nous contacter</a></li><br>
     </ul>
 </div>
