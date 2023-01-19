@@ -2,7 +2,6 @@
 require_once __DIR__ . '/../../init.php';
 require_once __DIR__ . './../../config.php';
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
-    var_dump($_SESSION['user']['grade']);
     if($_SESSION['user']['grade'] == 1000){
         $isconnect = '../../../admin.php';
 
