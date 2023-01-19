@@ -2,8 +2,18 @@
 require_once __DIR__ . '/../../init.php';
 require_once __DIR__ . './../../config.php';
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+    if($_SESSION['grade'] == 1000){
+        $isconnect = '../../../admin.php';
 
+      }
+      else if($_SESSION['grade'] == 1){
         $isconnect = '../../../myaccount.php';
+
+      }
+      else{
+        $isconnect = '../../../ban.php';
+
+      }
     }
     else {
 
