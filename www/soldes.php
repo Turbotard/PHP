@@ -114,7 +114,7 @@ if(isset($_POST['converter'])){
     }elseif ($_POST['convert']=="Dong"){
         $convert = 7;
     }
-    $convert=0;
+    $convert2=0;
     if($_POST['convert2']=="Euro"){
         $convert2 = 1;
     }elseif ($_POST['convert2']=="Bitcoin"){
