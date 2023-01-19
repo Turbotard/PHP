@@ -25,7 +25,11 @@ else{
     $somme = $_SESSION['transactions'][0]['somme']; 
     $currencie = $_SESSION['transactions'][0]['id_currencie'];
 }
-
+if(isset($_POST['modif_nom']) && !empty($_POST['nom'])){
+    $var = $db->prepare('UPDATE users SET nom = ? WHERE id = ?');
+    $var->execute([$_POST['nom'], $_SESSION['user']['id']]);
+    $_SESSION['user']['nom'] = $_POST['nom'];
+}
 ?>
 
 <div>
@@ -45,7 +49,7 @@ else{
     </div> <br>
     <div class="ligne2">
             <div class="historique">
-            <h2>MES TRANSACTION</h2>
+            <h2> MES TRANSACTION </h2>
             <div class="tableau">
             <?php
             // Check if there are any transactions
@@ -89,18 +93,16 @@ else{
             <br>
         </div>
         <div class="infos">
-            <h2>MODIFIER MES INFORMATIONS</h2>
+            <h2> MODIFIER MES INFORMATIONS </h2>
             <div class="nom">
-                <form method="POST">
                 <form method="POST">
                     <label for="nom">NOM : 
                         <input type="text" name="nom" id="nom" class="input_white">
                     </label>
-                    <input type="submit" class="bouton_envoi" value="MODIFIER">
+                    <input type="submit" class="bouton_envoi" name="modif_nom" value="MODIFIER">
                 </form>
             </div><br>
             <div class="prénom">
-                <form method="POST">
                 <form method="POST">
                     <label for="prénom">PRENOM : 
                         <input type="text" name="prénom" id="prénom" class="input_white">
@@ -109,7 +111,6 @@ else{
                 </form>
             </div><br>
             <div class="email">
-                <form method="POST">
                 <form method="POST">
                     <label for="email">EMAIL : 
                         <input type="text" name="email" id="email" class="input_white">
@@ -127,7 +128,6 @@ else{
             </div><br>
             <div class="dateNaiss">
                 <form method="POST">
-                <form method="POST">
                     <label for="dateNaiss">DATE DE NAISSANCE : 
                         <input type="date" name="dateNaiss" id="dateNaiss" class="input_white">
                     </label>
@@ -135,7 +135,6 @@ else{
                 </form>
             </div><br>
             <div class="tel">
-                <form method="POST">
                 <form method="POST">
                     <label for="tel">TELEPHONE : 
                         <input type="text" name="tel" id="tel" class="input_white">
