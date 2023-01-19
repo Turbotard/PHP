@@ -33,21 +33,20 @@ $sql7->execute([$_SESSION['user']['id']]);
 $solde7 = $sql7->fetch();
 
 
-if(isset($_POST['depot'])){
-    die(e);
-    // $montant = $_POST['montant_depot'];
-    // $var = $db->prepare('UPDATE bankaccounts SET solde = solde + ? WHERE id_currencies = 1 AND id_user = ?');
-    // $var->execute([$montant, $_SESSION['user']['id']]);
+if(isset($_POST['retrait'])){
+    $montant = $_POST['montant_retrait'];
+    $var = $db->prepare('UPDATE bankaccounts SET solde = solde - ? WHERE id_currencies = 1 AND id_user = ?');
+    $var->execute([$montant, $_SESSION['user']['id']]);
 
-    // $bankaccount = $db->prepare('SELECT * FROM bankaccounts WHERE id_user = ? AND id_currencies = ?');
-    // $bankaccount->execute([$_SESSION['user']['id'], 1]);
-    // $bank = $bankaccount->fetch();
+    $bankaccount = $db->prepare('SELECT * FROM bankaccounts WHERE id_user = ? AND id_currencies = ?');
+    $bankaccount->execute([$_SESSION['user']['id'], 1]);
+    $bank = $bankaccount->fetch();
 
-    // $var_trans = $db->prepare('INSERT INTO transactions (id_account, somme, id_currencie) VALUES (?, ?, ?)');
-    // $var_trans->execute([$bank['id'], $montant, 1]);
+    $var_trans = $db->prepare('INSERT INTO transactions (id_account, somme, id_currencie) VALUES (?, ?, ?)');
+    $var_trans->execute([$bank['id'], $montant, 1]);
 
-    // $var_withd = $db->prepare('INSERT INTO deposits (id_account, somme, id_currencie, done) VALUES(?, ?, ?, ?)');
-    // $var_withd->execute([$bank['id'], $montant, 1, 1]);
+    $var_withd = $db->prepare('INSERT INTO withdrawals (id_account, somme, id_currencie, done) VALUES(?, ?, ?, ?)');
+    $var_withd->execute([$bank['id'], $montant, 1, 1]);
 }
 
 if(isset($_POST['converter'])){
@@ -104,7 +103,7 @@ if(isset($_POST['converter'])){
             <form>
         <label for="retrait">
             <h2>Faire un retrait : </h2>
-            Montant : <input type="text" class="input_white" id="retrait" name="retrait" autocomplete="off"><br>
+            Montant : <input type="number" class="input_white" id="retrait" name="montant_retrait" autocomplete="off"><br>
         </label>
         <input type="submit" class="bouton_envoi" name="retrait" value="RETRAIT">
             </form>
@@ -113,7 +112,7 @@ if(isset($_POST['converter'])){
         <div class="dépot">
         <label for="dépôt">
             <h2>Faire un dépot : </h2>
-            Montant : <input type="text" class="input_white" id="depot" name="montant_depot" autocomplete="off"><br>
+            Montant : <input type="number" class="input_white" id="depot" name="montant_depot" autocomplete="off"><br>
         </label>
         <input type="submit" class="bouton_envoi" name="depot" value="DEPOT">
 </form>
@@ -124,9 +123,9 @@ if(isset($_POST['converter'])){
             <form>
             <label for="convert">
                 <h2>Convertir une monnaie : </h2>
-                Monnaie à convertir : <input type="text" class="input_white" id="convert" name="convert" autocomplete="off"><br>
-                Monnaie de destination : <input type="text" class="input_white" id="convert1" name="convert1" autocomplete="off"><br>
-                Montant : <input type="text" class="input_white" id="convert" name="convert" autocomplete="off"><br>
+                Monnaie à convertir : <input type="text" class="input_white" id="convert" name="a_convertir" autocomplete="off"><br>
+                Monnaie de destination : <input type="text" class="input_white" id="convert1" name="convertit" autocomplete="off"><br>
+                Montant : <input type="number" class="input_white" id="convert" name="to_convert" autocomplete="off"><br>
             </label>
             <input type="submit" class="bouton_envoi" name="converter" value="CONVERTIR">
             </form>
