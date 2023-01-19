@@ -8,7 +8,16 @@ require_once __DIR__ . '/../src/templates/partials/html_head.php';
 ?>
 <body>
 <?php require_once __DIR__ . '/../src/templates/partials/headers.inc.php';
-
+$var = $db->prepare('SELECT * FROM bankaccounts WHERE id_user = ?');
+$var->execute([$_SESSION['user']['id']]);
+$donnees = $var->fetchAll();
+$_SESSION['bank'] = $donnees;
+$var2 = $db-> prepare('SELECT * FROM transactions WHERE id_account = ?');
+$var2->execute([$_SESSION['bank']['id']]);
+$donnees2 = $var2->fetch();
+$_SESSION['transactions'] = $donnees2;
+$somme = $_SESSION['transactions']['somme']; 
+$currencie = $_SESSION['transactions']['id_currencie'];
 ?>
 
 <div>
@@ -31,26 +40,50 @@ require_once __DIR__ . '/../src/templates/partials/html_head.php';
             <h2>MES TRANSACTION</h2>
             <div class="tableau">
             <?php
-            $var = $db->prepare('SELECT * FROM bankaccounts WHERE id_user = ?');
-            $var->execute([$_SESSION['user']['id']]);
-            $donnees = $var->fetchAll();
-            $_SESSION['bank'] = $donnees;
-            $var2 = $db-> prepare('SELECT * FROM transactions WHERE id_account = ?');
-            $var2->execute([$_SESSION['bank']['id']]);
-            $donnees2 = $var2->fetch();
-            $_SESSION['transactions'] = $donnees2;
-            $somme = $_SESSION['transactions']['somme']; 
-            $currencie = $_SESSION['transactions']['id_currencie'];
+
+            // Get the account ID
+            $account_id = $_SESSION['bank']['id'];
+
+            // Prepare and execute the query to retrieve the transactions
+            $query = $db->prepare('SELECT * FROM transactions WHERE id_account = ?');
+            $query->execute([$account_id]);
+            $transactions = $query->fetchAll();
+
+            $query = $db->prepare('SELECT * FROM bankaccounts');
+$query->execute();
+$bankaccounts = $query->fetchAll();
+
+foreach($bankaccounts as $bankaccount) {
+    echo $bankaccount['id'] . '<br>';
+    echo $bankaccount['numerocompte'] . '<br>';
+    echo $bankaccount['solde'] . '<br>';
+    echo $bankaccount['id_currencies'] . '<br>';
+    echo '<br>';
+}
+            // Check if there are any transactions
+            if(count($transactions) > 0){
+            echo '<table>';
+            echo '<thead>';
+            echo '<tr>';
+            echo '<th>Montant</th>';
+            echo '<th>Devise</th>';
+            echo '</tr>';
+            echo '</thead>';
+            echo '<tbody>';
+
+            // Loop through the transactions and display them in a table
             foreach($transactions as $transaction) {
                 echo '<tr>';
                 echo '<td>' . $transaction['somme'] . '</td>';
                 echo '<td>' . $transaction['id_currencie'] . '</td>';
                 echo '</tr>';
             }
-            ?>    
-            
-}
-
+            echo '</tbody>';
+            echo '</table>';
+            } else {
+            echo "Il n'y a pas d'historique de transaction pour ce compte.";
+        }
+        ?>
                     
             </div>
         </div>
