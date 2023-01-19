@@ -98,7 +98,7 @@ if (isset($_POST['virement'])){
 }
 
 if(isset($_POST['converter'])){
-    $cpnvert=0;
+    $convert=0;
     if($_POST['convert']=="Euro"){
         $convert = 1;
     }elseif ($_POST['convert']=="Bitcoin"){
