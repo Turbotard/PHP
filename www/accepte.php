@@ -16,6 +16,14 @@ $var3 = $db->prepare('SELECT * FROM users WHERE grade = 1');
 $var3->execute();
 $donnees3 = $var3->fetchAll();
 
+foreach($donnees3 as $donne){
+    if (isset($_POST(class))){
+        $var = $db->prepare('UPDATE users SET grade = 10 WHERE id = ?');
+        $var->execute([$donne['id']]);
+        header('Location: accepte.php');
+    }
+}
+
 ?>
 <?php require_once __DIR__ . '/../src/templates/partials/headers.inc.php';
 ?>
@@ -53,7 +61,7 @@ $donnees3 = $var3->fetchAll();
                                 echo "₫";
                             }
                             echo " ";
-                            echo '<input type="submit" class="bouton_accepte" name="accepte_depot" value="✔️">';
+                            echo '<input type="submit" class="bouton_accepte" name='.$donnee['id'].' value="✔️">';
                             
                             echo "</br>";
                         }
@@ -94,7 +102,7 @@ $donnees3 = $var3->fetchAll();
                                 echo "₫";
                             }
                             echo " ";
-                            echo '<input type="submit" class="bouton_accepte" name="accepte_retrait" value="✔️">';
+                            echo '<input type="submit" class="bouton_accepte" name='.$donnee['id'].' value="✔️">';
                             
                             echo "</br>";
                         }
@@ -119,14 +127,10 @@ $donnees3 = $var3->fetchAll();
                             echo " ";
                             echo $donnee['tel'];
                             echo " ";
-                            echo '<input type="submit" class="bouton_accepte" name="accepte" value="✔️">';
+                            echo '<input type="submit" class="bouton_accepte" name='.$donnee['id'].' value="✔️">';
                             echo "</br>";
 
-                            if(isset($_POST['accepte'])){
-                                $var = $db->prepare('UPDATE users SET grade = 10 WHERE id = ?');
-                                $var->execute([$donnee['id']]);
-                                header('Location: accepte.php');
-                            }
+                            
                         }
                     ?>
                     </div>
