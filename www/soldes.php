@@ -100,45 +100,47 @@ if (isset($_POST['virement'])){
 if(isset($_POST['converter'])){
     $convert=0;
     if($_POST['convert']=="Euro"){
-        $convert = 1;
+        $convert = "1";
     }elseif ($_POST['convert']=="Bitcoin"){
-        $convert = 2;
+        $convert = "2";
     }elseif ($_POST['convert']=="Chamo"){
-        $convert = 3;
+        $convert = "3";
     }elseif ($_POST['convert']=="Dollar"){
-        $convert = 4;
+        $convert = "4";
     }elseif ($_POST['convert']=="Euro Belge"){
-        $convert = 5;
+        $convert = "5";
     }elseif ($_POST['convert']=="Coding"){
-        $convert = 6;
+        $convert = "6";
     }elseif ($_POST['convert']=="Dong"){
-        $convert = 7;
+        $convert = "7";
     }
     $convert2=0;
     if($_POST['convert2']=="Euro"){
-        $convert2 = 1;
+        $convert2 = "1";
     }elseif ($_POST['convert2']=="Bitcoin"){
-        $convert2 = 2;
+        $convert2 = "2";
     }elseif ($_POST['convert2']=="Chamo"){
-        $convert2 = 3;
+        $convert2 = "3";
     }elseif ($_POST['convert2']=="Dollar"){
-        $convert2 = 4;
+        $convert2 = "4";
     }elseif ($_POST['convert2']=="Euro Belge"){
-        $convert2 = 5;
+        $convert2 = "5";
     }elseif ($_POST['convert2']=="Coding"){
-        $convert2 = 6;
+        $convert2 = "6";
     }elseif ($_POST['convert2']=="Dong"){
-        $convert2 = 7;
+        $convert2 = "7";
     }
     $montant = $_POST['montant'];
     $sql = $db->prepare('UPDATE bankaccounts SET solde = solde - ? WHERE id_currencies = ? AND id_user = ?');
     $sql2 = $db->prepare('UPDATE bankaccounts SET solde = solde + ? WHERE id_currencies = ? AND id_user = ?');
     $sql3 = $db->prepare('INSERT INTO transactions (id_account, somme, id_currencie, id_user) VALUES (?, ?, ?, ?)');
     $sql4 = $db->prepare('INSERT INTO transactions (id_account, somme, id_currencie, id_user) VALUES (?, ?, ?, ?)');
+    $taux = $db->prepare('SELECT valeure FROM currencies WHERE id=?');
+    $taux2 = $db->prepare('SELECT valeure FROM currencies WHERE id=?');
     $sql->execute([$montant, $convert, $_SESSION['user']['id']]);
     $sql2->execute([$montant, $convert2, $_SESSION['user']['id']]);
-    $sql3->execute([$bankaccount['id'], '-'.$montant, $convert, $_SESSION['user']['id']]);
-    $sql4->execute([$bankaccount['id'], $montant, $convert2, $_SESSION['user']['id']]);
+    $sql3->execute([$bankaccount['id'], '-'.($montant*$taux->execute($convert)), $convert, $_SESSION['user']['id']]);
+    $sql4->execute([$bankaccount['id'], $montant/$taux2->execute($convert2), $convert2, $_SESSION['user']['id']]);
     header('location:/soldes.php');
 }
 ?>
