@@ -42,7 +42,7 @@ if(isset($_POST['inscription']) ){
 
 
             
-            header('Location:/myaccount.php');
+            header('Location:/nonverif.php');
         }
     }
     
