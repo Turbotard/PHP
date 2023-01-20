@@ -40,11 +40,15 @@ $bankaccount = $bankaccount->fetch();
 
 if (isset($_POST['depot'])){
     $quantiter_depot = $_POST['montant_depot'];
+    if ($quantiter_depot > 0) {
 
-    $sql_depo =$db->prepare('INSERT INTO deposits ( id_account, somme, id_currencie, done) VALUES(? ,?, ?, ?)');
-    $sql_depo->execute([ $bankaccount['id'], $quantiter_depot, 1, 0]);
-    
-    header('location:/soldes.php');
+        $sql_depo = $db->prepare('INSERT INTO deposits ( id_account, somme, id_currencie, done) VALUES(? ,?, ?, ?)');
+        $sql_depo->execute([$bankaccount['id'], $quantiter_depot, 1, 0]);
+
+        header('location:/soldes.php');
+    }else{
+        echo "Vous ne pouvez pas déposer un montant négatif";
+    }
 }
 
 
@@ -52,11 +56,15 @@ if (isset($_POST['depot'])){
 
 if (isset($_POST['retrait'])){
     $quantiter_retrait = $_POST['montant_retrait'];
-    
-    $sql_depo =$db->prepare('INSERT INTO withdrawals ( id_account, somme, id_currencie, done) VALUES(? ,?, ?, ?)');
-    $sql_depo->execute([ $bankaccount['id'], '-'.$quantiter_retrait, 1, 0]);
+    if ($quantiter_retrait > 0) {
 
-    header('location:/soldes.php');
+        $sql_depo = $db->prepare('INSERT INTO withdrawals ( id_account, somme, id_currencie, done) VALUES(? ,?, ?, ?)');
+        $sql_depo->execute([$bankaccount['id'], '-' . $quantiter_retrait, 1, 0]);
+
+        header('location:/soldes.php');
+    }else{
+        echo "Vous ne pouvez pas retirer un montant négatif";
+    }
 }
 
 if (isset($_POST['virement'])){
@@ -64,28 +72,33 @@ if (isset($_POST['virement'])){
     $compte_virement = $_POST['compte_virement'];
     $devise = $_POST['devise_virement'];
 
-    $id_virement = $db->prepare('SELECT id_user FROM bankaccounts WHERE numerocompte = ?');
-    $id_virement->execute([$compte_virement]);
-    $id_virement = $id_virement->fetch();
+    if ($montant_virement > 0) {
 
-    $bankaccount2 = $db->prepare('SELECT id FROM bankaccounts WHERE id_user = ? AND id_currencies = ?');
-    $bankaccount2->execute([$id_virement['id_user'], $devise]);
-    $bankaccount2 = $bankaccount2->fetch();
+        $id_virement = $db->prepare('SELECT id_user FROM bankaccounts WHERE numerocompte = ?');
+        $id_virement->execute([$compte_virement]);
+        $id_virement = $id_virement->fetch();
+
+        $bankaccount2 = $db->prepare('SELECT id FROM bankaccounts WHERE id_user = ? AND id_currencies = ?');
+        $bankaccount2->execute([$id_virement['id_user'], $devise]);
+        $bankaccount2 = $bankaccount2->fetch();
 
 
-    $sql = $db->prepare('UPDATE bankaccounts SET solde = solde - ? WHERE id_currencies = ? AND id_user = ?');
-    $sql->execute([$montant_virement, $devise, $_SESSION['user']['id']]);
+        $sql = $db->prepare('UPDATE bankaccounts SET solde = solde - ? WHERE id_currencies = ? AND id_user = ?');
+        $sql->execute([$montant_virement, $devise, $_SESSION['user']['id']]);
 
-    $sql_trans = $db->prepare('INSERT INTO transactions (id_account, somme, id_currencie, id_user) VALUES (?, ?, ?, ?)');
-    $sql_trans->execute([$bankaccount['id'], '-'.$montant_virement,$devise , $_SESSION['user']['id']]);
+        $sql_trans = $db->prepare('INSERT INTO transactions (id_account, somme, id_currencie, id_user) VALUES (?, ?, ?, ?)');
+        $sql_trans->execute([$bankaccount['id'], '-' . $montant_virement, $devise, $_SESSION['user']['id']]);
 
-    $sql2 = $db->prepare('UPDATE bankaccounts SET solde = solde + ? WHERE id_currencies = ? AND id_user = ?');
-    $sql2->execute([$montant_virement,$devise, $id_virement['id_user']]);
+        $sql2 = $db->prepare('UPDATE bankaccounts SET solde = solde + ? WHERE id_currencies = ? AND id_user = ?');
+        $sql2->execute([$montant_virement, $devise, $id_virement['id_user']]);
 
-    $sql_trans = $db->prepare('INSERT INTO transactions (id_account, somme, id_currencie, id_user) VALUES (?, ?, ?, ?)');
-    $sql_trans->execute([$bankaccount2['id'], '+'.$montant_virement, $devise, $id_virement['id_user']]);
+        $sql_trans = $db->prepare('INSERT INTO transactions (id_account, somme, id_currencie, id_user) VALUES (?, ?, ?, ?)');
+        $sql_trans->execute([$bankaccount2['id'], '+' . $montant_virement, $devise, $id_virement['id_user']]);
 
-    header('location:/soldes.php');
+        header('location:/soldes.php');
+    }else{
+        echo "Vous ne pouvez pas retirer un montant négatif";
+    }
 
 }
 
