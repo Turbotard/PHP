@@ -35,7 +35,7 @@ require_once __DIR__ . '/../src/config.php';
     <video id="Meme" class="video" src="/assets/meme chat.mp4" ></video>
     
    
-   <div class='pp'>
+   <br><div class='pp'>
         <div class="Ethan"
         onclick="document.getElementById('Sonic').style.display='block';
         document.getElementById('Sonic').play();
@@ -46,7 +46,7 @@ require_once __DIR__ . '/../src/config.php';
         document.getElementById('Meme').pause();
         document.getElementById('Meme').currentTime=0;
         document.getElementById('fermer').style.display='block'">
-            <img class='pdp' src='/assets/Stanewolfer.png'>
+            <img class='pdp' src='/assets/Ethan.gif'>
             <h3>🐺 Ethan 🐺<br/> Développeur</h3>
         </div>
         <div class="Aya"
