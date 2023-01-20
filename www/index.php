@@ -30,6 +30,12 @@ else {
     <a href="/inscription.php"><button class="bouton">INSCRIPTION</button></a>
     </div>
         <h4>Nos monnaies (Valeur pour une unité) : </h4>
+        <button id="fermer" class="croix"
+    onclick="document.getElementById('Belge').style.display='none';
+    document.getElementById('Belge').pause();
+    document.getElementById('Belge').currentTime=0;
+    document.getElementById('fermer').style.display='none'">X</button>
+    <video id="Belge" class="video" src="/assets/belge.mp4" ></video>
     <div class="monnaies">
         <div class="euro">
         <br>  <img src="/assets/euro.png" alt="€"><br>
@@ -52,7 +58,9 @@ else {
             <h5>0,92 €</h5>
         </div>
         <div class="euro_belge">
-        <br><img src="/assets/euro_belge.png" alt="€ Belge"><br>
+        <br><img src="/assets/euro_belge.png" alt="€ Belge" onclick="document.getElementById('Belge').style.display='block';
+        document.getElementById('Belge').play();
+        document.getElementById('fermer').style.display='block'"><br>
             <h5>Euro Belge</h5>
             <h5>42 €</h5>
         </div>
