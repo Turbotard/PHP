@@ -246,7 +246,7 @@ if(isset($_POST['converter'])){
                     echo "<option class='input_white' value='$option'>$option</option>";
                 }
                 ?></select><br>
-                Montant : <input type="number" class="input_white" id="convert" name="montant" autocomplete="off"><br>
+                Montant : <input type="text" class="input_white" id="convert" name="montant" autocomplete="off"><br>
             </label>
             <input type="submit" class="bouton_envoi" name="converter" value="CONVERTIR">
             </form>
