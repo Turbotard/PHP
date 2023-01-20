@@ -72,6 +72,8 @@ if(isset($_GET['depotid']) && isset($_GET['sommedepot']) && isset($_GET['idaccou
     header('Location: accepte.php');
 }
 
+
+
 ?>
 <?php require_once __DIR__ . '/../src/templates/partials/headers.inc.php';
 ?>
