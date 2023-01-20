@@ -154,8 +154,8 @@ if(isset($_POST['converter'])){
     $sql2->execute(array('+'.$resultat, $id_cu2, $_SESSION['user']['id']));
     $sql3 = $db->prepare('INSERT INTO transactions (id_account, somme, id_currencie, id_user) VALUES (?, ?, ?, ?)');
     $sql4 = $db->prepare('INSERT INTO transactions (id_account, somme, id_currencie, id_user) VALUES (?, ?, ?, ?)');
-    $sql3->execute($bankaccount['id'], $montant, $valeure, $id_virement['id_user']);
-    $sql4->execute($bankaccount['id'], $resultat, $valeure, $id_virement['id_user']);
+    $sql3->execute(array($bankaccount['id'], $montant, $convert, $_SESSION['user']['id']));
+    $sql4->execute(array($bankaccount['id'], $resultat, $convert2, $_SESSION['user']['id']));
 
     // $retrait = '-' . ($montant * $taux->execute([$convert]));
     // $depot = ($montant * $taux->execute([$convert])) / $taux2->execute([$convert2]);
