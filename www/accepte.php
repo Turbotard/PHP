@@ -43,7 +43,7 @@ if(isset($_GET['retraitid']) && isset($_GET['sommeretrait']) && isset($_GET['ida
     $sql->execute([$somme, $id_account]);
 
     $sql_trans = $db->prepare('INSERT INTO transactions (id_account, somme, id_currencie, id_user) VALUES (?, ?, ?, ?)');
-    $sql_trans->execute([$id_account, $somme, 1, $id_user['id']]);
+    $sql_trans->execute([$id_account, '-'.$somme, 1, $id_user['id']]);
 
     $var4 = $db->prepare('UPDATE withdrawals SET done = 1 WHERE id = ?');
     $var4->execute([$id]);
