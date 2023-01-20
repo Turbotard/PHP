@@ -4,6 +4,12 @@ require_once __DIR__ . '/../src/config.php';
 $page_title = 'Mon espace';
 require_once __DIR__ . '/../src/templates/partials/html_head.php';
 
+if(isset($_GET['userid'])){
+    $id = $_GET['userid'];
+    $var4 = $db->prepare('UPDATE users SET grade = 0 WHERE id = ?');
+    $var4->execute([$id]);
+    header('Location:/admin.php');
+}
 
 ?>
 <body>
@@ -195,6 +201,7 @@ if(isset($_POST['modif_tel'])){
                     echo '<h2>Adresse mail : ' . $utilisateurs['mail'] . '</h2>';
                     echo '<h2>Date de naissance : ' . $utilisateurs['naissance'] . '</h2>';
                     echo '<h2>Téléphone : ' . $utilisateurs['tel'] . '</h2>';
+                    echo '<a href="/admin.php?userid=' . $utilisateurs['id'] . '" class="bouton_accepte" name="accepte" value="✔️">x</a>';
                     echo '</div>';
                     echo '<br>';
                 }
