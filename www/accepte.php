@@ -16,6 +16,62 @@ $var3 = $db->prepare('SELECT * FROM users WHERE grade = 1');
 $var3->execute();
 $donnees3 = $var3->fetchAll();
 
+if(isset($_GET['userid'])){
+    $id = $_GET['userid'];
+    $var4 = $db->prepare('UPDATE users SET grade = 10 WHERE id = ?');
+    $var4->execute([$id]);
+    header('Location: accepte.php');
+}
+
+if(isset($_GET['userid'])){
+    $id = $_GET['userid'];
+    $var4 = $db->prepare('UPDATE users SET grade = 10 WHERE id = ?');
+    $var4->execute([$id]);
+    header('Location: accepte.php');
+}
+
+if(isset($_GET['retraitid']) && isset($_GET['sommeretrait']) && isset($_GET['idaccount'])){
+    $id = $_GET['retraitid'];
+    $somme = $_GET['sommeretrait'];
+    $id_account = $_GET['idaccount'];
+
+    $id_user = $db->prepare('SELECT users.id FROM users JOIN bankaccounts ON bankaccounts.id_user = users.id WHERE bankaccounts.id = ? AND bankaccounts.id_currencies = ?');
+    $id_user->execute([$id_account, 1]);
+    $id_user = $id_user->fetch();
+
+    $sql = $db->prepare('UPDATE bankaccounts SET solde = solde - ? WHERE id_currencies = 1 AND id = ?');
+    $sql->execute([$somme, $id_account]);
+
+    $sql_trans = $db->prepare('INSERT INTO transactions (id_account, somme, id_currencie, id_user) VALUES (?, ?, ?, ?)');
+    $sql_trans->execute([$id_account, $somme, 1, $id_user['id']]);
+
+    $var4 = $db->prepare('UPDATE withdrawals SET done = 1 WHERE id = ?');
+    $var4->execute([$id]);
+
+    header('Location: accepte.php');
+}
+
+if(isset($_GET['depotid']) && isset($_GET['sommedepot']) && isset($_GET['idaccount'])){
+    $id = $_GET['depotid'];
+    $somme = $_GET['sommedepot'];
+    $id_account = $_GET['idaccount'];
+
+    $id_user = $db->prepare('SELECT users.id FROM users JOIN bankaccounts ON bankaccounts.id_user = users.id WHERE bankaccounts.id = ? AND bankaccounts.id_currencies = ?');
+    $id_user->execute([$id_account, 1]);
+    $id_user = $id_user->fetch();
+
+    $sql = $db->prepare('UPDATE bankaccounts SET solde = solde + ? WHERE id_currencies = 1 AND id = ?');
+    $sql->execute([$somme, $id_account]);
+
+    $sql_trans = $db->prepare('INSERT INTO transactions (id_account, somme, id_currencie, id_user) VALUES (?, ?, ?, ?)');
+    $sql_trans->execute([$id_account, $somme, 1, $id_user['id']]);
+
+    $var4 = $db->prepare('UPDATE deposits SET done = 1 WHERE id = ?');
+    $var4->execute([$id]);
+
+    header('Location: accepte.php');
+}
+
 ?>
 <?php require_once __DIR__ . '/../src/templates/partials/headers.inc.php';
 ?>
@@ -53,7 +109,7 @@ $donnees3 = $var3->fetchAll();
                                 echo "₫";
                             }
                             echo " ";
-                            echo '<input type="submit" class="bouton_accepte" name="accepte_depot" value="✔️">';
+                            echo '<a  class="bouton_accepte" name="accepte_depot" href="/accepte.php?depotid='.$donnee['id'].'&sommedepot='.$donnee['somme'].'&idaccount='.$donnee['id_account'].'" value="✔️">✔️</a>';
                             
                             echo "</br>";
                         }
@@ -94,7 +150,7 @@ $donnees3 = $var3->fetchAll();
                                 echo "₫";
                             }
                             echo " ";
-                            echo '<input type="submit" class="bouton_accepte" name="accepte_retrait" value="✔️">';
+                            echo '<a  class="bouton_accepte" href="/accepte.php?retraitid='.$donnee['id'].'&sommeretrait='.$donnee['somme'].'&idaccount='.$donnee['id_account'].'" name="accepte_retrait">✔️</a>';
                             
                             echo "</br>";
                         }
@@ -119,14 +175,8 @@ $donnees3 = $var3->fetchAll();
                             echo " ";
                             echo $donnee['tel'];
                             echo " ";
-                            echo '<input type="submit" class="bouton_accepte" name="accepte" value="✔️">';
+                            echo '<a href="/accepte.php?userid='.$donnee['id'].'" class="bouton_accepte" name="accepte" value="✔️">✔️</a>';
                             echo "</br>";
-
-                            if(isset($_POST['accepte'])){
-                                $var = $db->prepare('UPDATE users SET grade = 10 WHERE id = ?');
-                                $var->execute([$donnee['id']]);
-                                header('Location: accepte.php');
-                            }
                         }
                     ?>
                     </div>
