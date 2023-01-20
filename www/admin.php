@@ -148,6 +148,8 @@ else{
     </div>
     
 </div><br><br><br>
+<div class="solde"><a href="./deconnexion.php"><button class="bouton">DECONNEXION</button></a></div>
+<br>
 <div class="list">
                 <?php
                 foreach($donnes as $utilisateurs)
@@ -169,7 +171,6 @@ else{
 
 
         </div>
-<div class="solde"><a href="./deconnexion.php"><button class="bouton">DECONNEXION</button></a></div>
 
 </div>
 </div>

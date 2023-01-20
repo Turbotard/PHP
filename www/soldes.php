@@ -143,8 +143,8 @@ if(isset($_POST['converter'])){
     $taux2 = $db->prepare('SELECT valeure FROM currencies WHERE id=?');
     $sql->execute([$montant, $convert, $_SESSION['user']['id']]);
     $sql2->execute([$montant, $convert2, $_SESSION['user']['id']]);
-    $sql3->execute([$bankaccount['id'], '-'.($montant*$taux->execute($convert)), $convert, $_SESSION['user']['id']]);
-    $sql4->execute([$bankaccount['id'], $montant/$taux2->execute($convert2), $convert2, $_SESSION['user']['id']]);
+    $sql3->execute(array($bankaccount['id'], '-'.($montant*$taux->execute($convert)), $convert, $_SESSION['user']['id']));
+    $sql4->execute(array($bankaccount['id'], ($montant*$taux->execute($convert))/$taux2->execute($convert2), $convert2, $_SESSION['user']['id']));
     header('location:/soldes.php');
 }
 ?>
