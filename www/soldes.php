@@ -137,18 +137,31 @@ if(isset($_POST['converter'])){
     $montant = $_POST['montant'];
     $sql = $db->prepare('UPDATE bankaccounts SET solde = solde - ? WHERE id_currencies = ? AND id_user = ?');
     $sql2 = $db->prepare('UPDATE bankaccounts SET solde = solde + ? WHERE id_currencies = ? AND id_user = ?');
+    
+    $taux = $db->prepare('SELECT * FROM currencies WHERE id=?');
+    $taux2 = $db->prepare('SELECT * FROM currencies WHERE id=?');
+    $taux->execute([$convert]);
+    $taux2->execute([$convert2]);
+    $result = $taux->fetch();
+    $result2 = $taux2->fetch();
+    $valeure=$result['valeure'];
+    $valeure2=$result2['valeure'];
+    $id_cu = $result['id'];
+    $id_cu2 = $result2['id'];
+    $resultat = $montant * $valeure /  $valeure2;
+    $sql->execute(array($montant, $id_cu, $_SESSION['user']['id']));
+    $sql2->execute(array('+'.$resultat, $id_cu2, $_SESSION['user']['id']));
     $sql3 = $db->prepare('INSERT INTO transactions (id_account, somme, id_currencie, id_user) VALUES (?, ?, ?, ?)');
     $sql4 = $db->prepare('INSERT INTO transactions (id_account, somme, id_currencie, id_user) VALUES (?, ?, ?, ?)');
-    $taux = $db->prepare('SELECT valeure FROM currencies WHERE id=?');
-    $taux2 = $db->prepare('SELECT valeure FROM currencies WHERE id=?');
-    $sql->execute([$montant, $convert, $_SESSION['user']['id']]);
-    $sql2->execute([$montant, $convert2, $_SESSION['user']['id']]);
-    $retrait = '-' . ($montant * $taux->execute([$convert]));
-    $depot = ($montant * $taux->execute([$convert])) / $taux2->execute([$convert2]);
-    $retrait=$retrait->fetch();
-    $depot = $depot->fetch();
-    $sql3->execute(array($bankaccount['id'], $retrait, [$convert], $_SESSION['user']['id']));
-    $sql4->execute(array($bankaccount['id'], $depot, [$convert2], $_SESSION['user']['id']));
+    $sql3->execute($bankaccount['id'], $montant, $valeure, $id_virement['id_user']);
+    $sql4->execute($bankaccount['id'], $resultat, $valeure, $id_virement['id_user']);
+
+    // $retrait = '-' . ($montant * $taux->execute([$convert]));
+    // $depot = ($montant * $taux->execute([$convert])) / $taux2->execute([$convert2]);
+    // $retrait=$retrait->fetch();
+    // $depot = $depot->fetch();
+    // $sql3->execute(array($bankaccount['id'], $retrait, [$convert], $_SESSION['user']['id']));
+    // $sql4->execute(array($bankaccount['id'], $depot, [$convert2], $_SESSION['user']['id']));
     header('location:/soldes.php');
 }
 ?>
