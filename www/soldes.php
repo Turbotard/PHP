@@ -59,7 +59,7 @@ if (isset($_POST['retrait'])){
     if ($quantiter_retrait > 0) {
 
         $sql_depo = $db->prepare('INSERT INTO withdrawals ( id_account, somme, id_currencie, done) VALUES(? ,?, ?, ?)');
-        $sql_depo->execute([$bankaccount['id'], '-' . $quantiter_retrait, 1, 0]);
+        $sql_depo->execute([$bankaccount['id'], $quantiter_retrait, 1, 0]);
 
         header('location:/soldes.php');
     }else{
