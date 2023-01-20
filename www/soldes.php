@@ -41,14 +41,8 @@ $bankaccount = $bankaccount->fetch();
 if (isset($_POST['depot'])){
     $quantiter_depot = $_POST['montant_depot'];
 
-    // $sql = $db->prepare('UPDATE bankaccounts SET solde = solde + ? WHERE id_currencies = 1 AND id_user = ?');
-    // $sql->execute([$quantiter_depot, $_SESSION['user']['id']]);
-
     $sql_depo =$db->prepare('INSERT INTO deposits ( id_account, somme, id_currencie, done) VALUES(? ,?, ?, ?)');
     $sql_depo->execute([ $bankaccount['id'], $quantiter_depot, 1, 0]);
-
-    // $sql_trans = $db->prepare('INSERT INTO transactions (id_account, somme, id_currencie, id_user) VALUES (?, ?, ?, ?)');
-    // $sql_trans->execute([$bankaccount['id'], '+'.$quantiter_depot,1, $_SESSION['user']['id']]);
     
     header('location:/soldes.php');
 }
@@ -58,12 +52,6 @@ if (isset($_POST['depot'])){
 
 if (isset($_POST['retrait'])){
     $quantiter_retrait = $_POST['montant_retrait'];
-
-    // $sql = $db->prepare('UPDATE bankaccounts SET solde = solde - ? WHERE id_currencies = 1 AND id_user = ?');
-    // $sql->execute([$quantiter_retrait, $_SESSION['user']['id']]);
-
-    // $sql_trans = $db->prepare('INSERT INTO transactions (id_account, somme, id_currencie, id_user) VALUES (?, ?, ?, ?)');
-    // $sql_trans->execute([$bankaccount['id'], '-'.$quantiter_retrait,1, $_SESSION['user']['id']]);
     
     $sql_depo =$db->prepare('INSERT INTO withdrawals ( id_account, somme, id_currencie, done) VALUES(? ,?, ?, ?)');
     $sql_depo->execute([ $bankaccount['id'], '-'.$quantiter_retrait, 1, 0]);
