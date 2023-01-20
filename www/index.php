@@ -44,7 +44,8 @@ else {
     <video id="Belge" class="video" src="/assets/belge.mp4" ></video>
     <video id="Chamo" class="video" src="/assets/chameau.mp4" ></video>
     <video id="Coding" class="video" src="/assets/coding.mp4" ></video>
-    <div class="monnaies">
+    
+    <br><div class="monnaies">
         <div class="euro">
         <br>  <img src="/assets/euro.png" alt="€"><br>
             <h5>Euro</h5>
