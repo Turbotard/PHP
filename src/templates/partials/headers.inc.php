@@ -46,7 +46,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
     echo ("connecté 💚");
     }
     else {
-        echo ("non connecté ❤️");
+        echo ("non connecté 💔");
     }
     ?>
 </header>
