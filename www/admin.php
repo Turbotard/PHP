@@ -30,7 +30,41 @@ else{
     $somme = $_SESSION['transactions'][0]['somme']; 
     $currencie = $_SESSION['transactions'][0]['id_currencie'];
 }
+if(isset($_POST['modif_nom']) ){
+    $var = $db->prepare('UPDATE users SET nom = ? WHERE id = ?');
+    $var->execute([$_POST['nom'], $_SESSION['user']['id']]);
+    header('Location: myaccount.php');
+}
 
+if(isset($_POST['modif_prenom']) ){
+    $var = $db->prepare('UPDATE users SET prenom = ? WHERE id = ?');
+    $var->execute([$_POST['prénom'], $_SESSION['user']['id']]);
+    header('Location: myaccount.php');
+}
+
+if(isset($_POST['modif_mail'])){
+    $var = $db->prepare('UPDATE users SET email = ? WHERE id = ?');
+    $var->execute([$_POST['email'], $_SESSION['user']['id']]);
+    header('Location: myaccount.php');
+}
+
+if(isset($_POST['modif_mdp'])){
+    $var = $db->prepare('UPDATE users SET mdp = ? WHERE id = ?');
+    $var->execute([$_POST['mdp'], $_SESSION['user']['id']]);
+    header('Location: myaccount.php');
+}
+
+if(isset($_POST['modif_date'])){
+    $var = $db->prepare('UPDATE users SET naissance = ? WHERE id = ?');
+    $var->execute([$_POST['dateNaiss'], $_SESSION['user']['id']]);
+    header('Location: myaccount.php');
+}
+
+if(isset($_POST['modif_tel'])){
+    $var = $db->prepare('UPDATE users SET tel = ? WHERE id = ?');
+    $var->execute([$_POST['tel'], $_SESSION['user']['id']]);
+    header('Location: myaccount.php');
+}
 ?>
 
 <div>
@@ -148,6 +182,8 @@ else{
     </div>
     
 </div><br><br><br>
+<div class="solde"><a href="./deconnexion.php"><button class="bouton">DECONNEXION</button></a></div>
+<br>
 <div class="list">
                 <?php
                 foreach($donnes as $utilisateurs)
@@ -169,7 +205,6 @@ else{
 
 
         </div>
-<div class="solde"><a href="./deconnexion.php"><button class="bouton">DECONNEXION</button></a></div>
 
 </div>
 </div>

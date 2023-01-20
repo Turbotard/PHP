@@ -30,6 +30,20 @@ else {
     <a href="/inscription.php"><button class="bouton">INSCRIPTION</button></a>
     </div>
         <h4>Nos monnaies (Valeur pour une unité) : </h4>
+        <button id="fermer" class="croix"
+    onclick="document.getElementById('Belge').style.display='none';
+    document.getElementById('Belge').pause();
+    document.getElementById('Belge').currentTime=0;
+    document.getElementById('Chamo').style.display='none';
+    document.getElementById('Chamo').pause();
+    document.getElementById('Chamo').currentTime=0;
+    document.getElementById('Coding').style.display='none';
+    document.getElementById('Coding').pause();
+    document.getElementById('Coding').currentTime=0;
+    document.getElementById('fermer').style.display='none'">X</button>
+    <video id="Belge" class="video" src="/assets/belge.mp4" ></video>
+    <video id="Chamo" class="video" src="/assets/chameau.mp4" ></video>
+    <video id="Coding" class="video" src="/assets/coding.mp4" ></video>
     <div class="monnaies">
         <div class="euro">
         <br>  <img src="/assets/euro.png" alt="€"><br>
@@ -42,7 +56,15 @@ else {
             <h5>19 538,05 €</h5>
         </div>
         <div class="chamo">
-        <br> <img src="/assets/chameau.png" alt="Chamo"><br>
+        <br> <img src="/assets/chameau.png" alt="Chamo" onclick="document.getElementById('Chamo').style.display='block';
+        document.getElementById('Chamo').play();
+        document.getElementById('fermer').style.display='block';
+        document.getElementById('Belge').style.display='none';
+        document.getElementById('Belge').pause();
+        document.getElementById('Belge').currentTime=0;
+        document.getElementById('Coding').style.display='none';
+        document.getElementById('Coding').pause();
+        document.getElementById('Coding').currentTime=0;"><br>
             <h5>Chamo</h5>
             <h5>10 000 €</h5>
         </div>
@@ -52,12 +74,28 @@ else {
             <h5>0,92 €</h5>
         </div>
         <div class="euro_belge">
-        <br><img src="/assets/euro_belge.png" alt="€ Belge"><br>
+        <br><img src="/assets/euro_belge.png" alt="€ Belge" onclick="document.getElementById('Belge').style.display='block';
+        document.getElementById('Belge').play();
+        document.getElementById('fermer').style.display='block';
+        document.getElementById('Chamo').style.display='none';
+        document.getElementById('Chamo').pause();
+        document.getElementById('Chamo').currentTime=0;
+        document.getElementById('Coding').style.display='none';
+        document.getElementById('Coding').pause();
+        document.getElementById('Coding').currentTime=0;"><br>
             <h5>Euro Belge</h5>
             <h5>42 €</h5>
         </div>
         <div class="coding">
-        <br><img src="/assets/coding.jpg" alt="Coding"><br>
+        <br><img src="/assets/coding.jpg" alt="Coding" onclick="document.getElementById('Coding').style.display='block';
+        document.getElementById('Coding').play();
+        document.getElementById('fermer').style.display='block';
+        document.getElementById('Chamo').style.display='none';
+        document.getElementById('Chamo').pause();
+        document.getElementById('Chamo').currentTime=0;
+        document.getElementById('Belge').style.display='none';
+        document.getElementById('Belge').pause();
+        document.getElementById('Belge').currentTime=0;"><br>
             <h5>Coding</h5>
             <h5>5 800 €</h5>
         </div>
