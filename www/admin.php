@@ -201,8 +201,7 @@ if(isset($_POST['modif_tel'])){
                     echo '<h2>Adresse mail : ' . $utilisateurs['mail'] . '</h2>';
                     echo '<h2>Date de naissance : ' . $utilisateurs['naissance'] . '</h2>';
                     echo '<h2>Téléphone : ' . $utilisateurs['tel'] . '</h2>';
-                    echo '<a href="/admin.php?userid=' . $utilisateurs['id'] . '" class="bouton_ban" name="accepte" value="✔️">x</a>';
-                    echo '<br>';
+                    echo '<a href="/admin.php?userid=' . $utilisateurs['id'] . '" class="bouton_ban" name="accepte" value="✔️"> x </a>';  
                     echo '</div>';
                     echo '<br>';
                 }
